@@ -17,6 +17,14 @@ async function createNewSession(sessionId, hostId, params) {
     `, [hostId, sessionId, params])
 }
 
+async function updateSession(sessionId, params) {
+    await client.query(`
+        update estimation_session
+        set params = $1
+        where sessionId = $2
+    `, [params, sessionId])
+}
 
 
-module.exports = { getSession, createNewSession }
+
+module.exports = { getSession, createNewSession, updateSession }
