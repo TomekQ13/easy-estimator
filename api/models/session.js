@@ -6,7 +6,8 @@ async function getSession(sessionId) {
         from estimation_session
         where session_id = $1
     `, [sessionId])
-    return resp.rows[0]
+    if (resp.rows[0]) return resp.rows[0]
+    return undefined
 }
 
 async function createNewSession(sessionId, hostId, params) {
