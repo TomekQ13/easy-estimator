@@ -6,7 +6,8 @@ async function getVotes(sessionId) {
         from votes
         where session_id = $1
     `, [sessionId])
-    return resp.rows
+    if (resp.rows) return resp.rows
+    return undefined
 }
 
 async function vote(sessionId, voteId, userId, voteValue) {
