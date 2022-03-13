@@ -4,7 +4,7 @@ create table estimation_session (
     host_id varchar not null,
     params json,
     added_dttm timestamp not null default now()
-)
+);
 
 drop table if exists votes;
 create table votes (
@@ -13,4 +13,4 @@ create table votes (
     user_id varchar not null,
     vote_value integer not null,
     added_dttm timestamp not null default now()
-)
+);
