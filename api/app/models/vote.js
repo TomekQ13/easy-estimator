@@ -6,7 +6,7 @@ async function getVotes(sessionId) {
         from votes
         where session_id = $1
     `, [sessionId])
-    if (resp.rows) return resp.rows
+    if (resp.rows.length > 0) return resp.rows
     return undefined
 }
 
@@ -22,16 +22,20 @@ async function updateVote(sessionId, voteId, userId, voteValue) {
     let resp = await client.query(`
         update votes
         set vote_value = $4
-        where sessionId = $1, voteId = $2, userId = $3
+        where session_id = $1
+            and vote_id = $2
+            and user_id = $3
     `, [sessionId, voteId, userId, voteValue])
     return resp
 }
 
-async function deleteVote(sessionId, voteId, userId, voteValue) {
+async function deleteVote(sessionId, voteId, userId) {
     let resp = await client.query(`
         delete from votes
-        where sessionId = $1, voteId = $2, userId = $3
-    `, [sessionId, voteId, userId, voteValue])
+        where session_id = $1
+            and vote_id = $2
+            and user_id = $3
+    `, [sessionId, voteId, userId])
     return resp
 }
 

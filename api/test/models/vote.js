@@ -50,19 +50,38 @@ describe('Vote interface functions', () => {
             let resp = await updateVote(TESTING_VOTE2.sessionId, TESTING_VOTE2.voteId, TESTING_VOTE2.userId, TESTING_VOTE2.voteValue)
             expect(resp.rowCount).to.equal(1)
         })
-        it('get updated vote', () => {
-            let resp = await getVotes(TESTING_VOTE2)
-            expect(resp.length).to.equal(1)
-            expect(resp[0].vote_id).to.equal(TESTING_VOTE2.voteId)
-            expect(resp[0].session_id).to.equal(TESTING_VOTE2.sessionId)
-            expect(resp[0].user_id).to.equal(TESTING_VOTE2.userId)
-            expect(resp[0].vote_value).to.equal(TESTING_VOTE2.voteValue)
+        it('get updated vote', async () => {
+                let resp = await getVotes(TESTING_VOTE2.sessionId)
+                expect(resp.length).to.equal(1)
+                expect(resp[0].vote_id).to.equal(TESTING_VOTE2.voteId)
+                expect(resp[0].session_id).to.equal(TESTING_VOTE2.sessionId)
+                expect(resp[0].user_id).to.equal(TESTING_VOTE2.userId)
+                expect(resp[0].vote_value).to.equal(TESTING_VOTE2.voteValue)
+            })
+    })
+
+    describe('delete vote in session 2', () => {
+        it('delete vote 1', async () => {
+            let resp = await deleteVote(TESTING_VOTE2.sessionId, TESTING_VOTE2.voteId, TESTING_VOTE2.userId)
+            expect(resp.rowCount).to.equal(1)
+        })
+
+        it('lookup the deleted vote in session 2', async () => {
+            let resp = await getVotes(TESTING_VOTE2.sessionId)
+            expect(resp).to.equal(undefined)
         })
     })
 
-    describe('delete votes', () => {
+    describe('delete vote in session 1', () => {
         it('delete vote 1', async () => {
-            let resp = deleteVote()
+            let resp = await deleteVote(TESTING_VOTE1.sessionId, TESTING_VOTE1.voteId, TESTING_VOTE1.userId)
+            expect(resp.rowCount).to.equal(1)
+        })
+
+        it('delete vote 3', async () => {
+            let resp = await deleteVote(TESTING_VOTE3.sessionId, TESTING_VOTE3.voteId, TESTING_VOTE3.userId)
+            expect(resp.rowCount).to.equal(1)
         })
     })
+
 })
