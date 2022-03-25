@@ -1,4 +1,5 @@
 import React from 'react'
+import {  Link } from "react-router-dom";
 
 export default function NewSessionModal({ setNewSessionModal }) {
 
@@ -10,7 +11,7 @@ export default function NewSessionModal({ setNewSessionModal }) {
         <div className="modal">
             <div className="modal-content">
                 <form>
-                    <label for="sessionPassword">Session password</label>
+                    <label htmlFor="sessionPassword">Session password</label>
                     <input id="sessionPassword" name="sessionPassword"></input>
                     <button>Create session</button>
                 </form>
