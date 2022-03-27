@@ -18,11 +18,12 @@ router.get('/:sessionId', async (req, res) => {
 
 router.post('/:sessionId', async (req, res) => {
     try {
-        await createNewSession(req.params.sessionId, req.body.hostId, req.body.params)
+        await createNewSession(req.params.sessionId, req.body.sessionPassword, req.body.hostId, req.body.params)
     } catch(e) {
         console.error(e)
         return res.status(500).send('There has been an error. Please try again.')
     }
+    console.log(`Session with id ${req.params.sessionId} created successfully`)
     return res.status(201).send({sessionId: req.params.sessionId, message: 'Session created successfully', params: req.body.params })
 })
 

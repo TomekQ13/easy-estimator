@@ -1,20 +1,15 @@
 import React from 'react'
-import {  Link } from "react-router-dom";
+import NewSessionForm from './NewSessionForm'
 
 export default function NewSessionModal({ setNewSessionModal }) {
 
     function handleCloseModal() {
         setNewSessionModal({ show: false })
     }
-
     return (
         <div className="modal">
             <div className="modal-content">
-                <form>
-                    <label htmlFor="sessionPassword">Session password</label>
-                    <input id="sessionPassword" name="sessionPassword"></input>
-                    <button>Create session</button>
-                </form>
+                <NewSessionForm />
                 <button onClick={handleCloseModal}>
                     Close modal
                 </button>

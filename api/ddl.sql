@@ -1,6 +1,7 @@
 drop table if exists estimation_session;
 create table estimation_session (
     session_id varchar not null primary key,
+    password varchar,
     host_id varchar not null,
     params json,
     added_dttm timestamp not null default now()

@@ -4,6 +4,7 @@ async function getSession(sessionId) {
     let resp = await client.query(`
         select
             host_id,
+            password,
             session_id,
             params as params
         from estimation_session
@@ -13,11 +14,11 @@ async function getSession(sessionId) {
     return undefined
 }
 
-async function createNewSession(sessionId, hostId, params) {
+async function createNewSession(sessionId, hostId, password, params) {
     let resp = await client.query(`
-        insert into estimation_session (host_id, session_id, params)
-        values ($1, $2, $3)        
-    `, [hostId, sessionId, params])
+        insert into estimation_session (host_id, session_id, password, params)
+        values ($1, $2, $3, $4)        
+    `, [hostId, sessionId, password, params])
     return resp
 }
 
