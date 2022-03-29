@@ -15,3 +15,11 @@ create table votes (
     vote_value integer not null,
     added_dttm timestamp not null default now()
 );
+
+drop table if exists users;
+create tables users (
+    user_id varchar not null primary key,
+    session_hash varchar not null,
+    username varchar not null,
+    valid_to_dttm timestamp not null
+);
