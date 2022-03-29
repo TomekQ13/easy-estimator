@@ -1,14 +1,25 @@
 import React, { useState }  from 'react'
 import uuid from 'react-uuid'
+import { useNavigate } from 'react-router-dom'
 
 export default function NewSessionForm() {
     const [inputs, setInputs] = useState({})
+    const navigate = useNavigate()
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault()        
         const sessionPassword = event.target.sessionPassword.value
-        createSession(uuid(), sessionPassword, {test_param: 'test_param_value'})
-
+        const sessionId = uuid()
+        try {
+            const resp = await createSession(sessionId, sessionPassword, {test_param: 'test_param_value'})
+            if (resp.ok) {
+                return navigate(`/session/${sessionId}`)
+            }
+        } catch (e) {
+            console.error(e)
+            return alert('There has been an issue with creating the session. Please try again.')
+        }        
+        
     }
 
     async function createSession(sessionId, sessionPassword, params) {
@@ -22,6 +33,7 @@ export default function NewSessionForm() {
             })
         }        
         const resp = await fetch(`http://localhost:4000/session/${sessionId}`, requestOptions)
+        return resp
     }
 
     function handleChange(event) {
@@ -29,7 +41,6 @@ export default function NewSessionForm() {
         const value = event.target.value
         setInputs(values => ({...values, [name]: value}))
     }
-
 
 
     return (
