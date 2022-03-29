@@ -13,7 +13,7 @@ router.get('/:sessionId', async (req, res) => {
         console.error(e)
         return res.status(500).send({message:'There has been an error. Please try again.'})
     }
-    return res.status(200).send(results)
+    return res.status(200).json(results)
 })
 
 router.post('/:sessionId', async (req, res) => {

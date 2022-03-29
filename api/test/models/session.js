@@ -11,7 +11,7 @@ const TESTING_SESSION = {
 describe("Session interface functions", () => {
     describe("createNewSession", () => {
         it("create a correct session with params", async () => {
-            let resp = await createNewSession(TESTING_SESSION.sessionId, TESTING_SESSION.password, TESTING_SESSION.hostId, JSON.stringify(TESTING_SESSION.testParams))
+            let resp = await createNewSession(TESTING_SESSION.sessionId, TESTING_SESSION.hostId, TESTING_SESSION.password, JSON.stringify(TESTING_SESSION.testParams))
             expect(resp.rowCount).to.equal(1)
         })
     })

@@ -3,9 +3,9 @@ const client = require('../db.js')
 async function getSession(sessionId) {
     let resp = await client.query(`
         select
-            host_id,
+            host_id as hostId,
             password,
-            session_id,
+            session_id as sessionId,
             params as params
         from estimation_session
         where session_id = $1
