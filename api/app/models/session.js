@@ -3,9 +3,9 @@ const client = require('../db.js')
 async function getSession(sessionId) {
     let resp = await client.query(`
         select
+            session_id as sessionId,
             host_id as hostId,
             password,
-            session_id as sessionId,
             params as params
         from estimation_session
         where session_id = $1
@@ -16,9 +16,9 @@ async function getSession(sessionId) {
 
 async function createNewSession(sessionId, hostId, password, params) {
     let resp = await client.query(`
-        insert into estimation_session (host_id, session_id, password, params)
+        insert into estimation_session (session_id, host_id, password, params)
         values ($1, $2, $3, $4)        
-    `, [hostId, sessionId, password, params])
+    `, [sessionId, hostId, password, params])
     return resp
 }
 
