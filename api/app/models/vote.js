@@ -29,13 +29,11 @@ async function updateVote(sessionId, voteId, userId, voteValue) {
     return resp
 }
 
-async function deleteVote(sessionId, voteId, userId) {
+async function deleteVote(voteId) {
     let resp = await client.query(`
         delete from votes
-        where session_id = $1
-            and vote_id = $2
-            and user_id = $3
-    `, [sessionId, voteId, userId])
+        where vote_id = $2
+    `, [voteId])
     return resp
 }
 
