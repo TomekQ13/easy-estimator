@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getVotes, vote, updateVote } = require('../models/vote')
+const { getVotes, vote, updateVote, deleteVote } = require('../models/vote')
 
 router.get('/:sessionId', async (req, res) => {
     let results
@@ -31,6 +31,23 @@ router.put('/:sessionId', async (req, res) => {
         return res.status(500).send('There was an error. Please try again.')
     }
     return res.status(201).send('Vote updated successfully')
+})
+
+router.delete('/:voteId', async (req, res) => {
+    try {
+        const resp = await deleteVote(req.params.voteId)
+        if(resp.rowCount === 0) {
+            return res.status(404).json({
+                message: `Vote with voteId ${req.params.voteId} not found.`
+            })
+        }
+    } catch(e) {
+        console.error(e)
+        return res.status(500).send('There was an error. Please try again.')
+    }
+    return res.status(200).json({
+        message: `Vote with voteId ${req.params.voteId} deleted successfully.`
+    })
 })
 
 module.exports = router
