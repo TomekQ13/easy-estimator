@@ -21,6 +21,21 @@ const TESTING_VOTE3 = {
 }
 
 describe('Vote interface functions', () => {
+    describe('delete testing votes', () => {
+        it('delete vote 1', async () => {
+            let resp = await deleteVote(TESTING_VOTE1.voteId)
+            expect(resp.rowCount).to.be.oneOf([0,1])
+        })
+        it('delete vote 1', async () => {
+            let resp = await deleteVote(TESTING_VOTE2.voteId)
+            expect(resp.rowCount).to.be.oneOf([0,1])
+        })
+        it('delete vote 1', async () => {
+            let resp = await deleteVote(TESTING_VOTE3.voteId)
+            expect(resp.rowCount).to.be.oneOf([0,1])
+        })
+    })
+
     describe('create new votes', () => {
         it('create new vote 1', async () => {
             let resp = await vote(TESTING_VOTE1.sessionId, TESTING_VOTE1.voteId, TESTING_VOTE1.userId, TESTING_VOTE1.voteValue)
@@ -62,7 +77,7 @@ describe('Vote interface functions', () => {
 
     describe('delete vote in session 2', () => {
         it('delete vote 1', async () => {
-            let resp = await deleteVote(TESTING_VOTE2.sessionId, TESTING_VOTE2.voteId, TESTING_VOTE2.userId)
+            let resp = await deleteVote(TESTING_VOTE2.voteId)
             expect(resp.rowCount).to.equal(1)
         })
 
@@ -74,12 +89,12 @@ describe('Vote interface functions', () => {
 
     describe('delete vote in session 1', () => {
         it('delete vote 1', async () => {
-            let resp = await deleteVote(TESTING_VOTE1.sessionId, TESTING_VOTE1.voteId, TESTING_VOTE1.userId)
+            let resp = await deleteVote(TESTING_VOTE1.voteId)
             expect(resp.rowCount).to.equal(1)
         })
 
         it('delete vote 3', async () => {
-            let resp = await deleteVote(TESTING_VOTE3.sessionId, TESTING_VOTE3.voteId, TESTING_VOTE3.userId)
+            let resp = await deleteVote(TESTING_VOTE3.voteId)
             expect(resp.rowCount).to.equal(1)
         })
     })
