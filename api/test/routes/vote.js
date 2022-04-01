@@ -55,7 +55,7 @@ describe('Vote API endpoints', () => {
         })
     })
 
-    describe('Get vote for not existing session', () => {
+    describe('Get votes for not existing session', () => {
         it('Return code 404', (done) => {
             chai.request(app)
             .get('/vote/abcd')
@@ -71,8 +71,10 @@ describe('Vote API endpoints', () => {
             it('Return code 200', (done) => {
                 chai.request(app)
                 .post(`/vote/${TESTING_VOTE1.sessionId}`)
+                .type('form')
+                .send(TESTING_VOTE1)
                 .end((_err, res) => {
-                    expect(res).to.gave.status(200)
+                    expect(res).to.have.status(201)
                     done()
                 })
             })
@@ -82,8 +84,10 @@ describe('Vote API endpoints', () => {
             it('Return code 200', (done) => {
                 chai.request(app)
                 .post(`/vote/${TESTING_VOTE3.sessionId}`)
+                .type('form')
+                .send(TESTING_VOTE3)
                 .end((_err, res) => {
-                    expect(res).to.gave.status(200)
+                    expect(res).to.have.status(201)
                     done()
                 })
             })
@@ -93,8 +97,10 @@ describe('Vote API endpoints', () => {
             it('Return code 200', (done) => {
                 chai.request(app)
                 .post(`/vote/${TESTING_VOTE2.sessionId}`)
+                .type('form')
+                .send(TESTING_VOTE2)
                 .end((_err, res) => {
-                    expect(res).to.gave.status(200)
+                    expect(res).to.have.status(201)
                     done()
                 })
             })
@@ -108,7 +114,7 @@ describe('Vote API endpoints', () => {
             chai.request(app)
             .get(`/vote/${TESTING_VOTE1.sessionId}`)
             .end((_err, res) => {
-                expect(res).to.have.length(2)
+                expect(res.body).to.have.length(2)
                 done()
             })
         })

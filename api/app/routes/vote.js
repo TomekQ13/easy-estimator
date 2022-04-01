@@ -6,6 +6,11 @@ router.get('/:sessionId', async (req, res) => {
     let results
     try {
         results = await getVotes(req.params.sessionId)
+        if (!results) {
+            res.status(404).send({
+                message: `No votes found for the session id ${req.params.sessionId}`
+            })
+        }
     } catch(e) {
         console.error(e)
         return res.status(500).send('There was an error. Please try again.')

@@ -32,7 +32,7 @@ async function updateVote(sessionId, voteId, userId, voteValue) {
 async function deleteVote(voteId) {
     let resp = await client.query(`
         delete from votes
-        where vote_id = $2
+        where vote_id = $1
     `, [voteId])
     return resp
 }
