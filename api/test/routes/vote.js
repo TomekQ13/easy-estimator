@@ -11,50 +11,53 @@ const TESTING_VOTE1 = {
     sessionId: 'sessionIdIntegration',
     voteId: 'voteIdInt',
     userId: 'userIdInt',
-    voteValue: "3"
+    voteValue: 3
 }
 const TESTING_VOTE2 = {
     sessionId: 'sessionId2Integration',
     voteId: 'voteId2Int',
     userId: 'userId2Int',
-    voteValue: "2"
+    voteValue: 2
 }
 const TESTING_VOTE3 = {
     sessionId: 'sessionIdIntegration',
     voteId: 'voteId3Int',
     userId: 'userId2Int',
-    voteValue: "1"
+    voteValue: 1
 }
 
 
 describe('Vote API endpoints', () => {
-    describe('Delete testing votes for a clean start', () => {
-        it(`Return code 200 or 404 for ${TESTING_VOTE1.voteId}`, (done) => {
-            chai.request(app)
-            .delete(`/vote/${TESTING_VOTE1.voteId}`)
-            .end((_err, res) => {
-                expect(res.status).to.be.oneOf([200, 404])
-                done()
+    function deleteTestingVotes() {
+        describe('Delete testing votes for a clean start', () => {
+            it(`Return code 200 or 404 for ${TESTING_VOTE1.voteId}`, (done) => {
+                chai.request(app)
+                .delete(`/vote/${TESTING_VOTE1.voteId}`)
+                .end((_err, res) => {
+                    expect(res.status).to.be.oneOf([200, 404])
+                    done()
+                })
             })
-        })
-        it(`Return code 200 or 404 for ${TESTING_VOTE2.voteId}`, (done) => {
-            chai.request(app)
-            .delete(`/vote/${TESTING_VOTE2.voteId}`)
-            .end((_err, res) => {
-                expect(res.status).to.be.oneOf([200, 404])
-                done()
+            it(`Return code 200 or 404 for ${TESTING_VOTE2.voteId}`, (done) => {
+                chai.request(app)
+                .delete(`/vote/${TESTING_VOTE2.voteId}`)
+                .end((_err, res) => {
+                    expect(res.status).to.be.oneOf([200, 404])
+                    done()
+                })
             })
-        })
-        it(`Return code 200 or 404 for ${TESTING_VOTE3.voteId}`, (done) => {
-            chai.request(app)
-            .delete(`/vote/${TESTING_VOTE3.voteId}`)
-            .end((_err, res) => {
-                expect(res.status).to.be.oneOf([200, 404])
-                done()
+            it(`Return code 200 or 404 for ${TESTING_VOTE3.voteId}`, (done) => {
+                chai.request(app)
+                .delete(`/vote/${TESTING_VOTE3.voteId}`)
+                .end((_err, res) => {
+                    expect(res.status).to.be.oneOf([200, 404])
+                    done()
+                })
             })
-        })
-    })
-
+        })    
+    }
+    deleteTestingVotes()
+    
     describe('Get votes for not existing session', () => {
         it('Return code 404', (done) => {
             chai.request(app)
@@ -120,5 +123,21 @@ describe('Vote API endpoints', () => {
         })
     })
 
+    describe('Get the one vote for sessionId2Integration', () => {
+        it('Returned votes should be the same as the testing vote', (done) => {
+            chai.request(app)
+            .get(`/vote/${TESTING_VOTE2.sessionId}`)
+            .end((_err, res) => {
+                expect(res).to.have.status(200)
+                expect(res.body[0].sessionid).to.equal(TESTING_VOTE2.sessionId)
+                expect(res.body[0].voteid).to.equal(TESTING_VOTE2.voteId)
+                expect(res.body[0].userid).to.equal(TESTING_VOTE2.userId)
+                expect(res.body[0].votevalue).to.equal(TESTING_VOTE2.voteValue)
 
+                done()
+            })
+        })
+    })
+
+    deleteTestingVotes()
 })

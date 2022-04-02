@@ -68,10 +68,10 @@ describe('Vote interface functions', () => {
         it('get updated vote', async () => {
                 let resp = await getVotes(TESTING_VOTE2.sessionId)
                 expect(resp.length).to.equal(1)
-                expect(resp[0].vote_id).to.equal(TESTING_VOTE2.voteId)
-                expect(resp[0].session_id).to.equal(TESTING_VOTE2.sessionId)
-                expect(resp[0].user_id).to.equal(TESTING_VOTE2.userId)
-                expect(resp[0].vote_value).to.equal(TESTING_VOTE2.voteValue)
+                expect(resp[0].voteid).to.equal(TESTING_VOTE2.voteId)
+                expect(resp[0].sessionid).to.equal(TESTING_VOTE2.sessionId)
+                expect(resp[0].userid).to.equal(TESTING_VOTE2.userId)
+                expect(resp[0].votevalue).to.equal(TESTING_VOTE2.voteValue)
             })
     })
 
