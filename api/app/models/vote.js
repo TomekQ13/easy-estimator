@@ -2,7 +2,11 @@ const client = require('../db.js')
 
 async function getVotes(sessionId) {
     let resp = await client.query(`
-        select vote_id, session_id, user_id, vote_value
+        select
+            vote_id as voteid,
+            session_id as sessionid,
+            user_id as userid,
+            vote_value as votevalue
         from votes
         where session_id = $1
     `, [sessionId])
