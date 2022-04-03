@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/app.css"
 import EntryMenu from "./EntryMenu";
-import Session from "./Session";
+import {Session} from "./Session";
 import {Route, Routes, BrowserRouter as Router} from 'react-router-dom'
 
 

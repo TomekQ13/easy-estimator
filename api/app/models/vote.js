@@ -14,7 +14,7 @@ async function getVotes(sessionId) {
     return undefined
 }
 
-async function vote(sessionId, voteId, userId, voteValue) {
+async function vote(voteId, sessionId, userId, voteValue) {
     let resp = await client.query(`
         insert into votes (vote_id, session_id, user_id, vote_value)
         values ($1, $2, $3, $4)
