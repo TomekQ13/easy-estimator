@@ -26,11 +26,11 @@ describe('Vote interface functions', () => {
             let resp = await deleteVote(TESTING_VOTE1.voteId)
             expect(resp.rowCount).to.be.oneOf([0,1])
         })
-        it('delete vote 1', async () => {
+        it('delete vote 2', async () => {
             let resp = await deleteVote(TESTING_VOTE2.voteId)
             expect(resp.rowCount).to.be.oneOf([0,1])
         })
-        it('delete vote 1', async () => {
+        it('delete vote 3', async () => {
             let resp = await deleteVote(TESTING_VOTE3.voteId)
             expect(resp.rowCount).to.be.oneOf([0,1])
         })
@@ -38,15 +38,15 @@ describe('Vote interface functions', () => {
 
     describe('create new votes', () => {
         it('create new vote 1', async () => {
-            let resp = await vote(TESTING_VOTE1.sessionId, TESTING_VOTE1.voteId, TESTING_VOTE1.userId, TESTING_VOTE1.voteValue)
+            let resp = await vote(TESTING_VOTE1.voteId, TESTING_VOTE1.sessionId, TESTING_VOTE1.userId, TESTING_VOTE1.voteValue)
             expect(resp.rowCount).to.equal(1)
         })
         it('create new vote 2', async () => {
-            let resp = await vote(TESTING_VOTE2.sessionId, TESTING_VOTE2.voteId, TESTING_VOTE2.userId, TESTING_VOTE2.voteValue)
+            let resp = await vote(TESTING_VOTE2.voteId, TESTING_VOTE2.sessionId, TESTING_VOTE2.userId, TESTING_VOTE2.voteValue)
             expect(resp.rowCount).to.equal(1)
         })
         it('create new vote 3', async () => {
-            let resp = await vote(TESTING_VOTE3.sessionId, TESTING_VOTE3.voteId, TESTING_VOTE3.userId, TESTING_VOTE3.voteValue)
+            let resp = await vote(TESTING_VOTE3.voteId, TESTING_VOTE3.sessionId, TESTING_VOTE3.userId, TESTING_VOTE3.voteValue)
             expect(resp.rowCount).to.equal(1)
         })
     })

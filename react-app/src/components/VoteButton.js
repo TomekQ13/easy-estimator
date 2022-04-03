@@ -23,7 +23,6 @@ export default function VoteButton({voteValue}) {
             })
         }
         const voteRespone = await fetch(`${config.apiUrl}/vote/${sessionData.sessionid}`, requestOptions)
-        console.log(voteRespone)
         const voteResponseData = await voteRespone.json()
         
         return voteResponseData
