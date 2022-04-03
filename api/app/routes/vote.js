@@ -20,12 +20,12 @@ router.get('/:sessionId', async (req, res) => {
 
 router.post('/:sessionId', async (req,res) => {
     try {
-        await vote(req.params.sessionId, req.body.voteId, req.body.userId, req.body.voteValue)
+        await vote(req.body.voteId, req.params.sessionId, req.body.userId, req.body.voteValue)
     } catch(e) {
         console.error(e)
-        return res.status(500).send('There was an error. Please try again.')
+        return res.status(500).json({message: 'There was an error. Please try again.'})
     }
-    return res.status(201).send('Vote added successfully')
+    return res.status(201).json({message: 'Vote added successfully'})
 })
 
 router.put('/:sessionId', async (req, res) => {

@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import config from './../config.json'
+import VoteButton from './VoteButton'
 
-export default function Session() {
+export const SessionContext = React.createContext()
+
+export function Session() {
     const sessionId = useParams().session_id
     const [sessionData, setSessionData] = useState({})
     const [votes, setVotes] = useState([])
 
     useEffect(() => {
-        getSession(sessionId)
+        getSession()
+        getVotes()
     }, [])
 
-    async function getSession(sessionId) {
+    const sessionContextValue = {
+        sessionData
+    }
+
+    
+
+    async function getSession() {
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
@@ -21,22 +31,34 @@ export default function Session() {
         setSessionData(sessionJsonData)
     }
 
-    async function getVotes(sessionId) {
+    async function getVotes() {
         const requestOptions = {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' }
         }
-        const selectedVotes = await fetch(`${config.apiUrl}/vote/${sessionId}`, requestOptions)
-        const votesJsonData = await selectedVotes.json()
+        let selectedVotes
+        let votesJsonData
+        try {
+            selectedVotes = await fetch(`${config.apiUrl}/vote/${sessionId}`, requestOptions)
+            votesJsonData = await selectedVotes.json()
+        } catch (e) {
+            setVotes([])
+        }
+        console.log(votesJsonData)
+
         setVotes(votesJsonData)
     }
 
     return (
-        <div>
-            <p>{sessionData.sessionid}</p>
-            <p>{sessionData.hostid}</p>
-            <p>{sessionData.password}</p>
-            <p>{votes}</p>
-        </div>
+        <SessionContext.Provider value={sessionContextValue}>
+            <div>
+                <p>{sessionData.sessionid}</p>
+                <p>{sessionData.hostid}</p>
+                <p>{sessionData.password}</p>
+                <VoteButton voteValue={1}/>
+                <VoteButton voteValue={2}/>
+                <VoteButton voteValue={3}/>
+            </div>
+        </SessionContext.Provider>
     )
 }
