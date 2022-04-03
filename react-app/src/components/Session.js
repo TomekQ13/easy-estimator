@@ -44,8 +44,6 @@ export function Session() {
         } catch (e) {
             setVotes([])
         }
-        console.log(votesJsonData)
-
         setVotes(votesJsonData)
     }
 
@@ -59,6 +57,17 @@ export function Session() {
                 <VoteButton voteValue={2}/>
                 <VoteButton voteValue={3}/>
             </div>
+            <ol>
+                {votes.map((vote) => {
+                    return (
+                        <li key={vote.voteid}>
+                            voteId: {vote.voteid} <br></br>
+                            userId: {vote.userid} <br></br>
+                            voteValue: {vote.votevalue} 
+                        </li>
+                    )
+                })}
+            </ol>
         </SessionContext.Provider>
     )
 }
