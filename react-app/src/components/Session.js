@@ -19,7 +19,6 @@ export function Session() {
         sessionData
     }
 
-    
 
     async function getSession() {
         const requestOptions = {
@@ -56,6 +55,8 @@ export function Session() {
                 <VoteButton voteValue={1}/>
                 <VoteButton voteValue={2}/>
                 <VoteButton voteValue={3}/>
+                <VoteButton voteValue={5}/>
+                <VoteButton voteValue={8}/>
             </div>
             <ol>
                 {votes.map((vote) => {
