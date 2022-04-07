@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const { getSession, createNewSession, updateSession, deleteSession } = require('../models/session')
+const authenticateToken = require('../auth')
+
+router.use(authenticateToken)
 
 router.get('/:sessionId', async (req, res) => {
     let results

@@ -2,13 +2,14 @@ const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
 const { createUser, deleteUser } = require('../models/user')
+const authenticateToken = require('../auth')
 
 router.post('/register', async (req, res) => {
     try {
         await createUser(req.body.userId, req.body.username)
     } catch (e) {
         console.error(e)
-        // res.status(500).json({message: 'There has been an error. Please try again.'})
+        return res.status(500).json({message: 'There has been an error. Please try again.'})
     }
     const user = {
         username: req.body.username,
@@ -21,12 +22,12 @@ router.post('/register', async (req, res) => {
     })
 })
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete', authenticateToken, async (req, res) => {
     try {
         await deleteUser(req.body.userId)
     } catch (e) {
         console.error(e)
-        
+
     }
 })
 
