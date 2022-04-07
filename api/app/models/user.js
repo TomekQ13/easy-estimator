@@ -8,6 +8,16 @@ async function createUser(userId, username) {
     return resp
 }
 
+async function getUser(userId) {
+    let resp = await client.query(`
+        select user_id, username
+        from users
+        where user_id = $1
+    `, [userId])
+    if(resp.rows.length > 0) return resp.rows[0]
+    return undefined
+}
+
 async function deleteUser(userId) {
     let resp = await client.query(`
         delete from users
@@ -15,3 +25,5 @@ async function deleteUser(userId) {
     `, [userId])
     return resp
 }
+
+module.exports = { createUser, getUser, deleteUser }
