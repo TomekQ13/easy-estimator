@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const { getVotes, vote, updateVote, deleteVote } = require('../models/vote')
+const authenticateToken = require('../auth')
+
+router.use(authenticateToken)
 
 router.get('/:sessionId', async (req, res) => {
     let results
