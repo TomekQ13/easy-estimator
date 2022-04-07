@@ -17,8 +17,9 @@ create table votes (
 );
 
 drop table if exists users;
-create tables users (
+create table users (
     user_id varchar not null primary key,
     username varchar not null,
+    last_logged_in timestamp not null default now(),
     added_dttm timestamp not null default now()
 );
