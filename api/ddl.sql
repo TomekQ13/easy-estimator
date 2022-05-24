@@ -20,6 +20,14 @@ drop table if exists users;
 create table users (
     user_id varchar not null primary key,
     username varchar not null,
-    last_logged_in timestamp not null default now(),
+    last_request_dttm timestamp not null default now(),
+    added_dttm timestamp not null default now()
+);
+
+drop table if exists refresh_tokens;
+create table refresh_tokens (
+    token varchar not null,
+    user_id varchar not null,
+    valid boolean not null default true,
     added_dttm timestamp not null default now()
 );

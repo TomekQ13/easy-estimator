@@ -15,6 +15,9 @@ export default function NewSessionForm() {
             if (resp.ok) {
                 return navigate(`/session/${sessionId}`)
             }
+            // if (resp.status === 403) {
+                
+            // }
         } catch (e) {
             console.error(e)
             return alert('There has been an issue with creating the session. Please try again.')
@@ -41,7 +44,6 @@ export default function NewSessionForm() {
         const value = event.target.value
         setInputs(values => ({...values, [name]: value}))
     }
-
 
     return (
         <form onSubmit={ handleSubmit }>
