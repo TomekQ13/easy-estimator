@@ -15,11 +15,17 @@ router.post('/register', async (req, res) => {
         username: req.body.username,
         userId: req.body.userId
     }
-    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s' })
+    const refreshToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
     return res.status(201).json({
         message: `User registered with id ${req.body.userId} and username ${req.body.username}`,
-        accessToken: accessToken
+        accessToken: accessToken,
+        refreshToken: refreshToken
     })
+})
+
+router.post('/token', (req, res) => {
+    const refreshToken = req.body.refreshToken
 })
 
 router.delete('/delete', authenticateToken, async (req, res) => {
@@ -31,18 +37,18 @@ router.delete('/delete', authenticateToken, async (req, res) => {
     }
 })
 
-// router.post('login', (req, res) => {
-//     // Authenticate the user
-//     const userId = 'dummyId' // this should come from db
+router.post('login', (req, res) => {
+    // Authenticate the user
+    const userId = 'dummyId' // this should come from db
 
-//     const user = {
-//         username: req.body.username,
-//         userId: userId
-//     }
+    const user = {
+        username: req.body.username,
+        userId: userId
+    }
 
-//     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-//     res.json({ accessToken: accessToken })
+    const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    res.json({ accessToken: accessToken })
 
-// })
+})
 
 module.exports = router
