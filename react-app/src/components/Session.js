@@ -13,6 +13,9 @@ export function Session() {
     useEffect(() => {
         getSession()
         getVotes()
+        // this is necessary because getSession and getVotes are async
+        // and then the linter requires to pass them as dependencies
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const sessionContextValue = {

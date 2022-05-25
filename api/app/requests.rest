@@ -2,8 +2,7 @@ POST http://localhost:4000/user/register
 Content-Type: application/json
 
 {
-    "username":"test_user",
-    "userId":"test_user_id"
+    "username":"test_user_manual2"
 }
 
 ###

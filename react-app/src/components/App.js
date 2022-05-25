@@ -7,7 +7,6 @@ import {Route, Routes, BrowserRouter as Router} from 'react-router-dom'
 
 function App() {
   return (
-    true &&
     <Router>
         <Routes>
             <Route path='/' exact element={ <EntryMenu/>} />

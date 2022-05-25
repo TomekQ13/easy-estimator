@@ -12,4 +12,9 @@ function authenticateToken(req, res, next) {
     })
 }
 
-module.exports = authenticateToken
+function generateAccessToken(user) {
+    if (typeof user !== 'object') return console.error('Payload for generating Access token must be an object')
+    return jwt.sign( user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' })
+}
+
+module.exports = { authenticateToken, generateAccessToken }
