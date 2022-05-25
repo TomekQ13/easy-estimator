@@ -1,10 +1,17 @@
 import React from 'react'
+import RegisterForm from './RegisterForm'
+import Modal from './Modal'
 
-export default function RegisterModal() {
+export default function RegisterModal({ setRegisterModal }) {
+    function handleCloseModal() {
+        setRegisterModal({ show: false })
+    }
+
     const modalContents = <>
-        <form>
-            <input></input>
-        </form>
+        <RegisterForm handleCloseModal={ handleCloseModal }/>
+        <button onClick={handleCloseModal}>
+            Close modal
+        </button>
     </>
 
     return (

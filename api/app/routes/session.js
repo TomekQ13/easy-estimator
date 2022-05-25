@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const { getSession, createNewSession, updateSession, deleteSession } = require('../models/session')
-const authenticateToken = require('../auth')
+const { authenticateToken } = require('../auth')
 
 router.use(authenticateToken)
 
