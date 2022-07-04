@@ -24,7 +24,7 @@ router.post('/register', async (req, res) => {
         userId
     }
     const accessToken = generateAccessToken(user)
-    const refreshToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
+    const refreshToken = jwt.sign(user, process.env.REFRESH_TOKEN_SECRET)
     
     try {
         await addRefreshToken(refreshToken, userId)
@@ -66,8 +66,8 @@ router.post('login', (req, res) => {
 
 router.post('/token', (req, res) => {
     const refreshToken = req.body.refreshToken
-    if (refreshToken === null) return res.status(401).send({ message: 'Refresh token is missing' })
-    if (getRefreshToken(refreshToken) === null) res.status(403).send({ message: 'Refresh token is invalid' })
+    if (refreshToken === null) return res.status(403).send({ message: 'Refresh token is missing' })
+    if (getRefreshToken(refreshToken) === null) res.status(401).send({ message: 'Refresh token is invalid' })
     
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return res.status(403).send({ message: 'Refresh token is invalid' })

@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Cookies from 'universal-cookie'
+import { authContext } from './App'
+import { saveToLocalStorage } from '../apiAccess/localStorage'
 
 export default function RegisterForm({ handleCloseModal }) {
     const [inputs, setInputs] = useState({})
+    const { setUsername, setAccessToken, setRefreshToken} = useContext(authContext)
 
     function handleChange(event) {
         const name = event.target.name
@@ -17,6 +20,12 @@ export default function RegisterForm({ handleCloseModal }) {
         const resp = await registerUser(username)
         if (resp === null) return
         setUsernameCookie(username)
+        setUsername(username)
+        // setAccessToken(resp.accessToken)
+        // setRefreshToken(resp.refreshToken)
+        saveToLocalStorage({ key: 'accessToken', value: resp.accessToken })
+        saveToLocalStorage({ key: 'refreshToken', value: resp.refreshToken })
+
         handleCloseModal({ show: false })
     }
 
@@ -37,7 +46,9 @@ export default function RegisterForm({ handleCloseModal }) {
             console.error('There has been an error when registering the user')
             return null
         }
-        if (resp.status === 201) return resp
+        if (resp.status === 201) {
+            return await resp.json()
+        }
         console.error('There has been an error when registering the user')
         return null
     }

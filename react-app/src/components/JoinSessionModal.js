@@ -9,7 +9,7 @@ export default function JoinSessionModal({ setJoinSessionModal }) {
 
     const modalContents = <>
         <form>
-            <label for="sessionId">Session ID</label>
+            <label htmlFor="sessionId">Session ID</label>
             <input id="sessionId" name="sessionId"></input>
             <button>Join session</button>
         </form>
