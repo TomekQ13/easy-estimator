@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import uuid from 'react-uuid'
 import { SessionContext } from './Session'
 import config from '../config.json'
-import { authContext } from './App'
+import { authContext } from '../contexts/Auth'
 
 export default function VoteButton({voteValue}) {
     const { sessionData } = useContext(SessionContext)

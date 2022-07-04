@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import VoteButton from './VoteButton'
-import { authContext } from './App'
+import { authContext } from '../contexts/Auth'
 import { getSession } from '../models/session'
 import { getVotes } from '../models/vote'
 
