@@ -21,9 +21,9 @@ export default function EntryMeny() {
     }
 
     useEffect(() => {
-        if (checkForUsername() === false) {
+        // if (checkForUsername() === false) {
             setRegisterModal({ show: true })
-        }
+        // }
     }, [])
 
 

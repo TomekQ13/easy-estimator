@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
-import config from './../config.json'
 import VoteButton from './VoteButton'
+import { authContext } from './App'
+import { getSession } from '../models/session'
+import { getVotes } from '../models/vote'
 
 export const SessionContext = React.createContext()
 
@@ -9,45 +11,23 @@ export function Session() {
     const sessionId = useParams().session_id
     const [sessionData, setSessionData] = useState({})
     const [votes, setVotes] = useState([])
+    
+    const { accessToken, RefreshToken } = useContext(authContext)
 
     useEffect(() => {
-        getSession()
-        getVotes()
-        // this is necessary because getSession and getVotes are async
-        // and then the linter requires to pass them as dependencies
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        getSession(sessionId).then((sessionData) => {
+            setSessionData(sessionData)
+        })
+        getVotes(sessionId).then((sessionVotes) => {
+            setVotes(sessionVotes)
+        })
+    }, [sessionId])
 
     const sessionContextValue = {
         sessionData
     }
 
 
-    async function getSession() {
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        }
-        const selectedSession = await fetch(`${config.apiUrl}/session/${sessionId}`, requestOptions)
-        const sessionJsonData = await selectedSession.json()
-        setSessionData(sessionJsonData)
-    }
-
-    async function getVotes() {
-        const requestOptions = {
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-        }
-        let selectedVotes
-        let votesJsonData
-        try {
-            selectedVotes = await fetch(`${config.apiUrl}/vote/${sessionId}`, requestOptions)
-            votesJsonData = await selectedVotes.json()
-        } catch (e) {
-            setVotes([])
-        }
-        setVotes(votesJsonData)
-    }
 
     return (
         <SessionContext.Provider value={sessionContextValue}>

@@ -20,10 +20,9 @@ router.get('/:sessionId', async (req, res) => {
 })
 
 router.post('/:sessionId', async (req, res) => {
-    console.log('received request to create new sessionId')
     if (req.params.sessionId === undefined) return res.status(400).send({ message: 'SessionId is missing' })
     if (req.body.hostId === undefined) return res.status(400).send({ message: 'HostId is missing' })
-    if (await getSession(req.params.sessionId) === undefined) return res.status(400).send({ message: 'Session with this Id already exists' })
+    if (await getSession(req.params.sessionId) !== undefined) return res.status(400).send({ message: 'Session with this Id already exists' })
 
     try {
         await createNewSession(req.params.sessionId, req.body.hostId, req.body.sessionPassword, req.body.params)

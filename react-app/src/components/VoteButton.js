@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import uuid from 'react-uuid'
 import { SessionContext } from './Session'
 import config from '../config.json'
+import { authContext } from './App'
 
 export default function VoteButton({voteValue}) {
     const { sessionData } = useContext(SessionContext)
-    console.log(sessionData)
+    const { accessToken } = useContext(authContext)
     
     function handleClick() {
         vote()
@@ -14,7 +15,10 @@ export default function VoteButton({voteValue}) {
     async function vote() {
         const requestOptions = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
             body: JSON.stringify({
                 sessionId: sessionData.sessionid,
                 voteId: uuid(),

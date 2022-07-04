@@ -15,6 +15,10 @@ export default function RegisterModal({ setRegisterModal }) {
     </>
 
     return (
-        <Modal modalContents={ modalContents }/>
+        <>
+            <h2>Register</h2>
+            <Modal modalContents={ modalContents }/>
+        </>
+        
     )
 }
