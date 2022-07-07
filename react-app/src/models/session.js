@@ -7,7 +7,7 @@ export async function getSession(sessionId) {
     return data
 }
 
-export async function createSession(sessionId, sessionPassword, params) {
+export async function createSession({ sessionId, sessionPassword, params, accessToken, refreshToken, setAccessTokenFunction}) {
     const resp = makeApiCallFunction({
         method: 'POST',
         url: `/session/${sessionId}`,
@@ -15,7 +15,10 @@ export async function createSession(sessionId, sessionPassword, params) {
             hostId: 'test',
             sessionPassword: sessionPassword,
             params: params
-        }
+        },
+        accessToken,
+        refreshToken,
+        setAccessTokenFunction
     })()
     return resp
 }
