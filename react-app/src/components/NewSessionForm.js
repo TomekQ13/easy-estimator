@@ -7,14 +7,21 @@ import { createSession } from '../models/session'
 export default function NewSessionForm() {
     const [inputs, setInputs] = useState({})
     const navigate = useNavigate()
-    const { accessToken } = useContext(authContext)
+    const { accessToken, refreshToken, setAccessToken } = useContext(authContext)
 
     async function handleSubmit(event) {
         event.preventDefault()        
         const sessionPassword = event.target.sessionPassword.value
         const sessionId = uuid()
         try {
-            const resp = await createSession(sessionId, sessionPassword, {test_param: 'test_param_value'})
+            const resp = await createSession({
+                sessionId,
+                sessionPassword,
+                params: {test_param: 'test_param_value'},
+                accessToken,
+                refreshToken,
+                setAccessTokenFunction: setAccessToken
+            })
             if (resp.status === 201) {
                 return navigate(`/session/${sessionId}`)
             }

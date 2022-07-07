@@ -1,7 +1,6 @@
 import config from '../config.json'
-import { saveToLocalStorage, getFromLocalStorage} from './localStorage'
 
-export function makeApiCallFunction({ url, method, body }) {
+export function makeApiCallFunction({ url, method, body, accessToken, refreshToken, setAccessTokenFunction }) {
     return async () => {
         if (url === undefined) return console.error('URL is required to make an API call')
         if ((['POST', 'GET', 'PUT', 'DELETE'].includes(method.toUpperCase())) !== true) {
@@ -10,15 +9,7 @@ export function makeApiCallFunction({ url, method, body }) {
         
 
         async function makeRequestWithAccessToken({ method, body }) {
-            const accessToken = getFromLocalStorage({ key: 'accessToken' })
-            if (accessToken === null) {
-                try {
-                    await refreshAccessToken()
-                } catch (e) {
-                    return console.error(e)
-                }
-            }
-    
+   
             const createRequestOptions = (accessToken) =>  {
                 return {
                     method: method,
@@ -39,7 +30,7 @@ export function makeApiCallFunction({ url, method, body }) {
 
         if (resp.status === 401) {     
             try {
-                await refreshAccessToken()
+                await refreshAccessToken({ refreshToken , setAccessTokenFunction})
             } catch (e) {
                 return console.error(e)
             }
@@ -49,19 +40,21 @@ export function makeApiCallFunction({ url, method, body }) {
     }
 }
 
-async function refreshAccessToken() {
-    const refreshToken = getFromLocalStorage({ key: 'refreshToken' })
+async function refreshAccessToken({ refreshToken, setAccessTokenFunction }) {
     if (refreshToken === null) throw new Error('Missing refresh token')
 
     const refreshTokenCall = makeApiCallFunction({
         url: '/user/token',
         method: 'POST',
-        body: { refreshToken }
+        body: { refreshToken },
+        accessToken: '',
+        refreshToken: refreshToken,
+        setAccessTokenFunction: setAccessTokenFunction
     })
     const resp = await refreshTokenCall(refreshToken)
     if (resp.status === 401) throw new Error('Refresh token is invalid')
     if (resp.status === 403) throw new Error('Missing refresh token on API call')
 
     const data = await resp.json()
-    saveToLocalStorage({ key: 'accessToken', value: data.accessToken })    
+    setAccessTokenFunction(data.accessToken)    
 }

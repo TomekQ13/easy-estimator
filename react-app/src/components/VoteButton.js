@@ -3,31 +3,32 @@ import uuid from 'react-uuid'
 import { SessionContext } from './Session'
 import config from '../config.json'
 import { authContext } from '../contexts/Auth'
+import { makeApiCallFunction } from '../apiAccess/makeCall'
 
 export default function VoteButton({voteValue}) {
     const { sessionData } = useContext(SessionContext)
-    const { accessToken } = useContext(authContext)
+    const { accessToken, refreshToken, setAccessToken } = useContext(authContext)
     
     function handleClick() {
         vote()
     }
 
     async function vote() {
-        const requestOptions = {
+        const voteFunction = makeApiCallFunction({
+            url: `${config.apiUrl}/vote/${sessionData.sessionid}`,
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-            body: JSON.stringify({
+            body: {
                 sessionId: sessionData.sessionid,
                 voteId: uuid(),
                 userId: 'testUser',
                 voteValue: voteValue
-            })
-        }
-        const voteRespone = await fetch(`${config.apiUrl}/vote/${sessionData.sessionid}`, requestOptions)
-        const voteResponseData = await voteRespone.json()
+            },
+            accessToken: accessToken,
+            refreshToken: refreshToken,
+            setAccessTokenFunction: setAccessToken
+        })
+        const resp = await voteFunction()
+        const voteResponseData = await resp.json()
         
         return voteResponseData
     }
