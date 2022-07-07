@@ -12,13 +12,18 @@ export function Session() {
     const [sessionData, setSessionData] = useState({})
     const [votes, setVotes] = useState([])
     
-    const { accessToken, RefreshToken } = useContext(authContext)
+    const { accessToken, refreshToken, setAccessToken } = useContext(authContext)
 
     useEffect(() => {
         getSession(sessionId).then((sessionData) => {
             setSessionData(sessionData)
         })
-        getVotes(sessionId).then((sessionVotes) => {
+        getVotes({
+            sessionId,
+            accessToken,            
+            refreshToken,
+            setAccessTokenFunction: setAccessToken
+        }).then((sessionVotes) => {
             setVotes(sessionVotes)
         })
     }, [sessionId])
