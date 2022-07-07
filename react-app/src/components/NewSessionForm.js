@@ -25,9 +25,6 @@ export default function NewSessionForm() {
             if (resp.status === 201) {
                 return navigate(`/session/${sessionId}`)
             }
-            // if (resp.status === 403) {
-                
-            // }
         } catch (e) {
             console.error(e)
             return alert('There has been an issue with creating the session. Please try again.')
