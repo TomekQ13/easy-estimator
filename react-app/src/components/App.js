@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../css/app.css"
 import EntryMenu from "./EntryMenu";
 import {Session} from "./Session";
@@ -9,6 +9,10 @@ import Auth from '../contexts/Auth'
 
 
 function App() {
+
+    useEffect(() => {
+        
+    })
 
     return (
         <Router>
