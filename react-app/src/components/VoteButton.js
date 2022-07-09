@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import uuid from 'react-uuid'
 import { SessionContext } from './Session'
-import config from '../config.json'
 import { authContext } from '../contexts/Auth'
 import { makeApiCallFunction } from '../apiAccess/makeCall'
 
@@ -15,7 +14,7 @@ export default function VoteButton({voteValue}) {
 
     async function vote() {
         const voteFunction = makeApiCallFunction({
-            url: `${config.apiUrl}/vote/${sessionData.sessionid}`,
+            url: `/vote/${sessionData.sessionid}`,
             method: 'POST',
             body: {
                 sessionId: sessionData.sessionid,

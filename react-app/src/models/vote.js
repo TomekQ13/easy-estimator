@@ -8,7 +8,9 @@ export async function getVotes({ sessionId, accessToken, refreshToken, setAccess
         refreshToken,
         setAccessTokenFunction
     })()
+    if (resp === undefined ) return undefined
+    if (resp.status === 401 || resp.status === 403) return undefined
     if (resp.status === 404) return []
-    const data = await resp.json()
+    const data =  await resp.json()
     return data
 }

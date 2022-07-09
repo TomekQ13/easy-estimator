@@ -1,10 +1,18 @@
 import { makeApiCallFunction } from '../apiAccess/makeCall'
 
-export async function getSession(sessionId) { 
-    const resp = await makeApiCallFunction({ method: 'GET', url: `/session/${sessionId}`})()
-    if (resp === undefined) return 
-    const data = await resp.json()
+export async function getSession({ sessionId, accessToken, refreshToken, setAccessTokenFunction }) {
+    const resp = await makeApiCallFunction({
+        method: 'GET',
+        url: `/session/${sessionId}`,
+        accessToken,
+        refreshToken,
+        setAccessTokenFunction
+    })()
+    if (resp === undefined ) return undefined
+    if (resp.status === 401 || resp.status === 403) return undefined
+    const data =  await resp.json()
     return data
+
 }
 
 export async function createSession({ sessionId, sessionPassword, params, accessToken, refreshToken, setAccessTokenFunction}) {
@@ -20,5 +28,6 @@ export async function createSession({ sessionId, sessionPassword, params, access
         refreshToken,
         setAccessTokenFunction
     })()
+    if (resp === undefined) return 
     return resp
 }

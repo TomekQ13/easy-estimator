@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 import {useParams} from 'react-router-dom'
 import VoteButton from './VoteButton'
 import { authContext } from '../contexts/Auth'
@@ -14,10 +14,21 @@ export function Session() {
     
     const { accessToken, refreshToken, setAccessToken } = useContext(authContext)
 
+
     useEffect(() => {
-        getSession(sessionId).then((sessionData) => {
+        if (accessToken === undefined) return
+        getSession({
+            sessionId,
+            accessToken,
+            refreshToken,
+            setAccessTokenFunction: setAccessToken
+        }).then((sessionData) => {
             setSessionData(sessionData)
         })
+    }, [sessionId, accessToken, refreshToken, setAccessToken])
+
+    useEffect(() => {
+        if (accessToken === undefined) return
         getVotes({
             sessionId,
             accessToken,            
@@ -26,7 +37,7 @@ export function Session() {
         }).then((sessionVotes) => {
             setVotes(sessionVotes)
         })
-    }, [sessionId])
+    }, [sessionId, accessToken, refreshToken, setAccessToken])
 
     const sessionContextValue = {
         sessionData
@@ -37,9 +48,9 @@ export function Session() {
     return (
         <SessionContext.Provider value={sessionContextValue}>
             <div>
-                <p>{sessionData.sessionid}</p>
-                <p>{sessionData.hostid}</p>
-                <p>{sessionData.password}</p>
+                {sessionData && <p>{sessionData.sessionid}</p>}
+                {sessionData && <p>{sessionData.hostid}</p>}
+                {sessionData && <p>{sessionData.password}</p>}
                 <VoteButton voteValue={1}/>
                 <VoteButton voteValue={2}/>
                 <VoteButton voteValue={3}/>
@@ -47,7 +58,7 @@ export function Session() {
                 <VoteButton voteValue={8}/>
             </div>
             <ol>
-                {votes.map((vote) => {
+                {votes && votes.map((vote) => {
                     return (
                         <li key={vote.voteid}>
                             voteId: {vote.voteid} <br></br>
