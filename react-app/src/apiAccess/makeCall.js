@@ -21,7 +21,13 @@ export function makeApiCallFunction({ url, method, body, accessToken, refreshTok
                 }
             }
     
-            const resp = await fetch(`${config.apiUrl}${url}`, createRequestOptions(accessToken))
+            let resp
+            try {
+                resp = await fetch(`${config.apiUrl}${url}`, createRequestOptions(accessToken))
+            } catch (e) {
+                return console.log('There was an error while fetching data')
+            }
+            
             return resp
         }
         
@@ -29,13 +35,16 @@ export function makeApiCallFunction({ url, method, body, accessToken, refreshTok
         resp = await makeRequestWithAccessToken({ method, body })
 
         if (resp.status === 401) {     
+            console.log('Received status 401. Refreshing access token.')
             try {
                 await refreshAccessToken({ refreshToken , setAccessTokenFunction})
             } catch (e) {
-                return console.error(e)
+                return console.log('There was an error while refreshing access token')
             }
             resp = await makeRequestWithAccessToken({ method, body })
         }
+
+        if (resp.status === 403)
         return resp
     }
 }
@@ -48,8 +57,8 @@ async function refreshAccessToken({ refreshToken, setAccessTokenFunction }) {
         method: 'POST',
         body: { refreshToken },
         accessToken: '',
-        refreshToken: refreshToken,
-        setAccessTokenFunction: setAccessTokenFunction
+        refreshToken,
+        setAccessTokenFunction
     })
     const resp = await refreshTokenCall(refreshToken)
     if (resp.status === 401) throw new Error('Refresh token is invalid')
