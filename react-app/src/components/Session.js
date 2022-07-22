@@ -4,6 +4,8 @@ import VoteButton from './VoteButton'
 import { authContext } from '../contexts/Auth'
 import { getSession } from '../models/session'
 import { getVotes } from '../models/vote'
+import RegisterModal from './RegisterModal';
+import Cookies from 'universal-cookie';
 
 export const SessionContext = React.createContext()
 
@@ -11,9 +13,15 @@ export function Session() {
     const sessionId = useParams().session_id
     const [sessionData, setSessionData] = useState({})
     const [votes, setVotes] = useState([])
+    const [registerModal, setRegisterModal] = useState({ show: false })
     
-    const { accessToken, refreshToken, setAccessToken } = useContext(authContext)
+    const { accessToken, refreshToken, setAccessToken, getUsernameFromLS } = useContext(authContext)
 
+    useEffect(() => {
+        if (username === null) {
+            setRegisterModal({ show: true })
+        }
+    }, [])
 
     useEffect(() => {
         if (accessToken === undefined) return
@@ -68,6 +76,7 @@ export function Session() {
                     )
                 })}
             </ol>
+            { registerModal.show && <RegisterModal setRegisterModal={setRegisterModal}/>}
         </SessionContext.Provider>
     )
 }

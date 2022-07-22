@@ -4,28 +4,15 @@ import JoinSessionBtn from "./JoinSessionBtn";
 import NewSessionBtn from './NewSessionBtn'
 import NewSessionModal from './NewSessionModal';
 import JoinSessionModal from './JoinSessionModal';
-import RegisterModal from './RegisterModal';
-import Cookies from 'universal-cookie';
+import { getUsernameFromLS } from '../contexts/Auth';
 
-export default function EntryMeny() {
+export default function EntryMeny({ username }) {
     const [newSessionModal, setNewSessionModal] = useState({ show: false })
     const [joinSessionModal, setJoinSessionModal] = useState({ show: false })
-    const [registerModal, setRegisterModal] = useState({ show: false })
 
-    function checkForUsername() {
-        const cookies = new Cookies()
-        console.log(cookies)
-
-        if (cookies.get('username')) return true
-        return false
+    if (username === null) {
+        setRegisterModal({ show: true })
     }
-
-    useEffect(() => {
-        // if (checkForUsername() === false) {
-            setRegisterModal({ show: true })
-        // }
-    }, [])
-
 
     return (
         <>
@@ -43,7 +30,7 @@ export default function EntryMeny() {
                     setJoinSessionModal = { setJoinSessionModal }
                 />
             }
-            { registerModal.show && <RegisterModal setRegisterModal={setRegisterModal}/>}
+            
         </>
     )
 }

@@ -1,17 +1,22 @@
 require('dotenv').config({ path: './app/.env' })
 const express = require("express");
+const expressWinston = require('express-winston')
 
 const app = express();
 const cors = require('cors')
 
+
+const { requestLogger } = require('./logger')
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
+
 app.use(cors())
+
+app.use(expressWinston.logger({
+    winstonInstance: requestLogger,
+    statusLevels: true
+}))
 
 const voteRouter = require('./routes/vote')
 app.use('/vote', voteRouter)

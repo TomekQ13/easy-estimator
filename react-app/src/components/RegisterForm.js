@@ -24,8 +24,6 @@ export default function RegisterForm({ handleCloseModal }) {
         setUsername(username)
         setAccessToken(resp.accessToken)
         setRefreshToken(resp.refreshToken)
-        // saveToLocalStorage({ key: 'accessToken', value: resp.accessToken })
-        // saveToLocalStorage({ key: 'refreshToken', value: resp.refreshToken })
 
         handleCloseModal({ show: false })
     }
@@ -33,7 +31,6 @@ export default function RegisterForm({ handleCloseModal }) {
     async function registerUser(username) {
         if (username === undefined) throw new Error('Username is missing in registerUsername')
 
-        let resp
         const registerUserFunction = makeApiCallFunction({
             url:`/user/register`,
             body: {
@@ -44,6 +41,8 @@ export default function RegisterForm({ handleCloseModal }) {
             refreshToken,
             setAccessToken
         })
+
+        let resp
         try {
             resp = await registerUserFunction()
         } catch (e) {            
