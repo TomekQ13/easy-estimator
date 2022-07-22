@@ -5,6 +5,7 @@ export function saveToLocalStorage({ key, value }) {
 }
 
 export function getFromLocalStorage({ key }) {
+    // returns null if key does not exist in LS    
     if (typeof key !== 'string') throw new Error('key must be a string to get item from LS')
     return localStorage.getItem(key)
 }

@@ -1,0 +1,2439 @@
+{
+  meta: {
+    req: {
+      url: '/session/testsession',
+      headers: {
+        'user-agent': 'vscode-restclient',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInVzZXJJZCI6InRlc3RfdXNlcl9pZCIsImlhdCI6MTY0OTM2MjkzN30.3YrSXUxooUVeAPjrQhyfs6601Fr47TQyXIOA4fRuvwI',
+        'accept-encoding': 'gzip, deflate',
+        host: 'localhost:4000',
+        connection: 'close'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/testsession',
+      query: {}
+    },
+    res: { statusCode: 404 },
+    responseTime: 6
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/testsession',
+  timestamp: '2022-07-21T18:06:26.249Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        'user-agent': 'vscode-restclient',
+        'content-type': 'application/json',
+        'accept-encoding': 'gzip, deflate',
+        'content-length': '40',
+        host: 'localhost:4000',
+        connection: 'close'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 8
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:06:28.715Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/testsession',
+      headers: {
+        'user-agent': 'vscode-restclient',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInVzZXJJZCI6InRlc3RfdXNlcl9pZCIsImlhdCI6MTY0OTM2MjkzN30.3YrSXUxooUVeAPjrQhyfs6601Fr47TQyXIOA4fRuvwI',
+        'accept-encoding': 'gzip, deflate',
+        host: 'localhost:4000',
+        connection: 'close'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/testsession',
+      query: {}
+    },
+    res: { statusCode: 404 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/testsession',
+  timestamp: '2022-07-21T18:06:32.644Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/testsession',
+      headers: {
+        'user-agent': 'vscode-restclient',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RfdXNlciIsInVzZXJJZCI6InRlc3RfdXNlcl9pZCIsImlhdCI6MTY0OTM2MjkzN30.3YrSXUxooUVeAPjrQhyfs6601Fr47TQyXIOA4fRuvwI',
+        'accept-encoding': 'gzip, deflate',
+        host: 'localhost:4000',
+        connection: 'close'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/testsession',
+      query: {}
+    },
+    res: { statusCode: 404 },
+    responseTime: 10
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/testsession',
+  timestamp: '2022-07-21T18:07:14.149Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '15',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 10
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:16:27.035Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '19',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 3
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:21:05.295Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '19',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 10
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:21:58.901Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '21',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 10
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:22:10.698Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '21',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 5
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:24:42.156Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '21',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 5
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:24:53.024Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '21',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 3
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:43:12.629Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '20',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3Q0NSIsInVzZXJJZCI6IjUwNWJmNThkLWZiMGEtNDNkOS04YzNiLThmMDM4Mzk5NzBiMSIsImlhdCI6MTY1NzM1MTQ2NywiZXhwIjoxNjU3MzUyNjY3fQ.rido7yeaTMBRvNchNlRm3WreFzeKBCMRbAYUc53AlR4',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 5
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T18:56:57.514Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '81',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 10
+  },
+  level: 'info',
+  message: 'HTTP POST /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:02.503Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 4
+  },
+  level: 'info',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:02.517Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 404 },
+    responseTime: 6
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:02.522Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '127',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 1
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:16.072Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '131',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 2
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:16.659Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '130',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 2
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:17.038Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '127',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 1
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:17.454Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 3
+  },
+  level: 'info',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:18.752Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"7b-AjzLh4Xye+Qv4dmqpFS7NTZpMzc"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 304 },
+    responseTime: 2
+  },
+  level: 'info',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T18:57:18.763Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"7b-AjzLh4Xye+Qv4dmqpFS7NTZpMzc"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 304 },
+    responseTime: 3
+  },
+  level: 'info',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:10.054Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"208-gQevk/Eb/C/7ZVwzaAFG4B/Oqys"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 304 },
+    responseTime: 4
+  },
+  level: 'info',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:10.056Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '130',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 1
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:11.662Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '131',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 2
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:11.932Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '129',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 1
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:12.048Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '129',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 2
+  },
+  level: 'info',
+  message: 'HTTP POST /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:12.253Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 3
+  },
+  level: 'info',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:13.368Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"7b-AjzLh4Xye+Qv4dmqpFS7NTZpMzc"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 304 },
+    responseTime: 3
+  },
+  level: 'info',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T19:04:13.370Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"7b-AjzLh4Xye+Qv4dmqpFS7NTZpMzc"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 4
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T20:41:21.104Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"413-xNB4NQiEEZ00u4r0oH1pc4Ry3OI"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T20:41:21.112Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f2e44d6-7cd3-2f6-46e-08d6c55f8c',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '81',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/session/f2e44d6-7cd3-2f6-46e-08d6c55f8c',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP POST /session/f2e44d6-7cd3-2f6-46e-08d6c55f8c',
+  timestamp: '2022-07-21T20:42:07.390Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/3daad36-532a-48df-1f5f-ce13842f4d28',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '81',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/session/3daad36-532a-48df-1f5f-ce13842f4d28',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP POST /session/3daad36-532a-48df-1f5f-ce13842f4d28',
+  timestamp: '2022-07-21T20:42:08.557Z'
+}
+{
+  meta: {
+    req: {
+      url: '/user/register',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '19',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/user/register',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 9
+  },
+  level: 'info',
+  message: 'HTTP POST /user/register',
+  timestamp: '2022-07-21T20:42:12.188Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '81',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 201 },
+    responseTime: 6
+  },
+  level: 'info',
+  message: 'HTTP POST /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:42:14.109Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 200 },
+    responseTime: 2
+  },
+  level: 'info',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:42:14.126Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 404 },
+    responseTime: 2
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:42:14.133Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:42:40.703Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:42:40.705Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"7c-YVNI3jHROuH5vjymZ6zr3hWGpJ4"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 304 },
+    responseTime: 2
+  },
+  level: 'info',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:46:41.955Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 404 },
+    responseTime: 2
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:46:41.956Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '" Not;A Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.62',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl,en;q=0.9,en-GB;q=0.8,en-US;q=0.7'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:46:56.867Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '" Not;A Brand";v="99", "Microsoft Edge";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.62',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl,en;q=0.9,en-GB;q=0.8,en-US;q=0.7'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:46:56.869Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:47:13.348Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T20:47:13.349Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:01.168Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:01.170Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6',
+        'if-none-match': 'W/"7c-YVNI3jHROuH5vjymZ6zr3hWGpJ4"'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:01.176Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:01.178Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:10:01.727Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFzZGFzIiwidXNlcklkIjoiNzFjZDRkYTktYzZhOS00MjMyLTkwMWUtMDg2MTQ2NTFkMjUwIiwiaWF0IjoxNjU4NDI5ODE3LCJleHAiOjE2NTg0MzEwMTd9.kzjN8p-zrNNdVqzrTtI4tpK5eSgZ9-at72ojVpxq2mQ',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:10:01.730Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:10:01.732Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:10:01.734Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:03.011Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer null',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:03.013Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:48.930Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:10:48.932Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:10:49.734Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:10:49.737Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:13:42.435Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:13:42.437Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:13:42.737Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:13:42.739Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:13:45.731Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/1e8040a-b643-ec25-b7d5-36dda54b7e1e',
+  timestamp: '2022-07-21T21:13:45.733Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 1
+  },
+  level: 'warn',
+  message: 'HTTP GET /session/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:13:46.728Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'GET',
+      httpVersion: '1.1',
+      originalUrl: '/vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP GET /vote/f872546-f6d5-5b4a-78b7-a1fb6a32dc2',
+  timestamp: '2022-07-21T21:13:46.729Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/undefined',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '80',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer undefined',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/undefined',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP POST /vote/undefined',
+  timestamp: '2022-07-21T21:14:05.312Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/undefined',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '79',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer undefined',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/undefined',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP POST /vote/undefined',
+  timestamp: '2022-07-21T21:14:05.479Z'
+}
+{
+  meta: {
+    req: {
+      url: '/vote/undefined',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '79',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer undefined',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/vote/undefined',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 0
+  },
+  level: 'warn',
+  message: 'HTTP POST /vote/undefined',
+  timestamp: '2022-07-21T21:14:05.603Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/5f74f42-a352-87-c3ee-bfeb87c23b',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '81',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/session/5f74f42-a352-87-c3ee-bfeb87c23b',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 4
+  },
+  level: 'warn',
+  message: 'HTTP POST /session/5f74f42-a352-87-c3ee-bfeb87c23b',
+  timestamp: '2022-07-21T21:40:19.027Z'
+}
+{
+  meta: {
+    req: {
+      url: '/session/464aea-fdb0-f51a-7753-f2e8e2b60b',
+      headers: {
+        host: 'localhost:4000',
+        connection: 'keep-alive',
+        'content-length': '81',
+        'sec-ch-ua': '".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"',
+        authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3QiLCJ1c2VySWQiOiJmNDIxMjM2NS1lY2YyLTQzNmUtYjJjMy0yYzY4NmU4NzE5YTEiLCJpYXQiOjE2NTg0MzYxMzIsImV4cCI6MTY1ODQzNzMzMn0.NK5tZFfYyovl1moRskiW0GfG0j1sn3-pMGGMHTrxA3w',
+        'content-type': 'application/json',
+        'sec-ch-ua-mobile': '?0',
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36',
+        'sec-ch-ua-platform': '"Windows"',
+        accept: '*/*',
+        origin: 'http://localhost:3000',
+        'sec-fetch-site': 'same-site',
+        'sec-fetch-mode': 'cors',
+        'sec-fetch-dest': 'empty',
+        referer: 'http://localhost:3000/',
+        'accept-encoding': 'gzip, deflate, br',
+        'accept-language': 'pl-PL,pl;q=0.9,en-GB;q=0.8,en;q=0.7,en-US;q=0.6'
+      },
+      method: 'POST',
+      httpVersion: '1.1',
+      originalUrl: '/session/464aea-fdb0-f51a-7753-f2e8e2b60b',
+      query: {}
+    },
+    res: { statusCode: 403 },
+    responseTime: 2
+  },
+  level: 'warn',
+  message: 'HTTP POST /session/464aea-fdb0-f51a-7753-f2e8e2b60b',
+  timestamp: '2022-07-22T20:02:11.481Z'
+}

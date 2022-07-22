@@ -3,21 +3,33 @@ import { saveToLocalStorage, getFromLocalStorage } from "../apiAccess/localStora
 
 export const authContext = React.createContext()
 
+export function getUsernameFromLS() {
+    return getFromLocalStorage({ key: 'easy-username' })
+}
+
 export default function Auth({ children }) {
     const [accessToken, setAccessToken] = useState()
     const [refreshToken, setRefreshToken] = useState()
     const [username, setUsername] = useState()
 
     useEffect(() => {
-        console.log('Access token read from local storage')
         const accessToken = getFromLocalStorage({ key: 'accessToken' })
-        if (accessToken !== undefined && accessToken !== '') setAccessToken(accessToken)
+        console.log(`Access token read from local storage. Value ${accessToken}`)
+        if (
+            accessToken !== undefined
+            && accessToken !== null
+            && accessToken !== ''
+        ) setAccessToken(accessToken)
     }, [setAccessToken])
 
     useEffect(() => {
         console.log('Refresh token read from local storage')
         const refreshToken = getFromLocalStorage({ key: 'refreshToken' })
-        if (refreshToken !== undefined && refreshToken !== '') setRefreshToken(refreshToken)
+        if (
+            refreshToken !== undefined
+            && refreshToken !== null
+            && refreshToken !== ''
+        ) setRefreshToken(refreshToken)
     }, [setRefreshToken])
 
 
@@ -36,13 +48,16 @@ export default function Auth({ children }) {
     }, [refreshToken])
 
 
+
+
     const authContextValue = {
         username,
         setUsername,
         accessToken,
         setAccessToken,
         refreshToken,
-        setRefreshToken 
+        setRefreshToken,
+        getUsernameFromLS
     }
 
     return (

@@ -44,7 +44,9 @@ export function makeApiCallFunction({ url, method, body, accessToken, refreshTok
             resp = await makeRequestWithAccessToken({ method, body })
         }
 
-        if (resp.status === 403)
+        if (resp.status === 403) {
+            console.log('Received status code 403')
+        }
         return resp
     }
 }
