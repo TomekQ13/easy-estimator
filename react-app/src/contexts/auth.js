@@ -1,5 +1,6 @@
 import React, {  useState, useEffect } from "react"
 import { saveToLocalStorage, getFromLocalStorage } from "../apiAccess/localStorage"
+import RegisterModal from "../components/RegisterModal"
 
 export const authContext = React.createContext()
 
@@ -11,6 +12,7 @@ export default function Auth({ children }) {
     const [accessToken, setAccessToken] = useState()
     const [refreshToken, setRefreshToken] = useState()
     const [username, setUsername] = useState()
+    const [registerModal, setRegisterModal] = useState({ show: false })
 
     useEffect(() => {
         const accessToken = getFromLocalStorage({ key: 'accessToken' })
@@ -32,6 +34,19 @@ export default function Auth({ children }) {
         ) setRefreshToken(refreshToken)
     }, [setRefreshToken])
 
+    useEffect(() => {
+        console.log('Username token read from local storage')
+        const username = getFromLocalStorage({ key: 'easy-username' })
+        if (
+            username !== undefined
+            && username !== null
+            && username !== ''
+        ) {
+            setUsername(username)
+            setRegisterModal({ show: false })
+        }
+    }, [setUsername])
+
 
     useEffect(() => {
         if (accessToken !== undefined && accessToken !== '') {
@@ -47,6 +62,13 @@ export default function Auth({ children }) {
         }
     }, [refreshToken])
 
+    useEffect(() => {
+        if (username !== undefined && username !== '') {
+            saveToLocalStorage({ key: 'easy-username', value: username })
+            console.log('Username saved to local storage')
+        }
+    }, [username])
+
 
 
 
@@ -57,12 +79,15 @@ export default function Auth({ children }) {
         setAccessToken,
         refreshToken,
         setRefreshToken,
-        getUsernameFromLS
+        getUsernameFromLS,
+        registerModal,
+        setRegisterModal
     }
 
     return (
         <authContext.Provider value={authContextValue}>
             { children }
+            { registerModal.show && <RegisterModal setRegisterModal={setRegisterModal}/>}
         </authContext.Provider>
     )
 }

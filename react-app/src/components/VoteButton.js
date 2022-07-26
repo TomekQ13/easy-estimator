@@ -6,20 +6,21 @@ import { makeApiCallFunction } from '../apiAccess/makeCall'
 
 export default function VoteButton({voteValue}) {
     const { sessionData } = useContext(SessionContext)
-    const { accessToken, refreshToken, setAccessToken } = useContext(authContext)
+    const { username, accessToken, refreshToken, setAccessToken } = useContext(authContext)
     
     function handleClick() {
         vote()
     }
 
     async function vote() {
+        if (username === undefined || username === null) return console.error('Username not found')
         const voteFunction = makeApiCallFunction({
             url: `/vote/${sessionData.sessionid}`,
             method: 'POST',
             body: {
                 sessionId: sessionData.sessionid,
                 voteId: uuid(),
-                userId: 'testUser',
+                userId: username,
                 voteValue: voteValue
             },
             accessToken: accessToken,

@@ -13,15 +13,15 @@ export function Session() {
     const sessionId = useParams().session_id
     const [sessionData, setSessionData] = useState({})
     const [votes, setVotes] = useState([])
-    const [registerModal, setRegisterModal] = useState({ show: false })
     
-    const { accessToken, refreshToken, setAccessToken, getUsernameFromLS } = useContext(authContext)
+    
+    const { username, accessToken, refreshToken, setAccessToken, registerModal, setRegisterModal } = useContext(authContext)
 
     useEffect(() => {
-        if (username === null) {
+        if (username === null || username === undefined) {
             setRegisterModal({ show: true })
         }
-    }, [])
+    }, [setRegisterModal, username])
 
     useEffect(() => {
         if (accessToken === undefined) return
@@ -76,7 +76,6 @@ export function Session() {
                     )
                 })}
             </ol>
-            { registerModal.show && <RegisterModal setRegisterModal={setRegisterModal}/>}
         </SessionContext.Provider>
     )
 }
