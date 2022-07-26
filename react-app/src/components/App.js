@@ -8,7 +8,6 @@ import { getUsernameFromLS } from '../contexts/Auth';
 
 function App() {
 
-
     const username = getUsernameFromLS()
     
 
@@ -16,8 +15,8 @@ function App() {
         <Router>
             <Auth>
                 <Routes>
-                        <Route path='/' exact element={ <EntryMenu username={username} registerModal={registerModal} setRegisterModal={setRegisterModal} />} />
-                        <Route path='/session/:session_id' element={ <Session username={username} registerModal={registerModal} setRegisterModal={setRegisterModal}/>} />
+                        <Route path='/' exact element={ <EntryMenu />} />
+                        <Route path='/session/:session_id' element={ <Session />} />
                 </Routes>
             </Auth>     
         </Router>

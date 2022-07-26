@@ -20,7 +20,6 @@ export default function RegisterForm({ handleCloseModal }) {
         
         const resp = await registerUser(username)
         if (resp === null) return
-        setUsernameCookie(username)
         setUsername(username)
         setAccessToken(resp.accessToken)
         setRefreshToken(resp.refreshToken)
@@ -55,11 +54,6 @@ export default function RegisterForm({ handleCloseModal }) {
         }
         console.error('There has been an error when registering the user')
         return null
-    }
-
-    function setUsernameCookie(username) {
-        const cookies = new Cookies()
-        cookies.set('username', username, { path: '/', maxAge: 60*60*24*30 })
     }
 
     return (
