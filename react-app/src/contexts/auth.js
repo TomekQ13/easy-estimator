@@ -14,6 +14,8 @@ export default function Auth({ children }) {
     const [username, setUsername] = useState()
     const [registerModal, setRegisterModal] = useState({ show: false })
 
+    console.log(accessToken)
+
     useEffect(() => {
         const accessToken = getFromLocalStorage({ key: 'accessToken' })
         console.log(`Access token read from local storage. Value ${accessToken}`)
@@ -49,6 +51,7 @@ export default function Auth({ children }) {
 
 
     useEffect(() => {
+        console.log('Attepmting to save access token to local storage value: ' + accessToken)
         if (accessToken !== undefined && accessToken !== '') {
             saveToLocalStorage({ key: 'accessToken', value: accessToken })
             console.log('AccessToken saved to local storage')

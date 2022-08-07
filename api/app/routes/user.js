@@ -51,7 +51,7 @@ router.delete('/delete', authenticateToken, async (req, res) => {
     }
 })
 
-router.post('login', (req, res) => {
+router.post('/login', (req, res) => {
     // There is currently no user login
     const userId = 'dummyId' // this should come from db
 

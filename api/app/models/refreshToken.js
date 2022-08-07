@@ -1,8 +1,9 @@
 const client = require('../db.js')
 
 async function getRefreshTokens() {
+    let resp
     try {
-        const resp = await client.query(`
+        resp = await client.query(`
         select token
         from refresh_tokens
         where valid = true
@@ -17,8 +18,9 @@ async function getRefreshTokens() {
 }
 
 async function getRefreshToken(token) {
+    let resp
     try {
-        const resp = await client.query(`
+        resp = await client.query(`
             select user_id
             from refresh_tokens
             where valid = true and token = $1

@@ -34,8 +34,8 @@ export function makeApiCallFunction({ url, method, body, accessToken, refreshTok
         let resp
         resp = await makeRequestWithAccessToken({ method, body })
 
-        if (resp.status === 401) {     
-            console.log('Received status 401. Refreshing access token.')
+        if (resp.status === 403) {     
+            console.log('Received status 403. Refreshing access token.')
             try {
                 await refreshAccessToken({ refreshToken , setAccessTokenFunction})
             } catch (e) {
@@ -67,5 +67,6 @@ async function refreshAccessToken({ refreshToken, setAccessTokenFunction }) {
     if (resp.status === 403) throw new Error('Missing refresh token on API call')
 
     const data = await resp.json()
+    console.log('Setting new access token ' + data.accessToken)
     setAccessTokenFunction(data.accessToken)    
 }
