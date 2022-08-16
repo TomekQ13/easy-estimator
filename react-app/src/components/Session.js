@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState, useRef } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import VoteButton from './VoteButton'
 import { authContext } from '../contexts/Auth'
 import { getSession } from '../models/session'
 import { getVotes } from '../models/vote'
-import RegisterModal from './RegisterModal';
-import Cookies from 'universal-cookie';
+import { websocketContext } from '../contexts/Websocket'
 
 export const SessionContext = React.createContext()
 
@@ -16,6 +15,18 @@ export function Session() {
     
     
     const { username, accessToken, refreshToken, setAccessToken, registerModal, setRegisterModal } = useContext(authContext)
+    const { makeWebsocket } = useContext(websocketContext)
+
+    useEffect(async () => {
+        const ws = await makeWebsocket()
+        ws.onmessage = (messageString) => {        
+            const message = JSON.parse(messageString.data)
+            console.log(message)
+            if (message.type === 'heartbeat') {
+                ws.heartbeat()
+            }
+        }
+    }) 
 
     useEffect(() => {
         if (username === null || username === undefined) {
