@@ -21,7 +21,6 @@ export function Session() {
         const ws = await makeWebsocket()
         ws.onmessage = (messageString) => {        
             const message = JSON.parse(messageString.data)
-            console.log(message)
             if (message.type === 'heartbeat') {
                 ws.heartbeat()
             }

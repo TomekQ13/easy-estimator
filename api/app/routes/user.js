@@ -51,18 +51,18 @@ router.delete('/delete', authenticateToken, async (req, res) => {
     }
 })
 
-router.post('/login', (req, res) => {
-    // There is currently no user login
-    const userId = 'dummyId' // this should come from db
+// router.post('/login', (req, res) => {
+//     // There is currently no user login
+//     const userId = 'dummyId' // this should come from db
 
-    const user = {
-        username: req.body.username,
-        userId: userId
-    }
+//     const user = {
+//         username: req.body.username,
+//         userId: userId
+//     }
 
-    const accessToken = generateAccessToken(user.username)
-    res.json({ accessToken: accessToken })
-})
+//     const accessToken = generateAccessToken(user.username)
+//     res.json({ accessToken: accessToken })
+// })
 
 router.post('/token', (req, res) => {
     const refreshToken = req.body.refreshToken
@@ -71,7 +71,8 @@ router.post('/token', (req, res) => {
     
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
         if (err) return res.status(403).send({ message: 'Refresh token is invalid' })
-        const accessToken = generateAccessToken(user)
+        const { username, userId } = user
+        const accessToken = generateAccessToken({ username, userId })
         res.json({ accessToken: accessToken })
 
     })

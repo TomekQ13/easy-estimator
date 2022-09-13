@@ -27,7 +27,7 @@ async function getRefreshToken(token) {
         `, [token])
     } catch (e) {
         console.error(e)
-        throw new Error('There was na error while fetching the refresh token')
+        throw new Error('There was an error while fetching the refresh token')
     }
     if (resp.rows.length === 0) return null
     return resp.rows[0]
