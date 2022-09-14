@@ -4,7 +4,6 @@ import JoinSessionBtn from "./JoinSessionBtn";
 import NewSessionBtn from './NewSessionBtn'
 import NewSessionModal from './NewSessionModal';
 import JoinSessionModal from './JoinSessionModal';
-import RegisterModal from './RegisterModal';
 import { authContext } from '../contexts/Auth'
 
 export default function EntryMeny() {

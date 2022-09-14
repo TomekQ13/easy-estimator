@@ -58,7 +58,7 @@ export default function RegisterForm({ handleCloseModal }) {
 
     return (
         <form onSubmit={ handleSubmit }>
-            <input type="text" name="username" value={ inputs.username || '' } onChange={ handleChange }></input>
+            <input type="text" name="username" value={ inputs.username || '' } onChange={ handleChange } required></input>
             <button>Continue</button>
         </form>
     )

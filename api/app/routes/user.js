@@ -7,7 +7,7 @@ const { authenticateToken, generateAccessToken } = require('../auth')
 const { v4: uuidv4 } = require('uuid');
 
 router.post('/register', async (req, res) => {
-    if (req.body.username === undefined) return res.status(400).send({ message: 'Username is missing' })
+    if (req.body.username === undefined || req.body.username === '') return res.status(400).send({ message: 'Username is missing' })
     if (await getUser(req.body.username) !== undefined) return res.status(400).send(
         { message: 'User with this username already exists' }
     )

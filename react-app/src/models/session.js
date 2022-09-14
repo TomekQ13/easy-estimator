@@ -31,3 +31,7 @@ export async function createSession({ sessionId, sessionPassword, params, access
     if (resp === undefined) return 
     return resp
 }
+
+export async function resetVotes({}) {
+    
+}

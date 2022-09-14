@@ -5,9 +5,8 @@ export const websocketContext = React.createContext()
 
 export default function Websocket({ children }) {
 
-    async function makeWebsocket() {
+    async function makeWebsocket(username) {
         const ws = await connectToWebsocket()
-        const username = 'testUser'
         ws.heartbeat = heartbeat
         ws.send(JSON.stringify({
             type: 'connect',

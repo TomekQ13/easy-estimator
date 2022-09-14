@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import VoteButton from './VoteButton'
-import { authContext } from '../contexts/Auth'
+import { authContext, getUsernameFromLS } from '../contexts/Auth'
 import { getSession } from '../models/session'
 import { getVotes } from '../models/vote'
 import { websocketContext } from '../contexts/Websocket'
@@ -14,11 +14,12 @@ export function Session() {
     const [votes, setVotes] = useState([])
     
     
-    const { username, accessToken, refreshToken, setAccessToken, registerModal, setRegisterModal } = useContext(authContext)
+    const { username, accessToken, refreshToken, setAccessToken, setRegisterModal } = useContext(authContext)
     const { makeWebsocket } = useContext(websocketContext)
 
     useEffect(async () => {
-        const ws = await makeWebsocket()
+        const username = getUsernameFromLS()
+        const ws = await makeWebsocket(username)
         ws.onmessage = (messageString) => {        
             const message = JSON.parse(messageString.data)
             if (message.type === 'heartbeat') {
