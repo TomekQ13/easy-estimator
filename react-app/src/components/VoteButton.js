@@ -8,8 +8,8 @@ export default function VoteButton({voteValue}) {
     const { sessionData } = useContext(SessionContext)
     const { username, accessToken, refreshToken, setAccessToken } = useContext(authContext)
     
-    function handleClick() {
-        vote()
+    async function handleClick() {
+        await vote()
     }
 
     async function vote() {

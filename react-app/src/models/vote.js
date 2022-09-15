@@ -14,3 +14,14 @@ export async function getVotes({ sessionId, accessToken, refreshToken, setAccess
     const data =  await resp.json()
     return data
 }
+
+export async function deleteVotes({ sessionId, accessToken, refreshToken, setAccessTokenFunction }) {
+    console.log('sessionId' + sessionId)
+    await makeApiCallFunction({
+        method: 'DELETE',
+        url: `/vote/all/${sessionId}`,
+        accessToken,
+        refreshToken,
+        setAccessTokenFunction
+    })()
+}

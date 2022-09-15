@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react'
-import Cookies from 'universal-cookie'
 import { authContext } from '../contexts/Auth'
-import { saveToLocalStorage } from '../apiAccess/localStorage'
 import { makeApiCallFunction } from '../apiAccess/makeCall'
 
 export default function RegisterForm({ handleCloseModal }) {

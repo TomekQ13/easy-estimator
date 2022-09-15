@@ -5,6 +5,7 @@ import { authContext, getUsernameFromLS } from '../contexts/Auth'
 import { getSession } from '../models/session'
 import { getVotes } from '../models/vote'
 import { websocketContext } from '../contexts/Websocket'
+import ResetVotesBtn from './ResetVotesBtn'
 
 export const SessionContext = React.createContext()
 
@@ -76,6 +77,7 @@ export function Session() {
                 <VoteButton voteValue={5}/>
                 <VoteButton voteValue={8}/>
             </div>
+            <ResetVotesBtn />
             <ol>
                 {votes && votes.map((vote) => {
                     return (

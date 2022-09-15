@@ -1,7 +1,7 @@
 const client = require('../db.js')
 
 async function getVotes(sessionId) {
-    let resp = await client.query(`
+    const resp = await client.query(`
         select
             vote_id as voteid,
             session_id as sessionid,
@@ -15,7 +15,7 @@ async function getVotes(sessionId) {
 }
 
 async function vote(voteId, sessionId, userId, voteValue) {
-    let resp = await client.query(`
+    const resp = await client.query(`
         insert into votes (vote_id, session_id, user_id, vote_value)
         values ($1, $2, $3, $4)
     `, [voteId, sessionId, userId, voteValue])
@@ -23,7 +23,7 @@ async function vote(voteId, sessionId, userId, voteValue) {
 }
 
 async function updateVote(sessionId, voteId, userId, voteValue) {
-    let resp = await client.query(`
+    const resp = await client.query(`
         update votes
         set vote_value = $4
         where session_id = $1
@@ -34,11 +34,19 @@ async function updateVote(sessionId, voteId, userId, voteValue) {
 }
 
 async function deleteVote(voteId) {
-    let resp = await client.query(`
+    const resp = await client.query(`
         delete from votes
         where vote_id = $1
     `, [voteId])
     return resp
 }
 
-module.exports = { getVotes, vote, updateVote, deleteVote }
+async function deleteVotes(sessionId) {
+    const resp = await client.query(`
+        delete from votes
+        where session_id = $1
+    `, [sessionId])
+    return resp
+}
+
+module.exports = { getVotes, vote, updateVote, deleteVote, deleteVotes }
