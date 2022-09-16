@@ -71,13 +71,13 @@ export function Session() {
                 {sessionData && <p>{sessionData.sessionid}</p>}
                 {sessionData && <p>{sessionData.hostid}</p>}
                 {sessionData && <p>{sessionData.password}</p>}
-                <VoteButton voteValue={1}/>
-                <VoteButton voteValue={2}/>
-                <VoteButton voteValue={3}/>
-                <VoteButton voteValue={5}/>
-                <VoteButton voteValue={8}/>
+                <VoteButton voteValue={1} votes={votes} setVotes={setVotes}/>
+                <VoteButton voteValue={2} votes={votes} setVotes={setVotes}/>
+                <VoteButton voteValue={3} votes={votes} setVotes={setVotes}/>
+                <VoteButton voteValue={5} votes={votes} setVotes={setVotes}/>
+                <VoteButton voteValue={8} votes={votes} setVotes={setVotes}/>
             </div>
-            <ResetVotesBtn />
+            <ResetVotesBtn setVotes={setVotes}/>
             <ol>
                 {votes && votes.map((vote) => {
                     return (

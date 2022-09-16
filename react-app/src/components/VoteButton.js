@@ -4,33 +4,36 @@ import { SessionContext } from './Session'
 import { authContext } from '../contexts/Auth'
 import { makeApiCallFunction } from '../apiAccess/makeCall'
 
-export default function VoteButton({voteValue}) {
+export default function VoteButton({voteValue, votes, setVotes}) {
     const { sessionData } = useContext(SessionContext)
     const { username, accessToken, refreshToken, setAccessToken } = useContext(authContext)
     
-    async function handleClick() {
-        await vote()
+    function handleClick() {
+        const voteBody = {
+            sessionId: sessionData.sessionid,
+            voteId: uuid(),
+            userId: username,
+            voteValue: voteValue
+        }
+        setVotes([...votes].push(voteBody))
+        vote(voteBody)
     }
 
-    async function vote() {
+    async function vote(voteBody) {        
         if (username === undefined || username === null) return console.error('Username not found')
         const voteFunction = makeApiCallFunction({
             url: `/vote/${sessionData.sessionid}`,
             method: 'POST',
-            body: {
-                sessionId: sessionData.sessionid,
-                voteId: uuid(),
-                userId: username,
-                voteValue: voteValue
-            },
+            body: voteBody,
             accessToken: accessToken,
             refreshToken: refreshToken,
             setAccessTokenFunction: setAccessToken
         })
-        const resp = await voteFunction()
-        const voteResponseData = await resp.json()
+        voteFunction()
+        // const resp = await voteFunction()
+        // const voteResponseData = await resp.json()
         
-        return voteResponseData
+        // return voteResponseData
     }
 
     return (
