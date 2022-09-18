@@ -13,21 +13,30 @@ export function Session() {
     const sessionId = useParams().session_id
     const [sessionData, setSessionData] = useState({})
     const [votes, setVotes] = useState([])
-    
+    const [websocket, setWebsocket] = useState()    
     
     const { username, accessToken, refreshToken, setAccessToken, setRegisterModal } = useContext(authContext)
     const { makeWebsocket } = useContext(websocketContext)
 
     useEffect(async () => {
-        const username = getUsernameFromLS()
+        if (username === undefined) return
         const ws = await makeWebsocket(username)
         ws.onmessage = (messageString) => {        
             const message = JSON.parse(messageString.data)
             if (message.type === 'heartbeat') {
                 ws.heartbeat()
+            } else if (message.type === 'resetVoting') {
+                setVotes([])
+            } else if (message.type === 'vote') {
+                if (message.vote.userid === username) return
+                setVotes(prevVotes => {
+                    const notThisUserVotes = prevVotes.filter(vote => vote.userid !== message.vote.userid)
+                    return [...notThisUserVotes, message.vote]
+                })
             }
         }
-    }) 
+        setWebsocket(ws)
+    }, [username]) 
 
     useEffect(() => {
         if (username === null || username === undefined) {
@@ -47,7 +56,7 @@ export function Session() {
         })
     }, [sessionId, accessToken, refreshToken, setAccessToken])
 
-    useEffect(() => {
+    useEffect(async () => {
         if (accessToken === undefined) return
         getVotes({
             sessionId,
@@ -56,6 +65,7 @@ export function Session() {
             setAccessTokenFunction: setAccessToken
         }).then((sessionVotes) => {
             setVotes(sessionVotes)
+            console.log('setting votes to '+ sessionVotes)
         })
     }, [sessionId, accessToken, refreshToken, setAccessToken])
 
@@ -63,26 +73,24 @@ export function Session() {
         sessionData
     }
 
-
-
+    console.log(votes)
     return (
         <SessionContext.Provider value={sessionContextValue}>
             <div>
                 {sessionData && <p>{sessionData.sessionid}</p>}
                 {sessionData && <p>{sessionData.hostid}</p>}
                 {sessionData && <p>{sessionData.password}</p>}
-                <VoteButton voteValue={1} votes={votes} setVotes={setVotes}/>
-                <VoteButton voteValue={2} votes={votes} setVotes={setVotes}/>
-                <VoteButton voteValue={3} votes={votes} setVotes={setVotes}/>
-                <VoteButton voteValue={5} votes={votes} setVotes={setVotes}/>
-                <VoteButton voteValue={8} votes={votes} setVotes={setVotes}/>
+                <VoteButton voteValue={1} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                <VoteButton voteValue={2} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                <VoteButton voteValue={3} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                <VoteButton voteValue={5} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                <VoteButton voteValue={8} votes={votes} setVotes={setVotes} websocket={websocket}/>
             </div>
-            <ResetVotesBtn setVotes={setVotes}/>
+            <ResetVotesBtn setVotes={setVotes} websocket={websocket}/>
             <ol>
                 {votes && votes.map((vote) => {
                     return (
                         <li key={vote.voteid}>
-                            voteId: {vote.voteid} <br></br>
                             userId: {vote.userid} <br></br>
                             voteValue: {vote.votevalue} 
                         </li>

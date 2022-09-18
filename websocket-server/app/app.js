@@ -13,6 +13,8 @@ wss.on('connection', (ws) => {
                 type: 'usernames',
                 usernames: getUsernames(clients)
             }))   
+        } else {
+            sendMessageToAllClients(clients, message)
         }
     })
 
@@ -79,7 +81,7 @@ function getUsernames(clients) {
     if (clients === undefined) {
         return console.error('getUsernames needs clients')
     }
-    usernames = []
+    const usernames = []
     for (const [_key, value] of clients) {
         usernames.push(value.username)
     }

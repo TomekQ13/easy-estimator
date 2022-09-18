@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { getVotes, vote, updateVote, deleteVote, deleteVotes } = require('../models/vote')
+const { getVotes, vote, updateOrCreateVote, deleteVote, deleteVotes } = require('../models/vote')
 const { authenticateToken } = require('../auth')
 
 router.use(authenticateToken)
@@ -23,7 +23,7 @@ router.get('/:sessionId', async (req, res) => {
 
 router.post('/:sessionId', async (req,res) => {
     try {
-        await vote(req.body.voteId, req.params.sessionId, req.body.userId, req.body.voteValue)
+        await vote(req.body.voteid, req.params.sessionId, req.body.userid, req.body.votevalue)
     } catch(e) {
         console.error(e)
         return res.status(500).json({message: 'There was an error. Please try again.'})
@@ -33,7 +33,7 @@ router.post('/:sessionId', async (req,res) => {
 
 router.put('/:sessionId', async (req, res) => {
     try {
-        await updateVote(req.params.sessionId, req.body.voteId, req.body.userId, req.body.voteValue)
+        await updateOrCreateVote(req.params.sessionId, req.body.voteid, req.body.userid, req.body.votevalue)
     } catch(e) {
         console.error(e)
         return res.status(500).send('There was an error. Please try again.')

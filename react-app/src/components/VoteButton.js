@@ -4,32 +4,41 @@ import { SessionContext } from './Session'
 import { authContext } from '../contexts/Auth'
 import { makeApiCallFunction } from '../apiAccess/makeCall'
 
-export default function VoteButton({voteValue, votes, setVotes}) {
+export default function VoteButton({voteValue, votes, setVotes, websocket}) {
     const { sessionData } = useContext(SessionContext)
     const { username, accessToken, refreshToken, setAccessToken } = useContext(authContext)
     
     function handleClick() {
+        const voteId = uuid()
         const voteBody = {
-            sessionId: sessionData.sessionid,
-            voteId: uuid(),
-            userId: username,
-            voteValue: voteValue
+            sessionid: sessionData.sessionid,
+            voteid: voteId,
+            userid: username,
+            votevalue: voteValue
         }
-        setVotes([...votes].push(voteBody))
+        const newVotes = [...votes]
+        // this will cause the new vote to always be placed at te bottom
+        const notThisUserVotes = newVotes.filter(vote => vote.userid !== username)
+        notThisUserVotes.push(voteBody)
+
+        websocket.send(JSON.stringify({
+            type: 'vote',
+            vote: voteBody
+        }))
+        setVotes(notThisUserVotes)
         vote(voteBody)
     }
 
     async function vote(voteBody) {        
         if (username === undefined || username === null) return console.error('Username not found')
-        const voteFunction = makeApiCallFunction({
+        makeApiCallFunction({
             url: `/vote/${sessionData.sessionid}`,
-            method: 'POST',
+            method: 'PUT',
             body: voteBody,
             accessToken: accessToken,
             refreshToken: refreshToken,
             setAccessTokenFunction: setAccessToken
-        })
-        voteFunction()
+        })()
         // const resp = await voteFunction()
         // const voteResponseData = await resp.json()
         
