@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { deleteVotes } from '../models/vote'
 import { authContext } from '../contexts/Auth'
 import { SessionContext } from './Session'
+import Button from 'react-bootstrap/Button';
 
 
 export default function ResetVotesBtn({ setVotes, websocket }) {
@@ -24,8 +25,8 @@ export default function ResetVotesBtn({ setVotes, websocket }) {
     }
   
     return (
-        <button onClick={handleClick}>
+        <Button onClick={handleClick}>
             Reset voting
-        </button>
+        </Button>
     )
 }

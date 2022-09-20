@@ -3,6 +3,8 @@ import uuid from 'react-uuid'
 import { SessionContext } from './Session'
 import { authContext } from '../contexts/Auth'
 import { makeApiCallFunction } from '../apiAccess/makeCall'
+import Button from 'react-bootstrap/Button';
+
 
 export default function VoteButton({voteValue, votes, setVotes, websocket}) {
     const { sessionData } = useContext(SessionContext)
@@ -46,8 +48,8 @@ export default function VoteButton({voteValue, votes, setVotes, websocket}) {
     }
 
     return (
-        <button onClick={handleClick}>
+        <Button onClick={handleClick}>
             {voteValue}
-        </button>
+        </Button>
     )
 }

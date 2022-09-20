@@ -6,6 +6,7 @@ import { getSession } from '../models/session'
 import { getVotes } from '../models/vote'
 import { websocketContext } from '../contexts/Websocket'
 import ResetVotesBtn from './ResetVotesBtn'
+import ListGroup from 'react-bootstrap/ListGroup';
 
 export const SessionContext = React.createContext()
 
@@ -77,26 +78,34 @@ export function Session() {
     return (
         <SessionContext.Provider value={sessionContextValue}>
             <div>
-                {sessionData && <p>{sessionData.sessionid}</p>}
-                {sessionData && <p>{sessionData.hostid}</p>}
-                {sessionData && <p>{sessionData.password}</p>}
-                <VoteButton voteValue={1} votes={votes} setVotes={setVotes} websocket={websocket}/>
-                <VoteButton voteValue={2} votes={votes} setVotes={setVotes} websocket={websocket}/>
-                <VoteButton voteValue={3} votes={votes} setVotes={setVotes} websocket={websocket}/>
-                <VoteButton voteValue={5} votes={votes} setVotes={setVotes} websocket={websocket}/>
-                <VoteButton voteValue={8} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                SessionId: {sessionData && <p>{sessionData.sessionid}</p>}
+                Host: {sessionData && <p>{sessionData.hostid}</p>}
             </div>
-            <ResetVotesBtn setVotes={setVotes} websocket={websocket}/>
-            <ol>
-                {votes && votes.map((vote) => {
-                    return (
-                        <li key={vote.voteid}>
-                            userId: {vote.userid} <br></br>
-                            voteValue: {vote.votevalue} 
-                        </li>
-                    )
-                })}
-            </ol>
+            <div className="d-flex justify-content-center">
+                <div className='mx-5'>
+                    <VoteButton voteValue={1} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                    <VoteButton voteValue={2} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                    <VoteButton voteValue={3} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                    <VoteButton voteValue={5} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                    <VoteButton voteValue={8} votes={votes} setVotes={setVotes} websocket={websocket}/>
+                </div>
+                <div className='mx-5'>
+                    <span>Active users</span>
+                    <ListGroup>
+                        {votes && votes.map((vote) => {
+                            return (
+                                    <ListGroup.Item key={vote.voteid}>
+                                        <div className="d-flex justify-content-between">
+                                            <span>{vote.userid}</span>
+                                            <span>{vote.votevalue}</span>
+                                        </div>
+                                    </ListGroup.Item>
+                            )
+                        })}
+                    </ListGroup>
+                    <ResetVotesBtn setVotes={setVotes} websocket={websocket}/>
+                </div>
+            </div>
         </SessionContext.Provider>
     )
 }
