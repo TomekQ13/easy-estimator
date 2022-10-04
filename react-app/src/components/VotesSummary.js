@@ -13,12 +13,10 @@ export default function VotesSummary({ votes }) {
     }, [votes]);
 
     function calculateMean(votesValues) {
+        if (typeof votesValues !== "array") return undefined;
         if (votesValues.length === 0) return undefined;
         let sum = 0;
-        votes.forEach((vote) => {
-            sum = sum + vote.value;
-        });
-        console.log(sum / votesValues.length);
+        // here sum array
         return sum / votesValues.length;
     }
 

@@ -1,20 +1,24 @@
-import React from 'react'
-import Modal from './Modal'
-import NewSessionForm from './NewSessionForm'
+import React from "react";
+import Modal from "react-bootstrap/Modal";
+import NewSessionForm from "./NewSessionForm";
+import Button from "react-bootstrap/Button";
 
-export default function NewSessionModal({ setNewSessionModal }) {
-
+export default function NewSessionModal({
+    setNewSessionModal,
+    newSessionModal,
+}) {
     function handleCloseModal() {
-        setNewSessionModal({ show: false })
+        setNewSessionModal({ show: false });
     }
 
-    const modalContents = <>
-        <NewSessionForm />
-        <button onClick={handleCloseModal}>
-            Close modal
-        </button>
-    </>
     return (
-        <Modal modalContents={ modalContents }/>
-    )
+        <Modal show={newSessionModal.show} onHide={handleCloseModal}>
+            <Modal.Header closeButton>
+                <Modal.Title>Setup session password</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <NewSessionForm handleCloseModal={handleCloseModal} />
+            </Modal.Body>
+        </Modal>
+    );
 }

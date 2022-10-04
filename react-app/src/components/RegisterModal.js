@@ -1,24 +1,25 @@
-import React from 'react'
-import RegisterForm from './RegisterForm'
-import Modal from './Modal'
+import React from "react";
+import RegisterForm from "./RegisterForm";
+import Modal from "react-bootstrap/Modal";
 
-export default function RegisterModal({ setRegisterModal }) {
+export default function RegisterModal({ setRegisterModal, registerModal }) {
     function handleCloseModal() {
-        setRegisterModal({ show: false })
+        setRegisterModal({ show: false });
     }
 
-    const modalContents = <>
-        <RegisterForm handleCloseModal={ handleCloseModal }/>
-        <button onClick={handleCloseModal}>
-            Close modal
-        </button>
-    </>
-
     return (
-        <>
-            <h2>Register</h2>
-            <Modal modalContents={ modalContents }/>
-        </>
-        
-    )
+        <Modal
+            show={registerModal.show}
+            onHide={handleCloseModal}
+            backdrop="static"
+            keyboard={false}
+        >
+            <Modal.Header>
+                <Modal.Title>Enter username</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <RegisterForm handleCloseModal={handleCloseModal} />
+            </Modal.Body>
+        </Modal>
+    );
 }

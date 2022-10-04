@@ -1,14 +1,10 @@
-import React from 'react'
+import React from "react";
+import Button from "react-bootstrap/Button";
 
 export default function NewSessionBtn({ setNewSessionModal }) {
-
     function handleClick() {
-        setNewSessionModal({ show: true })
+        setNewSessionModal({ show: true });
     }
 
-    return (
-        <button onClick={handleClick}>
-            New session
-        </button>
-    )
+    return <Button onClick={handleClick}>New session</Button>;
 }

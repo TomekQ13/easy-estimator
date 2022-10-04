@@ -1,14 +1,10 @@
-import React from 'react'
+import React from "react";
+import Button from "react-bootstrap/esm/Button";
 
 export default function JoinSessionBtn({ setJoinSessionModal }) {
-
     function handleClick() {
-        setJoinSessionModal({ show: true })
+        setJoinSessionModal({ show: true });
     }
 
-    return (
-        <button onClick={handleClick}>
-            Join session
-        </button>
-    )
+    return <Button onClick={handleClick}>Join session</Button>;
 }

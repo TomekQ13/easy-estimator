@@ -1,42 +1,41 @@
-import React, {useContext, useEffect, useState} from 'react'
-import Card from './Card'
+import React, { useContext, useEffect, useState } from "react";
 import JoinSessionBtn from "./JoinSessionBtn";
-import NewSessionBtn from './NewSessionBtn'
-import NewSessionModal from './NewSessionModal';
-import JoinSessionModal from './JoinSessionModal';
-import { authContext } from '../contexts/Auth'
+import NewSessionBtn from "./NewSessionBtn";
+import NewSessionModal from "./NewSessionModal";
+import JoinSessionModal from "./JoinSessionModal";
+import { authContext } from "../contexts/Auth";
 
 export default function EntryMeny() {
-    const [newSessionModal, setNewSessionModal] = useState({ show: false })
-    const [joinSessionModal, setJoinSessionModal] = useState({ show: false })
+    const [newSessionModal, setNewSessionModal] = useState({ show: false });
+    const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
 
-    const { username, setRegisterModal } = useContext(authContext)
+    const { username, setRegisterModal } = useContext(authContext);
 
     useEffect(() => {
         if (username === null || username === undefined) {
-            setRegisterModal({ show: true })
+            setRegisterModal({ show: true });
         }
-    }, [username, setRegisterModal])
-
+    }, [username, setRegisterModal]);
 
     return (
         <>
-            <Card>
-                <NewSessionBtn setNewSessionModal={setNewSessionModal} />
-                <JoinSessionBtn setJoinSessionModal={setJoinSessionModal}/>
-            </Card>
-            { newSessionModal.show && 
+            <NewSessionBtn
+                setNewSessionModal={setNewSessionModal}
+                newSessionModal={newSessionModal}
+            />
+            <JoinSessionBtn setJoinSessionModal={setJoinSessionModal} />
+            {newSessionModal.show && (
                 <NewSessionModal
-                    setNewSessionModal = { setNewSessionModal }
+                    setNewSessionModal={setNewSessionModal}
+                    newSessionModal={newSessionModal}
                 />
-            }
-            { joinSessionModal.show && 
+            )}
+            {joinSessionModal.show && (
                 <JoinSessionModal
-                    setJoinSessionModal = { setJoinSessionModal }
+                    setJoinSessionModal={setJoinSessionModal}
+                    joinSessionModal={joinSessionModal}
                 />
-            }
-            
-            
+            )}
         </>
-    )
+    );
 }
