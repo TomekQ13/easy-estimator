@@ -16,6 +16,7 @@ export function Session() {
     const [sessionData, setSessionData] = useState({});
     const [votes, setVotes] = useState([]);
     const [websocket, setWebsocket] = useState();
+    const [sessionFound, setSessionFound] = useState(false);
     // const [activeUsers, setActiveUsers] = useState([]);
 
     const {
@@ -67,7 +68,9 @@ export function Session() {
             refreshToken,
             setAccessTokenFunction: setAccessToken,
         }).then((sessionData) => {
+            if (sessionData === null) return;
             setSessionData(sessionData);
+            setSessionFound(true);
         });
     }, [sessionId, accessToken, refreshToken, setAccessToken]);
 
@@ -89,64 +92,74 @@ export function Session() {
     };
 
     return (
-        <SessionContext.Provider value={sessionContextValue}>
-            <div>
-                SessionId: {sessionData && <p>{sessionData.sessionid}</p>}
-                {/* Host: {sessionData && <p>{sessionData.hostid}</p>} */}
-            </div>
-            <div className="d-flex justify-content-center">
-                <div className="mx-5">
-                    <VoteButton
-                        voteValue={1}
-                        votes={votes}
-                        setVotes={setVotes}
-                        websocket={websocket}
-                    />
-                    <VoteButton
-                        voteValue={2}
-                        votes={votes}
-                        setVotes={setVotes}
-                        websocket={websocket}
-                    />
-                    <VoteButton
-                        voteValue={3}
-                        votes={votes}
-                        setVotes={setVotes}
-                        websocket={websocket}
-                    />
-                    <VoteButton
-                        voteValue={5}
-                        votes={votes}
-                        setVotes={setVotes}
-                        websocket={websocket}
-                    />
-                    <VoteButton
-                        voteValue={8}
-                        votes={votes}
-                        setVotes={setVotes}
-                        websocket={websocket}
-                    />
-                </div>
-                <div className="mx-5">
-                    <span>Active users</span>
-                    <ListGroup>
-                        {votes &&
-                            votes.map((vote) => {
-                                // this part needs to be adjusted so that there are users and votes are updated for users
-                                return (
-                                    <ListGroup.Item key={vote.voteid}>
-                                        <div className="d-flex justify-content-between">
-                                            <span>{vote.userid}</span>
-                                            <span>{vote.votevalue}</span>
-                                        </div>
-                                    </ListGroup.Item>
-                                );
-                            })}
-                    </ListGroup>
-                    <ResetVotesBtn setVotes={setVotes} websocket={websocket} />
-                    <VotesSummary votes={votes} />
-                </div>
-            </div>
-        </SessionContext.Provider>
+        <>
+            {sessionFound && (
+                <SessionContext.Provider value={sessionContextValue}>
+                    <div>
+                        SessionId:{" "}
+                        {sessionData && <p>{sessionData.sessionid}</p>}
+                        {/* Host: {sessionData && <p>{sessionData.hostid}</p>} */}
+                    </div>
+                    <div className="d-flex justify-content-center">
+                        <div className="mx-5">
+                            <VoteButton
+                                voteValue={1}
+                                votes={votes}
+                                setVotes={setVotes}
+                                websocket={websocket}
+                            />
+                            <VoteButton
+                                voteValue={2}
+                                votes={votes}
+                                setVotes={setVotes}
+                                websocket={websocket}
+                            />
+                            <VoteButton
+                                voteValue={3}
+                                votes={votes}
+                                setVotes={setVotes}
+                                websocket={websocket}
+                            />
+                            <VoteButton
+                                voteValue={5}
+                                votes={votes}
+                                setVotes={setVotes}
+                                websocket={websocket}
+                            />
+                            <VoteButton
+                                voteValue={8}
+                                votes={votes}
+                                setVotes={setVotes}
+                                websocket={websocket}
+                            />
+                        </div>
+                        <div className="mx-5">
+                            <span>Active users</span>
+                            <ListGroup>
+                                {votes &&
+                                    votes.map((vote) => {
+                                        // this part needs to be adjusted so that there are users and votes are updated for users
+                                        return (
+                                            <ListGroup.Item key={vote.voteid}>
+                                                <div className="d-flex justify-content-between">
+                                                    <span>{vote.userid}</span>
+                                                    <span>
+                                                        {vote.votevalue}
+                                                    </span>
+                                                </div>
+                                            </ListGroup.Item>
+                                        );
+                                    })}
+                            </ListGroup>
+                            <ResetVotesBtn
+                                setVotes={setVotes}
+                                websocket={websocket}
+                            />
+                            <VotesSummary votes={votes} />
+                        </div>
+                    </div>
+                </SessionContext.Provider>
+            )}
+        </>
     );
 }
