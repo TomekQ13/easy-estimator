@@ -1,0 +1,20 @@
+.vote-btn {
+    width: 150px;
+    height: 200px;
+    
+}
+
+.vote-btn-font-size {
+    font-size: 50px;
+}
+
+@media (max-width: 576px) {
+    .vote-btn {
+        width: 100px;
+        height: 132px;
+    }
+
+    .vote-btn-font-size {
+        font-size: 30px;
+    }
+}
