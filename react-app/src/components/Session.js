@@ -74,7 +74,7 @@ export function Session() {
         });
     }, [sessionId, accessToken, refreshToken, setAccessToken]);
 
-    useEffect(async () => {
+    useEffect(() => {
         if (accessToken === undefined) return;
         getVotes({
             sessionId,
@@ -83,7 +83,6 @@ export function Session() {
             setAccessTokenFunction: setAccessToken,
         }).then((sessionVotes) => {
             setVotes(sessionVotes);
-            console.log("setting votes to " + sessionVotes);
         });
     }, [sessionId, accessToken, refreshToken, setAccessToken]);
 

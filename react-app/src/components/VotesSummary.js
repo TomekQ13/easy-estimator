@@ -9,14 +9,14 @@ export default function VotesSummary({ votes }) {
             votesValues.push(vote.votevalue);
         });
         const mean = calculateMean(votesValues);
+        if (mean === undefined) return;
         setMean(mean);
     }, [votes]);
 
     function calculateMean(votesValues) {
-        if (typeof votesValues !== "array") return undefined;
-        if (votesValues.length === 0) return undefined;
-        let sum = 0;
-        // here sum array
+        if (votesValues.length === 0 || votesValues.length === undefined)
+            return undefined;
+        const sum = votesValues.reduce((prevSum, i) => prevSum + i, 0);
         return sum / votesValues.length;
     }
 
