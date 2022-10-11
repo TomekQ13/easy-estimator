@@ -35,6 +35,7 @@ router.post('/:sessionId', async (req, res) => {
 })
 
 router.put('/:sessionId', async (req, res) => {
+    console.log(req.body.params)
     try {
         await updateSession(req.params.sessionId, req.body.params)
     } catch(e) {

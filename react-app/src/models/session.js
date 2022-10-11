@@ -28,7 +28,7 @@ export async function createSession({
     refreshToken,
     setAccessTokenFunction,
 }) {
-    const resp = makeApiCallFunction({
+    const resp = await makeApiCallFunction({
         method: "POST",
         url: `/session/${sessionId}`,
         body: {
@@ -44,4 +44,22 @@ export async function createSession({
     return resp;
 }
 
-export async function resetVotes({}) {}
+export async function updateSessionData({
+    sessionId,
+    newSessionData,
+    accessToken,
+    refreshToken,
+    setAccessTokenFunction,
+}) {
+    const resp = await makeApiCallFunction({
+        method: "PUT",
+        url: `/session/${sessionId}`,
+        body: {
+            params: newSessionData,
+        },
+        accessToken,
+        refreshToken,
+        setAccessTokenFunction,
+    })();
+    return resp;
+}

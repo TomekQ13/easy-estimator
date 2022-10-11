@@ -1,6 +1,6 @@
 .vote-btn {
-    width: 150px;
-    height: 200px;
+    width: 100px;
+    height: 150px;
     
 }
 
@@ -8,10 +8,15 @@
     font-size: 50px;
 }
 
+.votes-list-box {
+    height: 500px;
+    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+}
+
 @media (max-width: 576px) {
     .vote-btn {
-        width: 100px;
-        height: 132px;
+        width: 80px;
+        height: 120px;
     }
 
     .vote-btn-font-size {

@@ -1,26 +1,27 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import VoteButton from "./VoteButton";
+import VotesColumn from "./VotesColumn";
 import { authContext } from "../contexts/Auth";
 import { getSession } from "../models/session";
 import { getVotes } from "../models/vote";
 import { websocketContext } from "../contexts/Websocket";
-import ResetVotesBtn from "./ResetVotesBtn";
-import ListGroup from "react-bootstrap/ListGroup";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
-import VotesSummary from "./VotesSummary";
 
 export const SessionContext = React.createContext();
 
 export function Session() {
     const sessionId = useParams().session_id;
-    const [sessionData, setSessionData] = useState({});
+    const [sessionData, setSessionData] = useState({
+        params: { showVotes: undefined },
+    });
     const [votes, setVotes] = useState([]);
     const [websocket, setWebsocket] = useState();
-    const [sessionFound, setSessionFound] = useState(false);
+    const [showVotes, setShowVotes] = useState(false);
     // const [activeUsers, setActiveUsers] = useState([]);
 
     const {
@@ -41,6 +42,9 @@ export function Session() {
                 ws.heartbeat();
             } else if (message.type === "resetVoting") {
                 setVotes([]);
+                const newSessionData = { ...sessionData };
+                newSessionData.params.showVotes = false;
+                setSessionData(newSessionData);
             } else if (message.type === "vote") {
                 if (message.vote.userid === username) return;
                 setVotes((prevVotes) => {
@@ -51,6 +55,10 @@ export function Session() {
                 });
                 // } else if (message.type === "usernames") {
                 //     // setActiveUsers(message.usernames);
+            } else if (message.type === "showVotes") {
+                const newSessionData = { ...sessionData };
+                newSessionData.params.showVotes = true;
+                setSessionData(newSessionData);
             } else {
                 console.warn("Unrecognized message type - " + message.type);
             }
@@ -73,8 +81,9 @@ export function Session() {
             setAccessTokenFunction: setAccessToken,
         }).then((sessionData) => {
             if (sessionData === null) return;
+            console.log(sessionData);
             setSessionData(sessionData);
-            setSessionFound(true);
+            setShowVotes(sessionData.showVotes === true ? true : false);
         });
     }, [sessionId, accessToken, refreshToken, setAccessToken]);
 
@@ -91,12 +100,14 @@ export function Session() {
     }, [sessionId, accessToken, refreshToken, setAccessToken]);
 
     const sessionContextValue = {
+        sessionId,
         sessionData,
+        setSessionData,
     };
 
     return (
         <>
-            {sessionFound && (
+            {sessionData && (
                 <SessionContext.Provider value={sessionContextValue}>
                     <Navbar bg="light">
                         <Container>
@@ -104,7 +115,6 @@ export function Session() {
                         </Container>
                     </Navbar>
                     <Container>
-                        <Row></Row>
                         <Row className="h-auto">
                             <Col>
                                 <div>
@@ -117,7 +127,7 @@ export function Session() {
                             </Col>
                         </Row>
                         <Row className="h-75" xs={1} md={2}>
-                            <Col xs={12} md={8}>
+                            <Col md={8}>
                                 <Row className="g-4">
                                     <VoteButton
                                         voteValue={1}
@@ -151,35 +161,14 @@ export function Session() {
                                     />
                                 </Row>
                             </Col>
-                            <Col xs={6} md={4}>
-                                <div>
-                                    <span>Active users</span>
-                                    <ListGroup>
-                                        {votes &&
-                                            votes.map((vote) => {
-                                                // this part needs to be adjusted so that there are users and votes are updated for users
-                                                return (
-                                                    <ListGroup.Item
-                                                        key={vote.voteid}
-                                                    >
-                                                        <div className="d-flex justify-content-between">
-                                                            <span>
-                                                                {vote.userid}
-                                                            </span>
-                                                            <span>
-                                                                {vote.votevalue}
-                                                            </span>
-                                                        </div>
-                                                    </ListGroup.Item>
-                                                );
-                                            })}
-                                    </ListGroup>
-                                    <ResetVotesBtn
-                                        setVotes={setVotes}
-                                        websocket={websocket}
-                                    />
-                                    <VotesSummary votes={votes} />
-                                </div>
+                            <Col md={4}>
+                                <VotesColumn
+                                    votes={votes}
+                                    setVotes={setVotes}
+                                    websocket={websocket}
+                                    sessionData={sessionData}
+                                    setSessionData={setSessionData}
+                                />
                             </Col>
                         </Row>
                     </Container>

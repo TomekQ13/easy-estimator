@@ -1,40 +1,31 @@
 import React, { useContext } from "react";
-import { deleteVotes } from "../models/vote";
-import { authContext } from "../contexts/Auth";
-import { SessionContext } from "./Session";
 import Button from "react-bootstrap/Button";
 import { updateSessionData } from "../models/session";
+import { authContext } from "../contexts/Auth";
+import { SessionContext } from "./Session";
 
-export default function ResetVotesBtn({ setVotes, websocket, setMean }) {
+export default function ShowVotesBtn({ websocket }) {
+    const { sessionData, sessionId, setSessionData } =
+        useContext(SessionContext);
     const { accessToken, refreshToken, setAccessToken } =
         useContext(authContext);
-    const { sessionId, sessionData, setSessionData } =
-        useContext(SessionContext);
 
-    // this should be handled as just removing the votes components
     async function handleClick() {
         try {
             websocket.send(
                 JSON.stringify({
-                    type: "resetVoting",
+                    type: "showVotes",
                 })
             );
-            setVotes([]);
-            setMean("");
-            deleteVotes({
-                sessionId: sessionData.sessionid,
-                accessToken,
-                refreshToken,
-                setAccessTokenFunction: setAccessToken,
-            });
         } catch (e) {
             console.error(e);
-            console.error("There has been an error while deleting votes");
+            console.error(
+                "There has been an error when sending websocket message to show votes"
+            );
         }
-
         try {
             const newSessionData = { ...sessionData };
-            newSessionData.params.showVotes = false;
+            newSessionData.params.showVotes = true;
             setSessionData(newSessionData);
             updateSessionData({
                 sessionId,
@@ -50,8 +41,8 @@ export default function ResetVotesBtn({ setVotes, websocket, setMean }) {
     }
 
     return (
-        <Button onClick={handleClick} variant="secondary">
-            Reset voting
+        <Button variant="primary" className="me-2 mb-1" onClick={handleClick}>
+            Show votes
         </Button>
     );
 }
