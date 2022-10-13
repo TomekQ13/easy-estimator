@@ -1,10 +1,9 @@
-import React, { useContext, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-bootstrap/esm/Modal";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
 import { useNavigate } from "react-router-dom";
-import { getSession } from "../models/session";
-import { authContext } from "../contexts/Auth";
+import { useSession } from "../models/session";
 
 export default function JoinSessionModal({
     setJoinSessionModal,
@@ -12,23 +11,16 @@ export default function JoinSessionModal({
 }) {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-
-    const { accessToken, refreshToken, setAccessToken } =
-        useContext(authContext);
+    const joinModalForm = useRef();
+    const session = useSession(joinModalForm.target.sessionId.value);
 
     function handleCloseModal() {
         setJoinSessionModal({ show: false });
     }
 
-    async function handleSubmit(event) {
+    function handleSubmit(event) {
         event.preventDefault();
-        const resp = await getSession({
-            sessionId: event.target.sessionId.value,
-            accessToken,
-            refreshToken,
-            setAccessTokenFunction: setAccessToken,
-        });
-        if (resp === null)
+        if (session === null)
             return setErrors({ sessionId: "This session does not exist" });
         return navigate(`/session/${event.target.sessionId.value}`);
     }
@@ -39,7 +31,7 @@ export default function JoinSessionModal({
                 <Modal.Title>Insert Session ID</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit} ref={joinModalForm}>
                     <Form.Group className="mb-3">
                         <Form.Control
                             id="sessionId"

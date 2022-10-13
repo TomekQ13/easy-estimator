@@ -1,23 +1,30 @@
+import { useEffect, useState } from "react";
 import { makeApiCallFunction } from "../apiAccess/makeCall";
+import useFetch from "../hooks/useFetch";
 
-export async function getSession({
-    sessionId,
-    accessToken,
-    refreshToken,
-    setAccessTokenFunction,
-}) {
-    const resp = await makeApiCallFunction({
-        method: "GET",
+export function useSession(sessionId) {
+    const [session, setSession] = useState({});
+    const resp = useFetch({
         url: `/session/${sessionId}`,
-        accessToken,
-        refreshToken,
-        setAccessTokenFunction,
-    })();
-    if (resp === undefined) return undefined;
-    if (resp.status === 401 || resp.status === 403) return undefined;
-    if (resp.status === 404) return null;
-    const data = await resp.json();
-    return data;
+        method: "GET",
+    });
+
+    if (resp === undefined) return [session, setSession];
+    // if (resp.status === 401 || resp.status === 403) return undefined;
+    // if (resp.status === 404) return null;
+
+    resp.json()
+        .then((data) => {
+            setSession(data);
+        })
+        .catch((error) => {
+            throw new Error(
+                "There has been an error while transforming session data to JSON " +
+                    error
+            );
+        });
+
+    return [session, setSession];
 }
 
 export async function createSession({

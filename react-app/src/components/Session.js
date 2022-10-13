@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
 import { authContext } from "../contexts/Auth";
-import { getSession } from "../models/session";
+import { useSession } from "../models/session";
 import { getVotes } from "../models/vote";
 import { websocketContext } from "../contexts/Websocket";
 
@@ -16,12 +16,14 @@ export const SessionContext = React.createContext();
 
 export function Session() {
     const sessionId = useParams().session_id;
-    const [sessionData, setSessionData] = useState({
-        params: { showVotes: undefined },
-    });
+    // const [sessionData, setSessionData] = useState({
+    //     params: { showVotes: undefined },
+    // });
     const [votes, setVotes] = useState([]);
     const [websocket, setWebsocket] = useState();
     const [showVotes, setShowVotes] = useState(false);
+    const [sessionData, setSessionData] = useSession(sessionId);
+
     // const [activeUsers, setActiveUsers] = useState([]);
 
     const {
@@ -72,20 +74,20 @@ export function Session() {
         }
     }, [setRegisterModal, username]);
 
-    useEffect(() => {
-        if (accessToken === undefined) return;
-        getSession({
-            sessionId,
-            accessToken,
-            refreshToken,
-            setAccessTokenFunction: setAccessToken,
-        }).then((sessionData) => {
-            if (sessionData === null) return;
-            console.log(sessionData);
-            setSessionData(sessionData);
-            setShowVotes(sessionData.showVotes === true ? true : false);
-        });
-    }, [sessionId, accessToken, refreshToken, setAccessToken]);
+    // useEffect(() => {
+    //     if (accessToken === undefined) return;
+    //     getSession({
+    //         sessionId,
+    //         accessToken,
+    //         refreshToken,
+    //         setAccessTokenFunction: setAccessToken,
+    //     }).then((sessionData) => {
+    //         if (sessionData === null) return;
+    //         console.log(sessionData);
+    //         setSessionData(sessionData);
+    //         setShowVotes(sessionData.showVotes === true ? true : false);
+    //     });
+    // }, [sessionId, accessToken, refreshToken, setAccessToken]);
 
     useEffect(() => {
         if (accessToken === undefined) return;
