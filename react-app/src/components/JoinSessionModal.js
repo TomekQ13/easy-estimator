@@ -12,7 +12,7 @@ export default function JoinSessionModal({
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const joinModalForm = useRef();
-    const session = useSession(joinModalForm.target.sessionId.value);
+    const session = useSession(joinModalForm.current.value);
 
     function handleCloseModal() {
         setJoinSessionModal({ show: false });

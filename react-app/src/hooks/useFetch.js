@@ -2,15 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import config from "../config.json";
 import { authContext } from "../contexts/Auth";
 
-export default function useFetch({ url, method, body }) {
+export default function useFetch() {
     const [resp, setResp] = useState();
     const { accessToken, refreshToken, setAccessToken } =
         useContext(authContext);
 
-    useEffect(() => {
-        if (config.debug)
-            console.log("Using fetch to " + url + " with method " + method);
+    console.log("Use fetch rendered");
 
+    function fetchWrapper({ url, method, body }) {
         if (url === undefined)
             return new Error("URL is required to make an API call");
 
@@ -20,6 +19,8 @@ export default function useFetch({ url, method, body }) {
         ) {
             return new Error("Incorrect request method");
         }
+        if (config.debug)
+            console.log("Using fetch to " + url + " with method " + method);
 
         const requestOptions = {
             method: method,
@@ -39,7 +40,7 @@ export default function useFetch({ url, method, body }) {
                     "There was an error while fetching data " + error
                 );
             });
-    }, [setResp, url, method, body, accessToken]);
+    }
 
     //         resp = await makeRequestWithAccessToken({ method, body });
 
@@ -96,5 +97,5 @@ export default function useFetch({ url, method, body }) {
             });
     }
 
-    return resp;
+    return [fetchWrapper, resp];
 }

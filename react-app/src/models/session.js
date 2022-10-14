@@ -27,28 +27,29 @@ export function useSession(sessionId) {
     return [session, setSession];
 }
 
-export async function createSession({
-    sessionId,
-    sessionPassword,
-    params,
-    accessToken,
-    refreshToken,
-    setAccessTokenFunction,
-}) {
-    const resp = await makeApiCallFunction({
-        method: "POST",
-        url: `/session/${sessionId}`,
-        body: {
-            hostId: "test",
-            sessionPassword: sessionPassword,
-            params: params,
-        },
-        accessToken,
-        refreshToken,
-        setAccessTokenFunction,
-    })();
-    if (resp === undefined) return;
-    return resp;
+export function useCreateSession() {
+    const [fetchFunction, resp] = useFetch();
+
+    useEffect(() => {
+        if (resp === undefined) return;
+        if (resp.status === 201) console.log("Session created successfully");
+        if (resp.status === 403 || resp.status === 404)
+            throw new Error("There has been an error while creating a session");
+    });
+
+    function createSessionFunction({ sessionId, sessionPassword, params }) {
+        fetchFunction({
+            url: `/session/${sessionId}`,
+            method: "POST",
+            body: {
+                hostId: "test",
+                sessionPassword,
+                params,
+            },
+        });
+    }
+
+    return [createSessionFunction, resp];
 }
 
 export async function updateSessionData({
