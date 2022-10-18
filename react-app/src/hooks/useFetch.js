@@ -1,101 +1,105 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext } from "react";
 import config from "../config.json";
 import { authContext } from "../contexts/Auth";
 
 export default function useFetch() {
-    const [resp, setResp] = useState();
     const { accessToken, refreshToken, setAccessToken } =
         useContext(authContext);
 
-    console.log("Use fetch rendered");
+    if (config.debug) console.log("Use fetch rendered");
+    const refreshAccessToken = useCallback(
+        async ({ refreshToken, setAccessToken }) => {
+            if (refreshToken === null || refreshToken === undefined)
+                throw new Error("Missing refresh token");
 
-    function fetchWrapper({ url, method, body }) {
-        if (url === undefined)
-            return new Error("URL is required to make an API call");
+            const tokenRefreshRequestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`,
+                },
+                body: JSON.stringify({
+                    refreshToken,
+                }),
+            };
 
-        if (
-            ["POST", "GET", "PUT", "DELETE"].includes(method.toUpperCase()) !==
-            true
-        ) {
-            return new Error("Incorrect request method");
-        }
-        if (config.debug)
-            console.log("Using fetch to " + url + " with method " + method);
-
-        const requestOptions = {
-            method: method,
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}`,
-            },
-            body: JSON.stringify(body),
-        };
-
-        fetch(`${config.apiUrl}${url}`, requestOptions)
-            .then((resp) => {
-                setResp(resp);
-            })
-            .catch((error) => {
-                return new Error(
-                    "There was an error while fetching data " + error
+            try {
+                const resp = await fetch(
+                    `${config.apiUrl}/user/token`,
+                    tokenRefreshRequestOptions
                 );
-            });
-    }
-
-    //         resp = await makeRequestWithAccessToken({ method, body });
-
-    //         if (resp.status === 403) {
-    //             console.log("Received status 403. Refreshing access token.");
-    //             try {
-    //                 await refreshAccessToken({
-    //                     refreshToken,
-    //                     setAccessToken,
-    //                 });
-    //             } catch (e) {
-    //                 return console.log(
-    //                     "There was an error while refreshing access token"
-    //                 );
-    //             }
-    //             resp = await makeRequestWithAccessToken({ method, body });
-    //         }
-
-    //         if (resp.status === 403) {
-    //             console.log("Received status code 403");
-    //         }
-    //         return resp;
-
-    function refreshAccessToken({ refreshToken, setAccessToken }) {
-        if (refreshToken === null || refreshToken === undefined)
-            throw new Error("Missing refresh token");
-
-        const tokenRefreshRequestOptions = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${accessToken}`,
-            },
-            body: JSON.stringify({
-                refreshToken,
-            }),
-        };
-
-        fetch(`${config.apiUrl}/user/token`, tokenRefreshRequestOptions)
-            .then((resp) => {
-                resp.json();
-            })
-            .then((data) => {
-                if (config.debug === true)
+                const data = await resp.json();
+                if (config.debug)
                     console.log(
                         "Setting new access token to " + data.accessToken
                     );
                 setAccessToken(data.accessToken);
-            })
-            .catch((error) => {
+            } catch (error) {
                 throw new Error(
                     "There was an error while refreshing token " + error
                 );
-            });
-    }
+            }
+        },
+        [accessToken]
+    );
 
-    return [fetchWrapper, resp];
+    const fetchWrapper = useCallback(
+        ({ url, method, body }) => {
+            if (url === undefined)
+                throw new Error("URL is required to make an API call");
+
+            if (
+                ["POST", "GET", "PUT", "DELETE"].includes(
+                    method.toUpperCase()
+                ) !== true
+            ) {
+                throw new Error("Incorrect request method");
+            }
+            if (config.debug)
+                console.log("Using fetch to " + url + " with method " + method);
+
+            const requestOptions = {
+                method: method,
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${accessToken}`,
+                },
+                body: JSON.stringify(body),
+            };
+
+            return fetch(`${config.apiUrl}${url}`, requestOptions)
+                .then((response) => {
+                    if (response.status === 403) {
+                        if (config.debug)
+                            console.log("Received 403. Refreshing accessToken");
+
+                        refreshAccessToken({
+                            refreshToken,
+                            setAccessToken,
+                        }).then(() => {
+                            fetch(
+                                `${config.apiUrl}${url}`,
+                                requestOptions
+                            ).then((response) => {
+                                if (response.status === 403)
+                                    if (config.debug)
+                                        console.error(
+                                            "Received 403 for the second time."
+                                        );
+                            });
+                        });
+                    }
+                    return response;
+                })
+                .catch((error) => {
+                    console.error(
+                        "There was an error while fetching data " + error
+                    );
+                });
+        },
+        [accessToken, refreshToken, setAccessToken, refreshAccessToken]
+    );
+    if (accessToken === undefined || refreshToken === undefined)
+        return undefined;
+    return fetchWrapper;
 }

@@ -2,16 +2,16 @@ import React, { useContext } from "react";
 import uuid from "react-uuid";
 import { SessionContext } from "./Session";
 import { authContext } from "../contexts/Auth";
-import { makeApiCallFunction } from "../apiAccess/makeCall";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import { useMakeVote } from "../models/vote";
 
 export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
     const { sessionData } = useContext(SessionContext);
-    const { username, accessToken, refreshToken, setAccessToken } =
-        useContext(authContext);
+    const { username } = useContext(authContext);
+    const [vote, resp] = useMakeVote();
 
-    function handleClick() {
+    async function handleClick() {
         const voteId = uuid();
         const voteBody = {
             sessionid: sessionData.sessionid,
@@ -20,12 +20,18 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
             votevalue: voteValue,
         };
         const newVotes = [...votes];
-        // this will cause the new vote to always be placed at te bottom
+        // this will cause the new vote to always be placed at the bottom
         const notThisUserVotes = newVotes.filter(
             (vote) => vote.userid !== username
         );
         notThisUserVotes.push(voteBody);
 
+        vote({
+            sessionId: voteBody.sessionid,
+            voteId: voteBody.voteid,
+            username,
+            voteValue: voteBody.votevalue,
+        });
         websocket.send(
             JSON.stringify({
                 type: "vote",
@@ -33,24 +39,6 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
             })
         );
         setVotes(notThisUserVotes);
-        vote(voteBody);
-    }
-
-    async function vote(voteBody) {
-        if (username === undefined || username === null)
-            return console.error("Username not found");
-        makeApiCallFunction({
-            url: `/vote/${sessionData.sessionid}`,
-            method: "PUT",
-            body: voteBody,
-            accessToken: accessToken,
-            refreshToken: refreshToken,
-            setAccessTokenFunction: setAccessToken,
-        })();
-        // const resp = await voteFunction()
-        // const voteResponseData = await resp.json()
-
-        // return voteResponseData
     }
 
     return (

@@ -4,7 +4,7 @@ import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
 import { authContext } from "../contexts/Auth";
 import { useSession } from "../models/session";
-import { getVotes } from "../models/vote";
+import { useVotes } from "../models/vote";
 import { websocketContext } from "../contexts/Websocket";
 
 import Container from "react-bootstrap/Container";
@@ -16,90 +16,55 @@ export const SessionContext = React.createContext();
 
 export function Session() {
     const sessionId = useParams().session_id;
-    // const [sessionData, setSessionData] = useState({
-    //     params: { showVotes: undefined },
-    // });
-    const [votes, setVotes] = useState([]);
+    const { username, setRegisterModal } = useContext(authContext);
+
     const [websocket, setWebsocket] = useState();
-    const [showVotes, setShowVotes] = useState(false);
-    const [sessionData, setSessionData] = useSession(sessionId);
+    const [sessionData, setSessionData] = useSession({ sessionId });
+    const [votes, setVotes] = useVotes({ sessionId });
 
-    // const [activeUsers, setActiveUsers] = useState([]);
-
-    const {
-        username,
-        accessToken,
-        refreshToken,
-        setAccessToken,
-        setRegisterModal,
-    } = useContext(authContext);
     const { makeWebsocket } = useContext(websocketContext);
 
-    useEffect(async () => {
-        if (username === undefined) return;
-        const ws = await makeWebsocket(username);
-        ws.onmessage = (messageString) => {
-            const message = JSON.parse(messageString.data);
-            if (message.type === "heartbeat") {
-                ws.heartbeat();
-            } else if (message.type === "resetVoting") {
-                setVotes([]);
-                const newSessionData = { ...sessionData };
-                newSessionData.params.showVotes = false;
-                setSessionData(newSessionData);
-            } else if (message.type === "vote") {
-                if (message.vote.userid === username) return;
-                setVotes((prevVotes) => {
-                    const notThisUserVotes = prevVotes.filter(
-                        (vote) => vote.userid !== message.vote.userid
-                    );
-                    return [...notThisUserVotes, message.vote];
-                });
-                // } else if (message.type === "usernames") {
-                //     // setActiveUsers(message.usernames);
-            } else if (message.type === "showVotes") {
-                const newSessionData = { ...sessionData };
-                newSessionData.params.showVotes = true;
-                setSessionData(newSessionData);
-            } else {
-                console.warn("Unrecognized message type - " + message.type);
-            }
-        };
-        setWebsocket(ws);
-    }, [username]);
+    useEffect(() => {
+        async function setupWebsocket() {
+            if (username === undefined) return;
+            const ws = await makeWebsocket(username);
+            ws.onmessage = (messageString) => {
+                const message = JSON.parse(messageString.data);
+                if (message.type === "heartbeat") {
+                    ws.heartbeat();
+                } else if (message.type === "resetVoting") {
+                    setVotes([]);
+                    const newSessionData = { ...sessionData };
+                    newSessionData.params.showVotes = false;
+                    setSessionData(newSessionData);
+                } else if (message.type === "vote") {
+                    if (message.vote.userid === username) return;
+                    setVotes((prevVotes) => {
+                        const notThisUserVotes = prevVotes.filter(
+                            (vote) => vote.userid !== message.vote.userid
+                        );
+                        return [...notThisUserVotes, message.vote];
+                    });
+                    // } else if (message.type === "usernames") {
+                    //     // setActiveUsers(message.usernames);
+                } else if (message.type === "showVotes") {
+                    const newSessionData = { ...sessionData };
+                    newSessionData.params.showVotes = true;
+                    setSessionData(newSessionData);
+                } else {
+                    console.warn("Unrecognized message type - " + message.type);
+                }
+            };
+            setWebsocket(ws);
+        }
+        setupWebsocket();
+    }, [username, makeWebsocket, sessionData, setSessionData, setVotes]);
 
     useEffect(() => {
         if (username === null || username === undefined) {
             setRegisterModal({ show: true });
         }
     }, [setRegisterModal, username]);
-
-    // useEffect(() => {
-    //     if (accessToken === undefined) return;
-    //     getSession({
-    //         sessionId,
-    //         accessToken,
-    //         refreshToken,
-    //         setAccessTokenFunction: setAccessToken,
-    //     }).then((sessionData) => {
-    //         if (sessionData === null) return;
-    //         console.log(sessionData);
-    //         setSessionData(sessionData);
-    //         setShowVotes(sessionData.showVotes === true ? true : false);
-    //     });
-    // }, [sessionId, accessToken, refreshToken, setAccessToken]);
-
-    useEffect(() => {
-        if (accessToken === undefined) return;
-        getVotes({
-            sessionId,
-            accessToken,
-            refreshToken,
-            setAccessTokenFunction: setAccessToken,
-        }).then((sessionVotes) => {
-            setVotes(sessionVotes);
-        });
-    }, [sessionId, accessToken, refreshToken, setAccessToken]);
 
     const sessionContextValue = {
         sessionId,

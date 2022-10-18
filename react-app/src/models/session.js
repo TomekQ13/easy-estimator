@@ -1,44 +1,55 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { makeApiCallFunction } from "../apiAccess/makeCall";
 import useFetch from "../hooks/useFetch";
 
-export function useSession(sessionId) {
-    const [session, setSession] = useState({});
-    const resp = useFetch({
-        url: `/session/${sessionId}`,
-        method: "GET",
-    });
+export function useSession({ sessionId }) {
+    const fetchWrapper = useFetch();
+    const [sessionData, setSessionData] = useState({});
 
-    if (resp === undefined) return [session, setSession];
-    // if (resp.status === 401 || resp.status === 403) return undefined;
-    // if (resp.status === 404) return null;
+    const getSessionFunction = useCallback(
+        ({ sessionId }) => {
+            if (fetchWrapper !== undefined) {
+                console.log("get session actually doinf something");
+                fetchWrapper({
+                    url: `/session/${sessionId}`,
+                    method: "GET",
+                })
+                    .then((response) => {
+                        if (response.status === 404)
+                            return console.error("Session does not exist");
+                        return response.json();
+                    })
+                    .then((data) => {
+                        console.log("Setting session data");
+                        console.log(data);
+                        setSessionData(data);
+                    })
+                    .catch((error) => {
+                        console.error(
+                            "There was an error while fetching session " + error
+                        );
+                    });
+            } else {
+                console.log("get session function doing nothing");
+            }
+        },
+        [fetchWrapper]
+    );
 
-    resp.json()
-        .then((data) => {
-            setSession(data);
-        })
-        .catch((error) => {
-            throw new Error(
-                "There has been an error while transforming session data to JSON " +
-                    error
-            );
-        });
+    useEffect(() => {
+        console.log("Get session function called");
+        getSessionFunction({ sessionId });
+    }, [sessionId, getSessionFunction]);
 
-    return [session, setSession];
+    return [sessionData, setSessionData];
 }
 
 export function useCreateSession() {
-    const [fetchFunction, resp] = useFetch();
-
-    useEffect(() => {
-        if (resp === undefined) return;
-        if (resp.status === 201) console.log("Session created successfully");
-        if (resp.status === 403 || resp.status === 404)
-            throw new Error("There has been an error while creating a session");
-    });
+    const fetchWrapper = useFetch();
+    const [resp, setResp] = useState();
 
     function createSessionFunction({ sessionId, sessionPassword, params }) {
-        fetchFunction({
+        return fetchWrapper({
             url: `/session/${sessionId}`,
             method: "POST",
             body: {
@@ -46,7 +57,21 @@ export function useCreateSession() {
                 sessionPassword,
                 params,
             },
-        });
+        })
+            .then((response) => {
+                if (response.status === 201)
+                    console.log("Session created successfully");
+                if (response.status === 403 || response.status === 404)
+                    return console.error(
+                        "Received an error status from the server while creating session"
+                    );
+                setResp(response);
+            })
+            .catch((error) => {
+                console.error(
+                    "There was an error while creating a session " + error
+                );
+            });
     }
 
     return [createSessionFunction, resp];
