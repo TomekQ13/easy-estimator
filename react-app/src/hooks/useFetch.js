@@ -10,7 +10,7 @@ export default function useFetch() {
     const refreshAccessToken = useCallback(
         async ({ refreshToken, setAccessToken }) => {
             if (refreshToken === null || refreshToken === undefined)
-                throw new Error("Missing refresh token");
+                console.error("Missing refresh token");
 
             const tokenRefreshRequestOptions = {
                 method: "POST",
