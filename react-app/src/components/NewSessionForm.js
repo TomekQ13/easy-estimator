@@ -9,17 +9,17 @@ export default function NewSessionForm({ handleCloseModal }) {
     const navigate = useNavigate();
     const sessionPassword = useRef();
     const [createSessionFunction, resp] = useCreateSession();
-    const [sessionId, setSessionId] = useState(uuid());
+    const [sessionId, setSessionId] = useState();
 
     useEffect(() => {
-        if (resp === undefined) return;
+        if (resp === undefined || sessionId === undefined) return;
         if (resp.status === 201) return navigate(`/session/${sessionId}`);
     }, [resp, sessionId]);
 
     function handleSubmit(event) {
         event.preventDefault();
         const sessionId = uuid();
-        console.log(createSessionFunction);
+        setSessionId(sessionId);
         createSessionFunction({
             sessionId: sessionId,
             sessionPassword: sessionPassword.current.value,

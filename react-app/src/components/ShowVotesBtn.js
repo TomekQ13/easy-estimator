@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
-import { updateSessionData } from "../models/session";
+import { useUpdateSession } from "../models/session";
 import { authContext } from "../contexts/Auth";
 import { SessionContext } from "./Session";
 
 export default function ShowVotesBtn({ websocket }) {
     const { sessionData, sessionId, setSessionData } =
         useContext(SessionContext);
-    const { accessToken, refreshToken, setAccessToken } =
-        useContext(authContext);
+    const [updateSession, resp] = useUpdateSession();
 
     async function handleClick() {
         try {
@@ -27,12 +26,9 @@ export default function ShowVotesBtn({ websocket }) {
             const newSessionData = { ...sessionData };
             newSessionData.params.showVotes = true;
             setSessionData(newSessionData);
-            updateSessionData({
+            updateSession({
                 sessionId,
                 newSessionData,
-                accessToken,
-                refreshToken,
-                setAccessTokenFunction: setAccessToken,
             });
         } catch (e) {
             console.error(e);

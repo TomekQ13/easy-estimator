@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { makeApiCallFunction } from "../apiAccess/makeCall";
 import useFetch from "../hooks/useFetch";
+import config from "../config.json";
 
 export function useVotes({ sessionId }) {
     const fetchWrapper = useFetch();
@@ -67,18 +67,27 @@ export function useMakeVote() {
     return [vote, resp];
 }
 
-export async function deleteVotes({
-    sessionId,
-    accessToken,
-    refreshToken,
-    setAccessTokenFunction,
-}) {
-    console.log("sessionId" + sessionId);
-    await makeApiCallFunction({
-        method: "DELETE",
-        url: `/vote/all/${sessionId}`,
-        accessToken,
-        refreshToken,
-        setAccessTokenFunction,
-    })();
+export function useDeleteVotes() {
+    const fetchWrapper = useFetch();
+    const [resp, setResp] = useState();
+
+    async function deleteVotes({ sessionId }) {
+        try {
+            const response = await fetchWrapper({
+                url: `/vote/all/${sessionId}`,
+                method: "DELETE",
+            });
+            if (config.debug) {
+                if (response.status === 200)
+                    console.log(
+                        "Votes deleted successfully for sessionId " + sessionId
+                    );
+            }
+            setResp(response);
+        } catch {
+            console.error("There was an error while deleting votes");
+        }
+    }
+
+    return [deleteVotes, resp];
 }

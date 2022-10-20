@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
-import { makeApiCallFunction } from "../apiAccess/makeCall";
 import useFetch from "../hooks/useFetch";
+import config from "../config.json";
 
 export function useSession({ sessionId }) {
     const fetchWrapper = useFetch();
-    const [sessionData, setSessionData] = useState({});
+    const [sessionData, setSessionData] = useState({
+        params: { showVotes: false },
+    });
 
     const getSessionFunction = useCallback(
         ({ sessionId }) => {
@@ -77,22 +79,29 @@ export function useCreateSession() {
     return [createSessionFunction, resp];
 }
 
-export async function updateSessionData({
-    sessionId,
-    newSessionData,
-    accessToken,
-    refreshToken,
-    setAccessTokenFunction,
-}) {
-    const resp = await makeApiCallFunction({
-        method: "PUT",
-        url: `/session/${sessionId}`,
-        body: {
-            params: newSessionData,
-        },
-        accessToken,
-        refreshToken,
-        setAccessTokenFunction,
-    })();
-    return resp;
+export function useUpdateSession() {
+    const fetchWrapper = useFetch();
+    const [resp, setResp] = useState();
+
+    async function updateSession({ sessionId, newSessionData }) {
+        try {
+            const response = await fetchWrapper({
+                method: "PUT",
+                url: `/session/${sessionId}`,
+                body: {
+                    params: newSessionData,
+                },
+            });
+            setResp(response);
+            if (response.status === 404)
+                return console.error("Session to update not found");
+            if (response.status === 201) {
+                return console.log("Session data updated successfully");
+            }
+        } catch {
+            console.error("There was an error while updating session data");
+        }
+    }
+
+    return [updateSession, resp];
 }

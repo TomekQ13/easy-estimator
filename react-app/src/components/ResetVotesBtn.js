@@ -1,52 +1,36 @@
 import React, { useContext } from "react";
-import { deleteVotes } from "../models/vote";
+import { useDeleteVotes } from "../models/vote";
 import { authContext } from "../contexts/Auth";
 import { SessionContext } from "./Session";
 import Button from "react-bootstrap/Button";
-import { updateSessionData } from "../models/session";
+import { useUpdateSession } from "../models/session";
 
 export default function ResetVotesBtn({ setVotes, websocket, setMean }) {
-    const { accessToken, refreshToken, setAccessToken } =
-        useContext(authContext);
+    const [deleteVotes, _resp] = useDeleteVotes();
     const { sessionId, sessionData, setSessionData } =
         useContext(SessionContext);
+    const [updateSession, __resp] = useUpdateSession();
 
     // this should be handled as just removing the votes components
     async function handleClick() {
-        try {
-            websocket.send(
-                JSON.stringify({
-                    type: "resetVoting",
-                })
-            );
-            setVotes([]);
-            setMean("");
-            deleteVotes({
-                sessionId: sessionData.sessionid,
-                accessToken,
-                refreshToken,
-                setAccessTokenFunction: setAccessToken,
-            });
-        } catch (e) {
-            console.error(e);
-            console.error("There has been an error while deleting votes");
-        }
+        websocket.send(
+            JSON.stringify({
+                type: "resetVoting",
+            })
+        );
+        setVotes([]);
+        setMean("");
+        deleteVotes({
+            sessionId: sessionData.sessionid,
+        });
 
-        try {
-            const newSessionData = { ...sessionData };
-            newSessionData.params.showVotes = false;
-            setSessionData(newSessionData);
-            updateSessionData({
-                sessionId,
-                newSessionData,
-                accessToken,
-                refreshToken,
-                setAccessTokenFunction: setAccessToken,
-            });
-        } catch (e) {
-            console.error(e);
-            console.error("There has been an error when updating session data");
-        }
+        const newSessionData = { ...sessionData };
+        newSessionData.params.showVotes = false;
+        setSessionData(newSessionData);
+        updateSession({
+            sessionId,
+            newSessionData,
+        });
     }
 
     return (
