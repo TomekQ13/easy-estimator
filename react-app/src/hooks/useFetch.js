@@ -45,16 +45,6 @@ export default function useFetch() {
 
     const fetchWrapper = useCallback(
         ({ url, method, body }) => {
-            if (url === undefined)
-                throw new Error("URL is required to make an API call");
-
-            if (
-                ["POST", "GET", "PUT", "DELETE"].includes(
-                    method.toUpperCase()
-                ) !== true
-            ) {
-                throw new Error("Incorrect request method");
-            }
             if (config.debug)
                 console.log("Using fetch to " + url + " with method " + method);
 
@@ -99,7 +89,6 @@ export default function useFetch() {
         },
         [accessToken, refreshToken, setAccessToken, refreshAccessToken]
     );
-    if (accessToken === undefined || refreshToken === undefined)
-        return undefined;
+
     return fetchWrapper;
 }

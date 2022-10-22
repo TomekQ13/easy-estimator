@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
 import { authContext } from "../contexts/Auth";
-import { makeApiCallFunction } from "../apiAccess/makeCall";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
-import ModalDialog from "react-bootstrap/esm/ModalDialog";
+import { useCreateUser } from "../hooks/user";
 
 export default function RegisterForm({ handleCloseModal }) {
     const [inputs, setInputs] = useState({});
@@ -14,6 +13,7 @@ export default function RegisterForm({ handleCloseModal }) {
         accessToken,
         refreshToken,
     } = useContext(authContext);
+    const registerUser = useCreateUser();
 
     function handleChange(event) {
         const name = event.target.name;
@@ -25,43 +25,13 @@ export default function RegisterForm({ handleCloseModal }) {
         event.preventDefault();
         const username = event.target.username.value;
 
-        const resp = await registerUser(username);
-        if (resp === null) return;
+        const resp = await registerUser({ username });
+        if (resp === undefined) return;
         setUsername(username);
         setAccessToken(resp.accessToken);
         setRefreshToken(resp.refreshToken);
 
         handleCloseModal({ show: false });
-    }
-
-    async function registerUser(username) {
-        if (username === undefined)
-            throw new Error("Username is missing in registerUsername");
-
-        const registerUserFunction = makeApiCallFunction({
-            url: `/user/register`,
-            body: {
-                username,
-            },
-            method: "POST",
-            accessToken,
-            refreshToken,
-            setAccessToken,
-        });
-
-        let resp;
-        try {
-            resp = await registerUserFunction();
-        } catch (e) {
-            console.error(e);
-            console.error("There has been an error when registering the user");
-            return null;
-        }
-        if (resp.status === 201) {
-            return await resp.json();
-        }
-        console.error("There has been an error when registering the user");
-        return null;
     }
 
     return (
