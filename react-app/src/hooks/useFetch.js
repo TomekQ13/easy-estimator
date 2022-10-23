@@ -7,7 +7,6 @@ export default function useFetch(authorization) {
     const { accessToken, refreshToken, setAccessToken } =
         useContext(authContext);
 
-    if (config.debug) console.log("Use fetch rendered");
     const refreshAccessToken = useCallback(
         async ({ refreshToken, setAccessToken }) => {
             if (refreshToken === null || refreshToken === undefined)
@@ -36,7 +35,7 @@ export default function useFetch(authorization) {
                     );
                 setAccessToken(data.accessToken);
             } catch (error) {
-                throw new Error(
+                console.error(
                     "There was an error while refreshing token " + error
                 );
             }
@@ -45,7 +44,7 @@ export default function useFetch(authorization) {
     );
 
     const fetchWrapper = useCallback(
-        ({ url, method, body }) => {
+        async ({ url, method, body }) => {
             if (config.debug)
                 console.log("Using fetch to " + url + " with method " + method);
 
@@ -62,35 +61,36 @@ export default function useFetch(authorization) {
                     "Authorization"
                 ] = `Bearer ${accessToken}`;
 
-            return fetch(`${config.apiUrl}${url}`, requestOptions)
-                .then((response) => {
-                    if (response.status === 403) {
-                        if (config.debug)
-                            console.log("Received 403. Refreshing accessToken");
+            try {
+                const response = await fetch(
+                    `${config.apiUrl}${url}`,
+                    requestOptions
+                );
+                if (response.status === 403) {
+                    if (config.debug)
+                        console.log("Received 403. Refreshing accessToken");
 
-                        refreshAccessToken({
-                            refreshToken,
-                            setAccessToken,
-                        }).then(() => {
-                            fetch(
-                                `${config.apiUrl}${url}`,
-                                requestOptions
-                            ).then((response) => {
-                                if (response.status === 403)
+                    refreshAccessToken({
+                        refreshToken,
+                        setAccessToken,
+                    }).then(() => {
+                        fetch(`${config.apiUrl}${url}`, requestOptions).then(
+                            (response_1) => {
+                                if (response_1.status === 403)
                                     if (config.debug)
                                         console.error(
                                             "Received 403 for the second time."
                                         );
-                            });
-                        });
-                    }
-                    return response;
-                })
-                .catch((error) => {
-                    console.error(
-                        "There was an error while fetching data " + error
-                    );
-                });
+                            }
+                        );
+                    });
+                }
+                return response;
+            } catch (error) {
+                console.error(
+                    "There was an error while fetching data " + error
+                );
+            }
         },
         [
             accessToken,

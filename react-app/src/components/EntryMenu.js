@@ -4,7 +4,6 @@ import NewSessionBtn from "./NewSessionBtn";
 import NewSessionModal from "./NewSessionModal";
 import JoinSessionModal from "./JoinSessionModal";
 import { authContext } from "../contexts/Auth";
-import Navbar from "./MyNavbar";
 import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";

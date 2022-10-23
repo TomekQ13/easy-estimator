@@ -16,11 +16,10 @@ export default function NewSessionForm({ handleCloseModal }) {
     useEffect(() => {
         if (resp === undefined || sessionId === undefined) return;
         if (resp.status === 201) return navigate(`/session/${sessionId}`);
-    }, [resp, sessionId]);
+    }, [resp, sessionId, navigate]);
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log(sessionName.current.value);
         if (sessionName.current.value === "")
             return setErrors({ sessionName: "Session name cannot be empty" });
         const sessionId = uuid();

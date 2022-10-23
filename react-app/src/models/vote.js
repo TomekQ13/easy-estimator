@@ -34,8 +34,7 @@ export function useVotes({ sessionId }) {
 
     useEffect(() => {
         getVotesFunction({ sessionId });
-        console.log("Get votes function called");
-    }, [sessionId, getVotesFunction]);
+    }, [sessionId, getVotesFunction]);  
 
     return [votes, setVotes];
 }

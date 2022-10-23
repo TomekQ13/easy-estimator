@@ -20,8 +20,6 @@ export function useSession({ sessionId }) {
                         return response.json();
                     })
                     .then((data) => {
-                        console.log("Setting session data");
-                        console.log(data);
                         setSessionData(data);
                     })
                     .catch((error) => {
@@ -35,7 +33,6 @@ export function useSession({ sessionId }) {
     );
 
     useEffect(() => {
-        console.log("Get session function called");
         if (sessionId === undefined || sessionId.trim() === "") return;
         getSessionFunction({ sessionId });
     }, [sessionId, getSessionFunction]);

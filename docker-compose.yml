@@ -1,0 +1,45 @@
+version: '3'
+services:
+  postgres:
+    image: 'postgres:14'
+    restart: always
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    volumes:
+      - ./database:/var/lib/postgresql/data
+      - ./ddl:/ddl
+  api:
+    build:
+      context: ./api
+    volumes:
+      - ./api:/api
+    ports:
+      - '4000:4000'
+    depends_on:
+      - 'postgres'
+    environment:
+      - ACCESS_TOKEN_SECRET
+      - REFRESH_TOKEN_SECRET
+      - POSTGRES_RW_USER
+      - POSTGRES_HOST
+      - POSTGRES_DATABASE
+      - POSTGRES_RW_PASSWORD
+      - POSTGRES_PORT
+    restart: always
+  websocket-server:
+    build:
+      context: ./websocket-server
+    volumes:
+      - ./websocket-server:/websocket-server
+    ports:
+      - '7000:7000'
+    restart: always
+  react-app:
+    build:
+      context: ./react-app
+    volumes:
+      - ./react-app:/react-app
+    ports:
+      - '3000:3000'
+    restart: always

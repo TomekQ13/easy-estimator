@@ -9,7 +9,6 @@ const loggerRequestTransports = [
         level: "info",
         filename: `${logsFolder}requests.log`,
     }),
-    new transports.Console(),
 ];
 
 const logger = createLogger({
