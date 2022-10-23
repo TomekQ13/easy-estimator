@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
-import config from "../config.json";
 
 export function useSession({ sessionId }) {
     const fetchWrapper = useFetch();
@@ -11,7 +10,6 @@ export function useSession({ sessionId }) {
     const getSessionFunction = useCallback(
         ({ sessionId }) => {
             if (fetchWrapper !== undefined) {
-                console.log("get session actually doinf something");
                 fetchWrapper({
                     url: `/session/${sessionId}`,
                     method: "GET",
@@ -31,8 +29,6 @@ export function useSession({ sessionId }) {
                             "There was an error while fetching session " + error
                         );
                     });
-            } else {
-                console.log("get session function doing nothing");
             }
         },
         [fetchWrapper]
@@ -40,6 +36,7 @@ export function useSession({ sessionId }) {
 
     useEffect(() => {
         console.log("Get session function called");
+        if (sessionId === undefined || sessionId.trim() === "") return;
         getSessionFunction({ sessionId });
     }, [sessionId, getSessionFunction]);
 
@@ -83,13 +80,13 @@ export function useUpdateSession() {
     const fetchWrapper = useFetch();
     const [resp, setResp] = useState();
 
-    async function updateSession({ sessionId, newSessionData }) {
+    async function updateSession({ sessionId, newParams }) {
         try {
             const response = await fetchWrapper({
                 method: "PUT",
                 url: `/session/${sessionId}`,
                 body: {
-                    params: newSessionData,
+                    params: newParams,
                 },
             });
             setResp(response);

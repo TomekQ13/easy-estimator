@@ -10,7 +10,7 @@ import { websocketContext } from "../contexts/Websocket";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Navbar from "react-bootstrap/Navbar";
+import Navbar from "./MyNavbar";
 
 export const SessionContext = React.createContext();
 
@@ -76,25 +76,17 @@ export function Session() {
         <>
             {sessionData && (
                 <SessionContext.Provider value={sessionContextValue}>
-                    <Navbar bg="light">
-                        <Container>
-                            <Navbar.Brand>Easy Estimator</Navbar.Brand>
-                        </Container>
-                    </Navbar>
                     <Container>
                         <Row className="h-auto">
                             <Col>
-                                <div>
-                                    SessionId:{" "}
-                                    {sessionData && (
-                                        <p>{sessionData.sessionid}</p>
-                                    )}
+                                <div className="mb-3">
+                                    <h3>{sessionData.params.name}</h3>
                                     {/* Host: {sessionData && <p>{sessionData.hostid}</p>} */}
                                 </div>
                             </Col>
                         </Row>
                         <Row className="h-75" xs={1} md={2}>
-                            <Col md={8}>
+                            <Col md={8} className="mb-3">
                                 <Row className="g-4">
                                     <VoteButton
                                         voteValue={1}

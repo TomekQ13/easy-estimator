@@ -29,7 +29,7 @@ export default function ResetVotesBtn({ setVotes, websocket, setMean }) {
         setSessionData(newSessionData);
         updateSession({
             sessionId,
-            newSessionData,
+            newParams: newSessionData.params,
         });
     }
 

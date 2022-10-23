@@ -14,7 +14,7 @@ export default function NewSessionModal({
     return (
         <Modal show={newSessionModal.show} onHide={handleCloseModal}>
             <Modal.Header closeButton>
-                <Modal.Title>Setup session password</Modal.Title>
+                <Modal.Title>Create session</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <NewSessionForm handleCloseModal={handleCloseModal} />

@@ -11,8 +11,10 @@ export default function JoinSessionModal({
 }) {
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
-    const joinModalForm = useRef();
-    const session = useSession(joinModalForm.current.value);
+    const formSessionId = useRef({});
+    const [sessionData, _setSessionData] = useSession({
+        sessionId: formSessionId.current.value,
+    });
 
     function handleCloseModal() {
         setJoinSessionModal({ show: false });
@@ -20,7 +22,9 @@ export default function JoinSessionModal({
 
     function handleSubmit(event) {
         event.preventDefault();
-        if (session === null)
+        if (formSessionId.current.value.trim() === "")
+            return setErrors({ sessionId: "Session ID cannot be empty" });
+        if (sessionData === null || sessionData === undefined)
             return setErrors({ sessionId: "This session does not exist" });
         return navigate(`/session/${event.target.sessionId.value}`);
     }
@@ -31,13 +35,14 @@ export default function JoinSessionModal({
                 <Modal.Title>Insert Session ID</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Form onSubmit={handleSubmit} ref={joinModalForm}>
+                <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Control
                             id="sessionId"
                             name="sessionId"
                             placeholder="Session ID"
                             isInvalid={!!errors.sessionId}
+                            ref={formSessionId}
                             autoFocus
                         ></Form.Control>
                         <Form.Control.Feedback type="invalid">

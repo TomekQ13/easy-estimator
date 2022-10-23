@@ -1,7 +1,7 @@
 import useFetch from "./useFetch";
 
 export function useCreateUser() {
-    const fetchWrapper = useFetch();
+    const fetchWrapper = useFetch(false);
 
     function registerUser({ username }) {
         return fetchWrapper({
@@ -17,7 +17,11 @@ export function useCreateUser() {
                     return response.json();
                 }
 
-                if (response.status === 403 || response.status === 404)
+                if (
+                    response.status === 403 ||
+                    response.status === 404 ||
+                    response.status === 400
+                )
                     return console.error(
                         "Received an error while registering a user"
                     );

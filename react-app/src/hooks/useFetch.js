@@ -2,7 +2,8 @@ import { useCallback, useContext } from "react";
 import config from "../config.json";
 import { authContext } from "../contexts/Auth";
 
-export default function useFetch() {
+export default function useFetch(authorization) {
+    if (authorization === undefined) authorization = true;
     const { accessToken, refreshToken, setAccessToken } =
         useContext(authContext);
 
@@ -50,12 +51,16 @@ export default function useFetch() {
 
             const requestOptions = {
                 method: method,
+                body: JSON.stringify(body),
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: `Bearer ${accessToken}`,
                 },
-                body: JSON.stringify(body),
             };
+
+            if (authorization === true)
+                requestOptions.headers[
+                    "Authorization"
+                ] = `Bearer ${accessToken}`;
 
             return fetch(`${config.apiUrl}${url}`, requestOptions)
                 .then((response) => {
@@ -87,8 +92,19 @@ export default function useFetch() {
                     );
                 });
         },
-        [accessToken, refreshToken, setAccessToken, refreshAccessToken]
+        [
+            accessToken,
+            refreshToken,
+            setAccessToken,
+            refreshAccessToken,
+            authorization,
+        ]
     );
+    if (
+        authorization === true &&
+        (accessToken === undefined || refreshToken === undefined)
+    )
+        return undefined;
 
     return fetchWrapper;
 }
