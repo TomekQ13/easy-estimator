@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
-import config from "../config.json";
 
 export function useVotes({ sessionId }) {
     const fetchWrapper = useFetch();
@@ -34,7 +33,7 @@ export function useVotes({ sessionId }) {
 
     useEffect(() => {
         getVotesFunction({ sessionId });
-    }, [sessionId, getVotesFunction]);  
+    }, [sessionId, getVotesFunction]);
 
     return [votes, setVotes];
 }
@@ -76,7 +75,7 @@ export function useDeleteVotes() {
                 url: `/vote/all/${sessionId}`,
                 method: "DELETE",
             });
-            if (config.debug) {
+            if (window._env_.DEBUG) {
                 if (response.status === 200)
                     console.log(
                         "Votes deleted successfully for sessionId " + sessionId

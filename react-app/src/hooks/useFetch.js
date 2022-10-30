@@ -1,5 +1,4 @@
 import { useCallback, useContext } from "react";
-import config from "../config.json";
 import { authContext } from "../contexts/Auth";
 
 export default function useFetch(authorization) {
@@ -25,11 +24,11 @@ export default function useFetch(authorization) {
 
             try {
                 const resp = await fetch(
-                    `${config.apiUrl}/user/token`,
+                    `${window._env_.API_URL}/user/token`,
                     tokenRefreshRequestOptions
                 );
                 const data = await resp.json();
-                if (config.debug)
+                if (window._env_.DEBUG)
                     console.log(
                         "Setting new access token to " + data.accessToken
                     );
@@ -45,7 +44,7 @@ export default function useFetch(authorization) {
 
     const fetchWrapper = useCallback(
         async ({ url, method, body }) => {
-            if (config.debug)
+            if (window._env_.DEBUG)
                 console.log("Using fetch to " + url + " with method " + method);
 
             const requestOptions = {
@@ -63,26 +62,27 @@ export default function useFetch(authorization) {
 
             try {
                 const response = await fetch(
-                    `${config.apiUrl}${url}`,
+                    `${window._env_.API_URL}${url}`,
                     requestOptions
                 );
                 if (response.status === 403) {
-                    if (config.debug)
+                    if (window._env_.DEBUG)
                         console.log("Received 403. Refreshing accessToken");
 
                     refreshAccessToken({
                         refreshToken,
                         setAccessToken,
                     }).then(() => {
-                        fetch(`${config.apiUrl}${url}`, requestOptions).then(
-                            (response_1) => {
-                                if (response_1.status === 403)
-                                    if (config.debug)
-                                        console.error(
-                                            "Received 403 for the second time."
-                                        );
-                            }
-                        );
+                        fetch(
+                            `${window._env_.API_URL}${url}`,
+                            requestOptions
+                        ).then((response_1) => {
+                            if (response_1.status === 403)
+                                if (window._env_.DEBUG)
+                                    console.error(
+                                        "Received 403 for the second time."
+                                    );
+                        });
                     });
                 }
                 return response;

@@ -4,7 +4,6 @@ import {
     getFromLocalStorage,
 } from "../apiAccess/localStorage";
 import RegisterModal from "../components/RegisterModal";
-import config from "../config.json";
 
 export const authContext = React.createContext();
 
@@ -20,7 +19,7 @@ export default function Auth({ children }) {
 
     useEffect(() => {
         const accessToken = getFromLocalStorage({ key: "accessToken" });
-        if (config.debug)
+        if (window._env_.DEBUG)
             console.log(
                 `Access token read from local storage. Value ${accessToken}`
             );
@@ -33,7 +32,8 @@ export default function Auth({ children }) {
     }, [setAccessToken]);
 
     useEffect(() => {
-        if (config.debug) console.log("Refresh token read from local storage");
+        if (window._env_.DEBUG)
+            console.log("Refresh token read from local storage");
         const refreshToken = getFromLocalStorage({ key: "refreshToken" });
         if (
             refreshToken !== undefined &&
@@ -44,7 +44,7 @@ export default function Auth({ children }) {
     }, [setRefreshToken]);
 
     useEffect(() => {
-        if (config.debug) console.log("Username read from local storage");
+        if (window._env_.DEBUG) console.log("Username read from local storage");
         const username = getFromLocalStorage({ key: "easy-username" });
         if (username !== undefined && username !== null && username !== "") {
             setUsername(username);
@@ -53,21 +53,22 @@ export default function Auth({ children }) {
     }, [setUsername, setRegisterModal]);
 
     useEffect(() => {
-        if (config.debug)
+        if (window._env_.DEBUG)
             console.log(
                 "Attepmting to save access token to local storage value: " +
                     accessToken
             );
         if (accessToken !== undefined && accessToken !== "") {
             saveToLocalStorage({ key: "accessToken", value: accessToken });
-            if (config.debug) console.log("AccessToken saved to local storage");
+            if (window._env_.DEBUG)
+                console.log("AccessToken saved to local storage");
         }
     }, [accessToken]);
 
     useEffect(() => {
         if (refreshToken !== undefined && refreshToken !== "") {
             saveToLocalStorage({ key: "refreshToken", value: refreshToken });
-            if (config.debug)
+            if (window._env_.DEBUG)
                 console.log("RefreshToken saved to local storage");
         }
     }, [refreshToken]);
@@ -75,7 +76,8 @@ export default function Auth({ children }) {
     useEffect(() => {
         if (username !== undefined && username !== "") {
             saveToLocalStorage({ key: "easy-username", value: username });
-            if (config.debug) console.log("Username saved to local storage");
+            if (window._env_.DEBUG)
+                console.log("Username saved to local storage");
         }
     }, [username]);
 

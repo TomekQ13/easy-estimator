@@ -7,6 +7,7 @@ import SessionWrapper from "./SessionWrapper";
 import Navbar from "./MyNavbar";
 
 function App() {
+    console.log(process.env);
     return (
         <>
             <link
