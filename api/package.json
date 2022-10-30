@@ -16,10 +16,12 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.17.3",
+    "express-winston": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
     "mocha": "^9.2.2",
     "pg": "^8.7.3",
     "request": "^2.88.2",
-    "uuidv4": "^6.2.12"
+    "uuidv4": "^6.2.12",
+    "winston": "^3.8.2"
   }
 }
