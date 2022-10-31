@@ -16,6 +16,7 @@ export default function ResetVotesBtn({ setVotes, websocket, setMean }) {
         websocket.send(
             JSON.stringify({
                 type: "resetVoting",
+                sessionId,
             })
         );
         setVotes([]);

@@ -36,6 +36,7 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
             JSON.stringify({
                 type: "vote",
                 vote: voteBody,
+                sessionId: sessionData.sessionid,
             })
         );
         setVotes(notThisUserVotes);

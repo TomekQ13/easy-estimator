@@ -13,6 +13,7 @@ export default function ShowVotesBtn({ websocket }) {
             websocket.send(
                 JSON.stringify({
                     type: "showVotes",
+                    sessionId,
                 })
             );
         } catch (e) {

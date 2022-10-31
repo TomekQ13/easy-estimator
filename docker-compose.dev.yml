@@ -12,6 +12,7 @@ services:
   api:
     build:
       context: ./api
+      dockerfile: Dockerfile.dev
     volumes:
       - ./api:/api
     ports:
@@ -24,15 +25,16 @@ services:
   websocket-server:
     build:
       context: ./websocket-server
+      dockerfile: Dockerfile.dev
     volumes:
       - ./websocket-server:/websocket-server
     ports:
       - '7000:7000'
     restart: always
   react-app:
-    image: 'tomekq13/easy-estimator-react'
+    build:
+      context: ./react-app
+      dockerfile: Dockerfile.dev
     restart: always
     ports:
       - '80:80'
-    env_file:
-      - react-app.env

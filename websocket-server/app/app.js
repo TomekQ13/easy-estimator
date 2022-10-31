@@ -1,12 +1,20 @@
 const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ port: 7000 });
-const clients = new Map();
+sessions = {};
 
 wss.on("connection", (ws) => {
     ws.on("message", (messageString) => {
         const message = JSON.parse(messageString);
+        if (message.sessionId === undefined)
+            return console.error("Missing sessionId on a message");
         console.log(message);
+        let clients;
+        if (message.sessionId in sessions) {
+            clients = sessions[message.sessionId];
+        } else {
+            clients = new Map();
+        }
         if (message.type === "connect") {
             clients.set(ws, message.username);
             ws.send(

@@ -25,8 +25,8 @@ export function Session() {
 
     useEffect(() => {
         async function setupWebsocket() {
-            if (username === undefined) return;
-            const ws = await makeWebsocket(username);
+            if (username === undefined || sessionId === undefined) return;
+            const ws = await makeWebsocket({ sessionId, username });
             ws.onmessage = (messageString) => {
                 const message = JSON.parse(messageString.data);
                 if (message.type === "heartbeat") {
