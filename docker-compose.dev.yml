@@ -1,6 +1,6 @@
 version: '3'
 services:
-  postgres:
+  postgres-dev:
     image: 'postgres:14'
     restart: always
     environment:
@@ -9,7 +9,7 @@ services:
     volumes:
       - ./database:/var/lib/postgresql/data
       - ./ddl:/ddl
-  api:
+  api-dev:
     build:
       context: ./api
       dockerfile: Dockerfile.dev
@@ -18,11 +18,11 @@ services:
     ports:
       - '4000:4000'
     depends_on:
-      - 'postgres'
+      - 'postgres-dev'
     env_file:
       - .env
     restart: always
-  websocket-server:
+  websocket-server-dev:
     build:
       context: ./websocket-server
       dockerfile: Dockerfile.dev
@@ -31,10 +31,13 @@ services:
     ports:
       - '7000:7000'
     restart: always
-  react-app:
+  react-app-dev:
     build:
       context: ./react-app
       dockerfile: Dockerfile.dev
     restart: always
     ports:
       - '80:80'
+    depends_on:
+      - 'websocket-server-dev'
+      - 'api-dev'
