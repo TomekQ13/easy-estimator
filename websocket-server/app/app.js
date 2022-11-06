@@ -6,9 +6,10 @@ sessions = {};
 wss.on("connection", (ws) => {
     ws.on("message", (messageString) => {
         const message = JSON.parse(messageString);
+        if (process.env.NDOE_ENV !== "production") console.log(message);
         if (message.sessionId === undefined)
             return console.error("Missing sessionId on a message");
-        console.log(message);
+
         let clients;
         if (message.sessionId in sessions) {
             clients = sessions[message.sessionId];
@@ -17,14 +18,14 @@ wss.on("connection", (ws) => {
         }
         if (message.type === "connect") {
             clients.set(ws, message.username);
-            ws.send(
-                JSON.stringify({
-                    type: "usernames",
-                    usernames: getUsernames(clients),
-                })
-            );
+            // ws.send(
+            //     JSON.stringify({
+            //         type: "usernames",
+            //         usernames: getUsernames(clients),
+            //     })
+            // );
         } else {
-            sendMessageToAllClients(clients, message);
+            sendMessageToAllClients(sessions[message.sessionId], message);
         }
     });
 
@@ -42,7 +43,6 @@ wss.on("connection", (ws) => {
                 sendMessageToAllClients(clients, {
                     type: "disconnect",
                     username: disconnectUsername,
-                    usernames: getUsernames(clients),
                 });
             }
         });
@@ -65,25 +65,25 @@ function sendMessageToAllClients(clients, message) {
     });
 }
 
-function createNewClient(username) {
-    if (username === undefined) {
-        return console.error("User must have a username");
-    }
-    const color = Math.floor(Math.random() * 360);
-    const metadata = {
-        color,
-        username,
-    };
-    return metadata;
-}
+// function createNewClient(username) {
+//     if (username === undefined) {
+//         return console.error("User must have a username");
+//     }
+//     const color = Math.floor(Math.random() * 360);
+//     const metadata = {
+//         color,
+//         username,
+//     };
+//     return metadata;
+// }
 
-function getUsernames(clients) {
-    if (clients === undefined) {
-        return console.error("getUsernames needs clients");
-    }
-    const usernames = [];
-    for (const [_key, value] of clients) {
-        usernames.push(value);
-    }
-    return usernames;
-}
+// function getUsernames(clients) {
+//     if (clients === undefined) {
+//         return console.error("getUsernames needs clients");
+//     }
+//     const usernames = [];
+//     for (const [_key, value] of clients) {
+//         usernames.push(value);
+//     }
+//     return usernames;
+// }
