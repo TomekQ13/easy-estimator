@@ -33,6 +33,7 @@ export default function useFetch(authorization) {
                         "Setting new access token to " + data.accessToken
                     );
                 setAccessToken(data.accessToken);
+                return data;
             } catch (error) {
                 console.error(
                     "There was an error while refreshing token " + error
@@ -72,7 +73,10 @@ export default function useFetch(authorization) {
                     refreshAccessToken({
                         refreshToken,
                         setAccessToken,
-                    }).then(() => {
+                    }).then((data) => {
+                        requestOptions.headers[
+                            "Authorization"
+                        ] = `Bearer ${data.accessToken}`;
                         fetch(
                             `${window._env_.API_URL}${url}`,
                             requestOptions

@@ -31,3 +31,4 @@ react-app.env
 # Temporary env files
 /public/env-config.js
 env-config.js
+.env.api
