@@ -5,6 +5,8 @@ const sessions = {};
 const connectedClients = new Set();
 
 wss.on("connection", (ws) => {
+    connectedClients.add(ws);
+
     ws.on("message", (messageString) => {
         const message = JSON.parse(messageString);
         if (process.env.NDOE_ENV !== "production") console.log(message);
@@ -26,14 +28,12 @@ wss.on("connection", (ws) => {
         sendMessageToAllClients(sessions[message.sessionId], message);
     });
 
-    // this causes problems because very time there is a new user it is multiplied
     ping = setInterval(() => {
         ws.send(
             JSON.stringify({
                 type: "heartbeat",
             })
         );
-        connectedClients.add(ws);
         if (ws.readyState !== 1) {
             ws.close();
             // const disconnectUsername = clients.get(client).username;
@@ -60,6 +60,7 @@ function sendMessageToAllClients(clients, message) {
     [...clients.keys()].forEach((client) => {
         // remove disconnected clients
         if (connectedClients.has(client) === false) {
+            console.log("client not found deleteing");
             sessions[message.sessionId].delete(client);
             return;
         }
