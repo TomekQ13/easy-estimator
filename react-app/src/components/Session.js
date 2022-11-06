@@ -57,7 +57,14 @@ export function Session() {
             setWebsocket(ws);
         }
         setupWebsocket();
-    }, [username, makeWebsocket, sessionData, setSessionData, setVotes]);
+    }, [
+        username,
+        makeWebsocket,
+        sessionData,
+        setSessionData,
+        setVotes,
+        sessionId,
+    ]);
 
     useEffect(() => {
         if (username === null || username === undefined) {
