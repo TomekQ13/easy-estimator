@@ -11,23 +11,19 @@ wss.on("connection", (ws) => {
         if (message.sessionId === undefined)
             return console.error("Missing sessionId on a message");
 
-        let clients;
-        if (message.sessionId in sessions) {
-            clients = sessions[message.sessionId];
-        } else {
-            clients = new Map();
-        }
         if (message.type === "connect") {
-            clients.set(ws, message.username);
+            if (!(message.sessionId in sessions))
+                sessions[message.sessionId] = new Map();
+
+            sessions[message.sessionId].set(ws, message.username);
             // ws.send(
             //     JSON.stringify({
             //         type: "usernames",
             //         usernames: getUsernames(clients),
             //     })
             // );
-        } else {
-            sendMessageToAllClients(sessions[message.sessionId], message);
         }
+        sendMessageToAllClients(sessions[message.sessionId], message);
     });
 
     // this causes problems because very time there is a new user it is multiplied
@@ -64,7 +60,7 @@ function sendMessageToAllClients(clients, message) {
     [...clients.keys()].forEach((client) => {
         // remove disconnected clients
         if (connectedClients.has(client) === false) {
-            sessions[message.sessionId].delete(ws);
+            sessions[message.sessionId].delete(client);
             return;
         }
         client.send(JSON.stringify(message));

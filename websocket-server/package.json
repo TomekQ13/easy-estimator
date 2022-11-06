@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node app/app.js",
+    "dev": "nodemon app/app.js",
     "prod": "node app/app.js"
   },
   "keywords": [],
@@ -13,5 +13,8 @@
   "dependencies": {
     "winston": "^3.8.1",
     "ws": "^8.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
   }
 }
