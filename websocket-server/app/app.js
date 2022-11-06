@@ -1,7 +1,8 @@
 const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ port: 7000 });
-sessions = {};
+const sessions = {};
+const connectedClients = new Set();
 
 wss.on("connection", (ws) => {
     ws.on("message", (messageString) => {
@@ -29,23 +30,23 @@ wss.on("connection", (ws) => {
         }
     });
 
+    // this causes problems because very time there is a new user it is multiplied
     ping = setInterval(() => {
-        [...clients.keys()].forEach((client) => {
-            client.send(
-                JSON.stringify({
-                    type: "heartbeat",
-                })
-            );
-            if (client.readyState !== 1) {
-                client.close();
-                const disconnectUsername = clients.get(client).username;
-                clients.delete(client);
-                sendMessageToAllClients(clients, {
-                    type: "disconnect",
-                    username: disconnectUsername,
-                });
-            }
-        });
+        ws.send(
+            JSON.stringify({
+                type: "heartbeat",
+            })
+        );
+        connectedClients.add(ws);
+        if (ws.readyState !== 1) {
+            ws.close();
+            // const disconnectUsername = clients.get(client).username;
+            connectedClients.delete(ws);
+            // sendMessageToAllClients(clients, {
+            //     type: "disconnect",
+            //     username: disconnectUsername,
+            // });
+        }
     }, 1000 * 5);
 });
 
@@ -61,6 +62,11 @@ function sendMessageToAllClients(clients, message) {
     }
 
     [...clients.keys()].forEach((client) => {
+        // remove disconnected clients
+        if (connectedClients.has(client) === false) {
+            sessions[message.sessionId].delete(ws);
+            return;
+        }
         client.send(JSON.stringify(message));
     });
 }
