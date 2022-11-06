@@ -52,17 +52,14 @@ router.post("/:sessionId", async (req, res) => {
             .send("There has been an error. Please try again.");
     }
     console.log(`Session with id ${req.params.sessionId} created successfully`);
-    return res
-        .status(201)
-        .json({
-            sessionId: req.params.sessionId,
-            message: "Session created successfully",
-            params: req.body.params,
-        });
+    return res.status(201).json({
+        sessionId: req.params.sessionId,
+        message: "Session created successfully",
+        params: req.body.params,
+    });
 });
 
 router.put("/:sessionId", async (req, res) => {
-    console.log(req.body.params);
     try {
         const resp = await updateSession(req.params.sessionId, req.body.params);
         if (resp.rowCount === 0) {
@@ -74,13 +71,11 @@ router.put("/:sessionId", async (req, res) => {
             .status(500)
             .send("There has been an error. Please try again.");
     }
-    return res
-        .status(201)
-        .json({
-            sessionId: req.params.sessionId,
-            message: "Session update successfully",
-            newParams: req.body.params,
-        });
+    return res.status(201).json({
+        sessionId: req.params.sessionId,
+        message: "Session update successfully",
+        newParams: req.body.params,
+    });
 });
 
 router.delete("/:sessionId", async (req, res) => {
@@ -95,13 +90,11 @@ router.delete("/:sessionId", async (req, res) => {
             .status(500)
             .send("There has been an error. Please try again.");
     }
-    return res
-        .status(200)
-        .json({
-            sessionId: req.params.sessionId,
-            message: "Session deleted successfully",
-            newParams: req.body.params,
-        });
+    return res.status(200).json({
+        sessionId: req.params.sessionId,
+        message: "Session deleted successfully",
+        newParams: req.body.params,
+    });
 });
 
 module.exports = router;
