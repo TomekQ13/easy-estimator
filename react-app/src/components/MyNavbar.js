@@ -5,12 +5,12 @@ import Navbar from "react-bootstrap/Navbar";
 
 export default function MyNavbar() {
     return (
-        <Navbar>
-            <Nav bg="light" className="mb-3">
-                <Container>
+        <Container>
+            <Navbar>
+                <Nav bg="light" className="mb-3">
                     <Navbar.Brand href="/">Easy Estimator</Navbar.Brand>
-                </Container>
-            </Nav>
-        </Navbar>
+                </Nav>
+            </Navbar>
+        </Container>
     );
 }
