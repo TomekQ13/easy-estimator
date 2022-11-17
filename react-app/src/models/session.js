@@ -3,9 +3,9 @@ import useFetch from "../hooks/useFetch";
 
 export function useSession({ sessionId }) {
     const fetchWrapper = useFetch();
-    const [sessionData, setSessionData] = useState({
-        params: { showVotes: false },
-    });
+    const [showVotes, setShowVotes] = useState(false);
+    const [resetVoting, setResetVoting] = useState(false);
+    const [sessionName, setSessionName] = useState();
 
     const getSessionFunction = useCallback(
         ({ sessionId }) => {
@@ -20,7 +20,9 @@ export function useSession({ sessionId }) {
                         return response.json();
                     })
                     .then((data) => {
-                        setSessionData(data);
+                        setShowVotes(data.params.showVotes);
+                        setResetVoting(data.params.resetVoting);
+                        setSessionName(data.params.name);
                     })
                     .catch((error) => {
                         console.error(
@@ -37,7 +39,14 @@ export function useSession({ sessionId }) {
         getSessionFunction({ sessionId });
     }, [sessionId, getSessionFunction]);
 
-    return [sessionData, setSessionData];
+    return {
+        showVotes,
+        setShowVotes,
+        resetVoting,
+        setResetVoting,
+        sessionName,
+        setSessionName,
+    };
 }
 
 export function useCreateSession() {
@@ -77,13 +86,13 @@ export function useUpdateSession() {
     const fetchWrapper = useFetch();
     const [resp, setResp] = useState();
 
-    async function updateSession({ sessionId, newParams }) {
+    async function updateSession({ sessionId, newParam }) {
         try {
             const response = await fetchWrapper({
                 method: "PUT",
                 url: `/session/${sessionId}`,
                 body: {
-                    params: newParams,
+                    params: newParam,
                 },
             });
             setResp(response);

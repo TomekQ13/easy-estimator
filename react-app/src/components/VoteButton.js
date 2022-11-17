@@ -7,14 +7,14 @@ import Col from "react-bootstrap/Col";
 import { useMakeVote } from "../models/vote";
 
 export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
-    const { sessionData } = useContext(SessionContext);
+    const { sessionId } = useContext(SessionContext);
     const { username } = useContext(authContext);
     const [vote, resp] = useMakeVote();
 
     async function handleClick() {
         const voteId = uuid();
         const voteBody = {
-            sessionid: sessionData.sessionid,
+            sessionid: sessionId,
             voteid: voteId,
             userid: username,
             votevalue: voteValue,
@@ -27,7 +27,7 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
         notThisUserVotes.push(voteBody);
 
         vote({
-            sessionId: voteBody.sessionid,
+            sessionId: sessionId,
             voteId: voteBody.voteid,
             username,
             voteValue: voteBody.votevalue,
@@ -36,7 +36,7 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
             JSON.stringify({
                 type: "vote",
                 vote: voteBody,
-                sessionId: sessionData.sessionid,
+                sessionId: sessionId,
             })
         );
         setVotes(notThisUserVotes);

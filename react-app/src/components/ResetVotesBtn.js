@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
 import { useDeleteVotes } from "../models/vote";
-import { authContext } from "../contexts/Auth";
 import { SessionContext } from "./Session";
 import Button from "react-bootstrap/Button";
 import { useUpdateSession } from "../models/session";
 
-export default function ResetVotesBtn({ setVotes, websocket, setMean }) {
+export default function ResetVotesBtn({
+    setVotes,
+    websocket,
+    setMean,
+    setShowVotes,
+}) {
     const [deleteVotes, _resp] = useDeleteVotes();
-    const { sessionId, sessionData, setSessionData } =
-        useContext(SessionContext);
+    const { sessionId } = useContext(SessionContext);
     const [updateSession, __resp] = useUpdateSession();
 
     // this should be handled as just removing the votes components
@@ -22,15 +25,13 @@ export default function ResetVotesBtn({ setVotes, websocket, setMean }) {
         setVotes([]);
         setMean("");
         deleteVotes({
-            sessionId: sessionData.sessionid,
+            sessionId,
         });
 
-        const newSessionData = { ...sessionData };
-        newSessionData.params.showVotes = false;
-        setSessionData(newSessionData);
+        setShowVotes(false);
         updateSession({
             sessionId,
-            newParams: newSessionData.params,
+            newParam: { showVotes: false },
         });
     }
 

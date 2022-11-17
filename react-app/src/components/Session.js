@@ -18,7 +18,14 @@ export function Session() {
     const { username, setRegisterModal } = useContext(authContext);
 
     const [websocket, setWebsocket] = useState();
-    const [sessionData, setSessionData] = useSession({ sessionId });
+    const {
+        showVotes,
+        setShowVotes,
+        resetVoting,
+        setResetVoting,
+        sessionName,
+        setSessionName,
+    } = useSession({ sessionId });
     const [votes, setVotes] = useVotes({ sessionId });
 
     const { makeWebsocket } = useContext(websocketContext);
@@ -33,9 +40,7 @@ export function Session() {
                     ws.heartbeat();
                 } else if (message.type === "resetVoting") {
                     setVotes([]);
-                    const newSessionData = { ...sessionData };
-                    newSessionData.params.showVotes = false;
-                    setSessionData(newSessionData);
+                    setResetVoting(true);
                 } else if (message.type === "vote") {
                     if (message.vote.userid === username) return;
                     setVotes((prevVotes) => {
@@ -47,9 +52,7 @@ export function Session() {
                     // } else if (message.type === "usernames") {
                     //     // setActiveUsers(message.usernames);
                 } else if (message.type === "showVotes") {
-                    const newSessionData = { ...sessionData };
-                    newSessionData.params.showVotes = true;
-                    setSessionData(newSessionData);
+                    setShowVotes(true);
                 } else {
                     console.warn("Unrecognized message type - " + message.type);
                 }
@@ -60,10 +63,10 @@ export function Session() {
     }, [
         username,
         makeWebsocket,
-        sessionData,
-        setSessionData,
         setVotes,
         sessionId,
+        setResetVoting,
+        setShowVotes,
     ]);
 
     useEffect(() => {
@@ -73,20 +76,24 @@ export function Session() {
     }, [setRegisterModal, username]);
 
     const sessionContextValue = {
+        showVotes,
+        setShowVotes,
+        resetVoting,
+        setResetVoting,
+        sessionName,
+        setSessionName,
         sessionId,
-        sessionData,
-        setSessionData,
     };
 
     return (
         <>
-            {sessionData && (
+            {sessionName && (
                 <SessionContext.Provider value={sessionContextValue}>
                     <Container>
                         <Row className="h-auto">
                             <Col>
                                 <div className="mb-3">
-                                    <h3>{sessionData.params.name}</h3>
+                                    <h3>{sessionName}</h3>
                                     {/* Host: {sessionData && <p>{sessionData.hostid}</p>} */}
                                 </div>
                             </Col>
@@ -131,8 +138,7 @@ export function Session() {
                                     votes={votes}
                                     setVotes={setVotes}
                                     websocket={websocket}
-                                    sessionData={sessionData}
-                                    setSessionData={setSessionData}
+                                    showVotes={showVotes}
                                 />
                             </Col>
                         </Row>

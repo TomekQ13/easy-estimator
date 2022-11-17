@@ -8,7 +8,8 @@ export default function VotesColumn({
     votes,
     setVotes,
     websocket,
-    sessionData,
+    showVotes,
+    setShowVotes,
 }) {
     const [mean, setMean] = useState();
 
@@ -26,7 +27,7 @@ export default function VotesColumn({
                                         {vote.userid}
                                     </div>
                                     <div className="align-self-center mx-2">
-                                        {sessionData.params.showVotes === true
+                                        {showVotes === true
                                             ? vote.votevalue
                                             : "?"}
                                     </div>
@@ -37,7 +38,7 @@ export default function VotesColumn({
             </ListGroup>
             <VotesSummary
                 votes={votes}
-                sessionData={sessionData}
+                showVotes={showVotes}
                 mean={mean}
                 setMean={setMean}
             />
@@ -47,6 +48,7 @@ export default function VotesColumn({
                     setVotes={setVotes}
                     websocket={websocket}
                     setMean={setMean}
+                    setShowVotes={setShowVotes}
                 />
             </div>
         </div>

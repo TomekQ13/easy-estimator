@@ -3,7 +3,9 @@ create table estimation_session (
     session_id varchar not null primary key,
     password varchar,
     host_id varchar not null,
-    params json,
+    show_votes boolean default false,
+    reset_voting boolean default false,
+    session_name varchar not null,
     added_dttm timestamp not null default now()
 );
 

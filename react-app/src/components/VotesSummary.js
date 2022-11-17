@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 import ListGroup from "react-bootstrap/ListGroup";
 
-export default function VotesSummary({ votes, sessionData, mean, setMean }) {
+export default function VotesSummary({ votes, showVotes, mean, setMean }) {
     useEffect(() => {
         const votesValues = [];
         votes.forEach((vote) => {
@@ -29,7 +29,7 @@ export default function VotesSummary({ votes, sessionData, mean, setMean }) {
                     <span className="float-end">
                         {votes.length === 0
                             ? ""
-                            : sessionData.params.showVotes === true
+                            : showVotes === true
                             ? mean
                             : "?"}
                     </span>

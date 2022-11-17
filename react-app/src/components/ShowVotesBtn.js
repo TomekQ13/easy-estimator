@@ -4,8 +4,7 @@ import { useUpdateSession } from "../models/session";
 import { SessionContext } from "./Session";
 
 export default function ShowVotesBtn({ websocket }) {
-    const { sessionData, sessionId, setSessionData } =
-        useContext(SessionContext);
+    const { sessionId, setShowVotes } = useContext(SessionContext);
     const [updateSession, _resp] = useUpdateSession();
 
     async function handleClick() {
@@ -23,13 +22,10 @@ export default function ShowVotesBtn({ websocket }) {
             );
         }
         try {
-            const newSessionData = { ...sessionData };
-            setSessionData(newSessionData);
-            const newParams = newSessionData.params;
-            newParams.showVotes = true;
+            setShowVotes(true);
             updateSession({
                 sessionId,
-                newParams,
+                newParam: { showVotes: true },
             });
         } catch (e) {
             console.error(e);
