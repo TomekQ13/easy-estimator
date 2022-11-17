@@ -44,7 +44,7 @@ router.post("/:sessionId", async (req, res) => {
             req.params.sessionId,
             req.body.hostId,
             req.body.sessionPassword,
-            req.body.params
+            req.body.sessionName
         );
     } catch (e) {
         console.error(e);

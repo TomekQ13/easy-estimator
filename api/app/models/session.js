@@ -20,13 +20,13 @@ async function getSession(sessionId) {
     return undefined;
 }
 
-async function createNewSession(sessionId, hostId, password, params) {
+async function createNewSession(sessionId, hostId, password, sessionName) {
     let resp = await client.query(
         `
-        insert into estimation_session (session_id, host_id, password, params)
-        values ($1, $2, $3, $4)        
+        insert into estimation_session (session_id, host_id, password, session_name)
+        values ($1, $2, $3, $4, $5, $6)        
     `,
-        [sessionId, hostId, password, params]
+        [sessionId, hostId, password, sessionName]
     );
     return resp;
 }
