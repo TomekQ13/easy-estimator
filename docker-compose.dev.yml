@@ -2,7 +2,7 @@ version: '3'
 services:
   postgres-dev:
     image: 'postgres:14'
-    restart: always
+    restart: 'always'
     environment:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
@@ -21,7 +21,7 @@ services:
       - 'postgres-dev'
     env_file:
       - .env.api.dev
-    restart: always
+    restart: 'always'
   websocket-server-dev:
     build:
       context: ./websocket-server
@@ -30,12 +30,12 @@ services:
       - ./websocket-server:/websocket-server
     ports:
       - '7000:7000'
-    restart: always
+    restart: 'always'
   react-app-dev:
     build:
       context: ./react-app
       dockerfile: Dockerfile.dev
-    restart: always
+    restart: 'always'
     ports:
       - '80:80'
     depends_on:

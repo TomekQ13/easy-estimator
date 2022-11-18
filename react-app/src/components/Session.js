@@ -41,13 +41,20 @@ export function Session() {
                 } else if (message.type === "resetVoting") {
                     setVotes([]);
                     setResetVoting(true);
+                    setShowVotes(false);
                 } else if (message.type === "vote") {
                     if (message.vote.userid === username) return;
                     setVotes((prevVotes) => {
-                        const notThisUserVotes = prevVotes.filter(
-                            (vote) => vote.userid !== message.vote.userid
-                        );
-                        return [...notThisUserVotes, message.vote];
+                        console.log("received vote");
+                        for (let i = 0; i < prevVotes.length; i++) {
+                            if (prevVotes[i].userid === message.vote.userid) {
+                                prevVotes[i].votevalue = message.vote.votevalue;
+                                console.log(prevVotes);
+                                return [...prevVotes];
+                            }
+                        }
+                        console.log("got here");
+                        return [...prevVotes, message.vote];
                     });
                     // } else if (message.type === "usernames") {
                     //     // setActiveUsers(message.usernames);
@@ -139,6 +146,7 @@ export function Session() {
                                     setVotes={setVotes}
                                     websocket={websocket}
                                     showVotes={showVotes}
+                                    setShowVotes={setShowVotes}
                                 />
                             </Col>
                         </Row>

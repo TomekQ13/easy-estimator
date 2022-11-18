@@ -13,6 +13,7 @@ export default function VotesColumn({
 }) {
     const [mean, setMean] = useState();
 
+    console.log("rendering votes");
     return (
         <div>
             <h3>Votes</h3>

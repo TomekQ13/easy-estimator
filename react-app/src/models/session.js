@@ -20,9 +20,9 @@ export function useSession({ sessionId }) {
                         return response.json();
                     })
                     .then((data) => {
-                        setShowVotes(data.params.showVotes);
-                        setResetVoting(data.params.resetVoting);
-                        setSessionName(data.params.name);
+                        setShowVotes(data.showvotes);
+                        setResetVoting(data.resetvoting);
+                        setSessionName(data.sessionname);
                     })
                     .catch((error) => {
                         console.error(

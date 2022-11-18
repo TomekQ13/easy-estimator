@@ -24,7 +24,7 @@ async function createNewSession(sessionId, hostId, password, sessionName) {
     let resp = await client.query(
         `
         insert into estimation_session (session_id, host_id, password, session_name)
-        values ($1, $2, $3, $4, $5, $6)        
+        values ($1, $2, $3, $4)
     `,
         [sessionId, hostId, password, sessionName]
     );
@@ -33,7 +33,10 @@ async function createNewSession(sessionId, hostId, password, sessionName) {
 
 async function updateSession({ sessionId, parameter, newParameterValue }) {
     let resp;
+
     if (parameter === "showVotes" || parameter === "resetVoting") {
+        if (parameter === "showVotes") parameter = "show_votes";
+        else if (parameter === "resetVoting") parameter = "reset_voting";
         resp = await client.query(
             `
             update estimation_session

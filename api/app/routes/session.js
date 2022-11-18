@@ -30,6 +30,7 @@ router.get("/:sessionId", async (req, res) => {
 });
 
 router.post("/:sessionId", async (req, res) => {
+    console.log(req.body);
     if (req.params.sessionId === undefined)
         return res.status(400).send({ message: "SessionId is missing" });
     if (req.body.hostId === undefined)
@@ -44,7 +45,7 @@ router.post("/:sessionId", async (req, res) => {
             req.params.sessionId,
             req.body.hostId,
             req.body.sessionPassword,
-            req.body.sessionName
+            req.body.params.name
         );
     } catch (e) {
         console.error(e);
@@ -66,11 +67,12 @@ router.put("/:sessionId", async (req, res) => {
             message: "Only one session parameter can be updated at a time",
         });
     }
+    console.log(req.body);
     try {
         const resp = await updateSession({
             sessionId: req.params.sessionId,
-            paramKey: Object.keys(req.body.params)[0],
-            newParamValue: req.body.params[Object.keys(req.body.params)[0]],
+            parameter: Object.keys(req.body.params)[0],
+            newParameterValue: req.body.params[Object.keys(req.body.params)[0]],
         });
         if (resp.rowCount === 0) {
             return res.status(404).send("Session not found");
