@@ -4,7 +4,7 @@ import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
 import { authContext } from "../contexts/Auth";
 import { useSession } from "../models/session";
-import { useVotes } from "../models/vote";
+import { useMakeVote, useVotes } from "../models/vote";
 import { websocketContext } from "../contexts/Websocket";
 
 import Container from "react-bootstrap/Container";
@@ -30,6 +30,7 @@ export function Session() {
     const [votes, setVotes] = useVotes({ sessionId });
 
     const { makeWebsocket } = useContext(websocketContext);
+    const [vote, resp] = useMakeVote();
 
     useEffect(() => {
         async function setupWebsocket() {
@@ -56,21 +57,28 @@ export function Session() {
                         return [...prevVotes, message.vote];
                     });
                 } else if (message.type === "connect") {
-                    // setVotes((prevVotes) => {
-                    //     if (prevVotes.length > 0) {
-                    //         for (let i = 0; i < prevVotes.length; i++) {
-                    //             if (prevVotes[i].userid === message.userid)
-                    //                 return prevVotes;
-                    //         }
-                    //     }
-                    //     const emptyVote = {
-                    //         sessionId: sessionId,
-                    //         voteid: uuid(),
-                    //         userid: message.username,
-                    //         votevalue: null,
-                    //     };
-                    //     return [...prevVotes, emptyVote];
-                    // });
+                    const emptyVote = {
+                        sessionId: sessionId,
+                        voteid: uuid(),
+                        userid: message.username,
+                        votevalue: null,
+                    };
+                    setVotes((prevVotes) => {
+                        if (prevVotes.length > 0) {
+                            for (let i = 0; i < prevVotes.length; i++) {
+                                if (prevVotes[i].userid === message.username)
+                                    return prevVotes;
+                            }
+                        }
+
+                        return [...prevVotes, emptyVote];
+                    });
+                    vote({
+                        sessionId: emptyVote.sessionId,
+                        voteId: emptyVote.voteid,
+                        username: emptyVote.userid,
+                        voteValue: null,
+                    });
                 } else if (message.type === "showVotes") {
                     setShowVotes(true);
                 } else {

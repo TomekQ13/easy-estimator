@@ -14,7 +14,7 @@ create table votes (
     vote_id varchar not null primary key,
     session_id varchar not null,
     user_id varchar not null,
-    vote_value integer not null,
+    vote_value integer,
     added_dttm timestamp not null default now()
 );
 
