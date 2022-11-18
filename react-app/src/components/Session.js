@@ -10,6 +10,7 @@ import { websocketContext } from "../contexts/Websocket";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import uuid from "react-uuid";
 
 export const SessionContext = React.createContext();
 
@@ -45,7 +46,6 @@ export function Session() {
                 } else if (message.type === "vote") {
                     if (message.vote.userid === username) return;
                     setVotes((prevVotes) => {
-                        console.log("received vote");
                         for (let i = 0; i < prevVotes.length; i++) {
                             if (prevVotes[i].userid === message.vote.userid) {
                                 prevVotes[i].votevalue = message.vote.votevalue;
@@ -53,11 +53,24 @@ export function Session() {
                                 return [...prevVotes];
                             }
                         }
-                        console.log("got here");
                         return [...prevVotes, message.vote];
                     });
-                    // } else if (message.type === "usernames") {
-                    //     // setActiveUsers(message.usernames);
+                } else if (message.type === "connect") {
+                    // setVotes((prevVotes) => {
+                    //     if (prevVotes.length > 0) {
+                    //         for (let i = 0; i < prevVotes.length; i++) {
+                    //             if (prevVotes[i].userid === message.userid)
+                    //                 return prevVotes;
+                    //         }
+                    //     }
+                    //     const emptyVote = {
+                    //         sessionId: sessionId,
+                    //         voteid: uuid(),
+                    //         userid: message.username,
+                    //         votevalue: null,
+                    //     };
+                    //     return [...prevVotes, emptyVote];
+                    // });
                 } else if (message.type === "showVotes") {
                     setShowVotes(true);
                 } else {
