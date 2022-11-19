@@ -4,7 +4,7 @@ import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
 import { authContext } from "../contexts/Auth";
 import { useSession } from "../models/session";
-import { useMakeVote, useVotes } from "../models/vote";
+import { useVotes } from "../models/vote";
 import { websocketContext } from "../contexts/Websocket";
 
 import Container from "react-bootstrap/Container";
@@ -30,7 +30,6 @@ export function Session() {
     const [votes, setVotes] = useVotes({ sessionId });
 
     const { makeWebsocket } = useContext(websocketContext);
-    const [vote, _resp] = useMakeVote();
 
     useEffect(() => {
         async function setupWebsocket() {
@@ -73,12 +72,7 @@ export function Session() {
 
                         return [...prevVotes, emptyVote];
                     });
-                    vote({
-                        sessionId: emptyVote.sessionId,
-                        voteId: emptyVote.voteid,
-                        username: emptyVote.userid,
-                        voteValue: null,
-                    });
+                    // this part is wrong because it will automatically add this to the db, it needs to be on setting up the ws
                 } else if (message.type === "showVotes") {
                     setShowVotes(true);
                 } else {

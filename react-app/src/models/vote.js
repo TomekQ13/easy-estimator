@@ -40,7 +40,7 @@ export function useVotes({ sessionId }) {
 
 export function useMakeVote() {
     const fetchWrapper = useFetch();
-    const [resp, setResp] = useState();
+    // const [resp, setResp] = useState();
 
     async function vote({ sessionId, voteId, username, voteValue }) {
         const voteBody = {
@@ -56,13 +56,14 @@ export function useMakeVote() {
                 body: voteBody,
             });
             if (response.status === 201) console.log("Vote added successfully");
-            setResp(response);
+            // setResp(response);
         } catch (error) {
             console.error("There was an error while adding a vote " + error);
         }
     }
 
-    return [vote, resp];
+    // return [vote, resp];
+    return [vote];
 }
 
 export function useDeleteVotes() {

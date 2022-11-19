@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Modal from "react-bootstrap/esm/Modal";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
@@ -12,7 +12,7 @@ export default function JoinSessionModal({
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const formSessionId = useRef({});
-    const [sessionData, _setSessionData] = useSession({
+    const { sessionName } = useSession({
         sessionId: formSessionId.current.value,
     });
 
@@ -24,7 +24,7 @@ export default function JoinSessionModal({
         event.preventDefault();
         if (formSessionId.current.value.trim() === "")
             return setErrors({ sessionId: "Session ID cannot be empty" });
-        if (sessionData === null || sessionData === undefined)
+        if (sessionName === null || sessionName === undefined)
             return setErrors({ sessionId: "This session does not exist" });
         return navigate(`/session/${event.target.sessionId.value}`);
     }
