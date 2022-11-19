@@ -30,7 +30,7 @@ export function Session() {
     const [votes, setVotes] = useVotes({ sessionId });
 
     const { makeWebsocket } = useContext(websocketContext);
-    const [vote, resp] = useMakeVote();
+    const [vote, _resp] = useMakeVote();
 
     useEffect(() => {
         async function setupWebsocket() {

@@ -22,9 +22,9 @@ export default function EntryMeny() {
 
     return (
         <>
-            <Container>
-                <Col>
-                    <Row>
+            <Container className="vh-75 d-flex align-items-center justify-content-center">
+                <Col className="wid-500 ">
+                    <Row className="mb-3">
                         <NewSessionBtn
                             setNewSessionModal={setNewSessionModal}
                             newSessionModal={newSessionModal}

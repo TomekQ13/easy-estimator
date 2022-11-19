@@ -1,0 +1,13 @@
+.wid-500 {
+    max-width: 500px;
+}
+.vh-75 {
+    height: 75vh;
+}
+
+
+@media (max-width: 576px) {
+    .wid-500 {
+        max-width: 80%;
+    }
+}
