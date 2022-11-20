@@ -25,6 +25,7 @@ yarn-error.log*
 
 .log
 requests.log
+api/logs/requests.log
 database
 react-app.env
 
