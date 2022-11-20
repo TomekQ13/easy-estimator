@@ -19,7 +19,7 @@ services:
     depends_on:
       - 'postgres'
     env_file:
-      - .env
+      - .env.api.prod
     restart: always
   websocket-server:
     build:
