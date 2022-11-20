@@ -4,7 +4,7 @@ services:
     image: 'postgres:14'
     restart: always
     env_file:
-      - .env.api.dev
+      - .env.api.prod
     volumes:
       - ./database:/var/lib/postgresql/data
       - ./ddl:/ddl
