@@ -32,3 +32,5 @@ react-app.env
 /public/env-config.js
 env-config.js
 .env.api
+.env.api.dev
+.env.api.prod
