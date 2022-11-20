@@ -35,3 +35,5 @@ env-config.js
 .env.api
 .env.api.dev
 .env.api.prod
+.env.database.dev
+.env.database.prod
