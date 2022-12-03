@@ -29,7 +29,7 @@ services:
       - ./websocket-server:/websocket-server
     ports:
       - '7000:7000'
-    restart: 'always'
+    restart: 'always'  
   react-app-dev:
     build:
       context: ./react-app

@@ -5,4 +5,4 @@ WORKDIR /react-app
 COPY package-lock.json package.json ./
 RUN npm install
 
-CMD ["npm", "run", "dev"]
+CMD sh -c 'trap "exit" TERM; while true; do sleep 1; done'
