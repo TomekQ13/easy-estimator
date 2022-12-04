@@ -27,7 +27,7 @@ export default function Websocket({ children }) {
     }
 
     async function connectToWebsocket() {
-        const ws = new WebSocket("ws://localhost:7000/ws");
+        const ws = new WebSocket(window._env_.WS_URL);
         return new Promise((resolve) => {
             const timer = setInterval(() => {
                 if (ws.readyState === 1) {
