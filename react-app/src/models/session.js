@@ -6,6 +6,7 @@ export function useSession({ sessionId }) {
     const [showVotes, setShowVotes] = useState(false);
     const [resetVoting, setResetVoting] = useState(false);
     const [sessionName, setSessionName] = useState();
+    const [users, setUsers] = useState([]);
 
     const getSessionFunction = useCallback(
         ({ sessionId }) => {
@@ -23,6 +24,7 @@ export function useSession({ sessionId }) {
                         setShowVotes(data.showvotes);
                         setResetVoting(data.resetvoting);
                         setSessionName(data.sessionname);
+                        setUsers(data.users);
                     })
                     .catch((error) => {
                         console.error(
@@ -46,6 +48,8 @@ export function useSession({ sessionId }) {
         setResetVoting,
         sessionName,
         setSessionName,
+        users,
+        setUsers,
     };
 }
 

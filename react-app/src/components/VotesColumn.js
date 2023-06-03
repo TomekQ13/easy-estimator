@@ -10,26 +10,29 @@ export default function VotesColumn({
     websocket,
     showVotes,
     setShowVotes,
+    users,
+    setUsers,
 }) {
     const [mean, setMean] = useState();
-
     console.log("rendering votes");
     return (
         <div>
             <h3>Votes</h3>
             <ListGroup className="votes-list-box mb-2">
-                {votes &&
-                    votes.map((vote) => {
+                {users &&
+                    users.map((user) => {
                         // this part needs to be adjusted so that there are users and votes are updated for users
                         return (
-                            <ListGroup.Item key={vote.voteid}>
+                            <ListGroup.Item key={user.userid}>
                                 <div className="d-flex justify-content-between">
                                     <div className="username-box">
-                                        {vote.userid}
+                                        {user.userid}
                                     </div>
                                     <div className="align-self-center mx-2">
                                         {showVotes === true
-                                            ? vote.votevalue
+                                            ? votes.filter(
+                                                  votes.userid === user.userid
+                                              ).vote
                                             : "?"}
                                     </div>
                                 </div>

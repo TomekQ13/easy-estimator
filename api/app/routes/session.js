@@ -6,6 +6,7 @@ const {
     updateSession,
     deleteSession,
 } = require("../models/session");
+const { getUsersInSession } = require("../models/userSession");
 const { authenticateToken } = require("../auth");
 const { ParameterError } = require("../errors");
 
@@ -15,11 +16,14 @@ router.get("/:sessionId", async (req, res) => {
     let results;
     try {
         results = await getSession(req.params.sessionId);
+        users = await getUsersInSession(req.params.sessionId);
+        users = users === undefined ? [] : users;
         if (!results) {
             return res
                 .status(404)
                 .send({ message: "Session with this ID does not exist." });
         }
+        results["users"] = users;
     } catch (e) {
         console.error(e);
         return res

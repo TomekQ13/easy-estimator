@@ -26,6 +26,8 @@ export function Session() {
         setResetVoting,
         sessionName,
         setSessionName,
+        users,
+        setUsers,
     } = useSession({ sessionId });
     const [votes, setVotes] = useVotes({ sessionId });
 
@@ -158,6 +160,7 @@ export function Session() {
                             <Col md={4}>
                                 <VotesColumn
                                     votes={votes}
+                                    users={users}
                                     setVotes={setVotes}
                                     websocket={websocket}
                                     showVotes={showVotes}

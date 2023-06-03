@@ -33,3 +33,10 @@ create table refresh_tokens (
     valid boolean not null default true,
     added_dttm timestamp not null default now()
 );
+
+drop table if exists user_session;
+create table user_session (
+    session_id varchar not null,
+    user_id varchar not null,
+    constraint user_session_pk primary key (session_id, user_id)
+);

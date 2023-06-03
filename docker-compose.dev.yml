@@ -42,3 +42,5 @@ services:
       - 'api-dev'
     volumes:
       - ./react-app:/react-app
+    environment:
+      - WATCHPACK_POLLING=true

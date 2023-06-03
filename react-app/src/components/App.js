@@ -23,7 +23,7 @@ function App() {
                         <Route
                             path="/session/:session_id"
                             element={<SessionWrapper />}
-                        />
+                        /> 
                     </Routes>
                 </Auth>
             </Router>
