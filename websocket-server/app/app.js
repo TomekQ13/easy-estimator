@@ -60,7 +60,6 @@ function sendMessageToAllClients(clients, message) {
     [...clients.keys()].forEach((client) => {
         // remove disconnected clients
         if (connectedClients.has(client) === false) {
-            console.log("client not found deleteing");
             sessions[message.sessionId].delete(client);
             return;
         }
