@@ -9,10 +9,6 @@ const { v4: uuidv4 } = require("uuid");
 router.post("/register", async (req, res) => {
     if (req.body.username === undefined || req.body.username === "")
         return res.status(400).send({ message: "Username is missing" });
-    if ((await getUser(req.body.username)) !== undefined)
-        return res
-            .status(400)
-            .send({ message: "User with this username already exists" });
 
     const userId = uuidv4();
     try {
@@ -43,6 +39,7 @@ router.post("/register", async (req, res) => {
         message: `User registered with id ${userId} and username ${req.body.username}`,
         accessToken: accessToken,
         refreshToken: refreshToken,
+        userid: user.userId,
     });
 });
 

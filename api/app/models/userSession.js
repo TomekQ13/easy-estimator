@@ -7,7 +7,7 @@ async function getUsersInSession(sessionId) {
             us.user_id,
             u.username
         from user_session us
-        left join user u
+        left join users u
         on u.user_id = us.user_id
         where session_id = $1
     `,

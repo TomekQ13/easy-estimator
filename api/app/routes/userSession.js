@@ -4,7 +4,7 @@ const { addUserSession, deleteUserSession } = require("../models/userSession");
 
 router.use(authenticateToken);
 
-router.post("/usersession/:sessionId", async (req, res) => {
+router.post("/:sessionId", async (req, res) => {
     try {
         const userId = req.body.userid;
         if (userId === undefined) {
@@ -20,7 +20,7 @@ router.post("/usersession/:sessionId", async (req, res) => {
     return res.status(201);
 });
 
-router.delete("/usersession/:sessionId", async (req, res) => {
+router.delete("/:sessionId", async (req, res) => {
     try {
         const userId = req.body.userid;
         if (userId === undefined) {
@@ -35,3 +35,5 @@ router.delete("/usersession/:sessionId", async (req, res) => {
     }
     return res.status(201);
 });
+
+module.exports = router;

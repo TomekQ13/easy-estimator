@@ -37,3 +37,5 @@ env-config.js
 .env.api.prod
 .env.database.dev
 .env.database.prod
+
+requests.rest
