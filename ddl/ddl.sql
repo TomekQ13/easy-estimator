@@ -39,6 +39,6 @@ create table user_session (
     session_id varchar not null,
     user_id varchar not null,
     vote_value integer,
-    added_dttm timestamp not null default now()
+    added_dttm timestamp not null default now(),
     constraint user_session_pk primary key (session_id, user_id)
 );

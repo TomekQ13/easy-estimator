@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 
-export function useSession({ sessionId }) {
+export function useSession({ sessionId, userId }) {
     const fetchWrapper = useFetch();
     const [showVotes, setShowVotes] = useState(false);
     const [resetVoting, setResetVoting] = useState(false);
@@ -9,11 +9,14 @@ export function useSession({ sessionId }) {
     const [users, setUsers] = useState([]);
 
     const getSessionFunction = useCallback(
-        ({ sessionId }) => {
+        ({ sessionId, userId }) => {
             if (fetchWrapper !== undefined) {
                 fetchWrapper({
                     url: `/session/${sessionId}`,
                     method: "GET",
+                    searchParams: {
+                        userId,
+                    },
                 })
                     .then((response) => {
                         if (response.status === 404)
@@ -37,9 +40,14 @@ export function useSession({ sessionId }) {
     );
 
     useEffect(() => {
-        if (sessionId === undefined || sessionId.trim() === "") return;
-        getSessionFunction({ sessionId });
-    }, [sessionId, getSessionFunction]);
+        if (
+            sessionId === undefined ||
+            sessionId.trim() === "" ||
+            userId === undefined
+        )
+            return;
+        getSessionFunction({ sessionId, userId });
+    }, [sessionId, getSessionFunction, userId]);
 
     return {
         showVotes,

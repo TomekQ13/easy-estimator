@@ -44,7 +44,7 @@ export default function useFetch(authorization) {
     );
 
     const fetchWrapper = useCallback(
-        async ({ url, method, body }) => {
+        async ({ url, method, body, searchParams }) => {
             if (window._env_.DEBUG)
                 console.log("Using fetch to " + url + " with method " + method);
 
@@ -62,10 +62,15 @@ export default function useFetch(authorization) {
                 ] = `Bearer ${accessToken}`;
 
             try {
-                const response = await fetch(
-                    `${window._env_.API_URL}${url}`,
-                    requestOptions
-                );
+                let requestUrl;
+                if (searchParams === undefined)
+                    requestUrl = `${window._env_.API_URL}${url}`;
+                else
+                    requestUrl =
+                        `${window._env_.API_URL}${url}?` +
+                        new URLSearchParams(searchParams);
+                console.log(requestUrl);
+                const response = await fetch(requestUrl, requestOptions);
                 if (response.status === 403) {
                     if (window._env_.DEBUG)
                         console.log("Received 403. Refreshing accessToken");

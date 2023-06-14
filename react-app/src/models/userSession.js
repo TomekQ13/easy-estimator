@@ -6,7 +6,6 @@ export function useJoinUserSession() {
     const [response, setResponse] = useState([]);
 
     function joinUserSessionFunction({ sessionId, userId }) {
-        console.log("join user sesion called");
         return fetchWrapper({
             url: `/usersession/${sessionId}`,
             method: "POST",

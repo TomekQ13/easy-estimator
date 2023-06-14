@@ -83,11 +83,11 @@ export default function Auth({ children }) {
     }, [username]);
 
     useEffect(() => {
-        const userId = getFromLocalStorage({ key: "easy-userId" });
+        const newUserId = getFromLocalStorage({ key: "easy-userId" });
         if (window._env_.DEBUG)
-            console.log(`UserId read from local storage. Value ${userId}`);
-        if (userId !== undefined && userId !== null && userId !== "")
-            setUserId(userId);
+            console.log(`UserId read from local storage. Value ${newUserId}`);
+        if (newUserId !== undefined && newUserId !== null && newUserId !== "")
+            setUserId(newUserId);
     }, [setUserId]);
 
     useEffect(() => {

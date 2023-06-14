@@ -1,59 +1,20 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import useFetch from "../hooks/useFetch";
-
-export function useVotes({ sessionId }) {
-    const fetchWrapper = useFetch();
-    const [votes, setVotes] = useState([]);
-
-    const getVotesFunction = useCallback(
-        ({ sessionId }) => {
-            if (fetchWrapper !== undefined)
-                fetchWrapper({
-                    url: `/vote/${sessionId}`,
-                    method: "GET",
-                })
-                    .then((response) => {
-                        if (response.status === 404) {
-                            return [];
-                        }
-
-                        return response.json();
-                    })
-                    .then((data) => {
-                        setVotes(data);
-                    })
-                    .catch((error) => {
-                        console.error(
-                            "There was an error while fetching votes " + error
-                        );
-                    });
-        },
-        [fetchWrapper]
-    );
-
-    useEffect(() => {
-        getVotesFunction({ sessionId });
-    }, [sessionId, getVotesFunction]);
-
-    return [votes, setVotes];
-}
 
 export function useMakeVote() {
     const fetchWrapper = useFetch();
     // const [resp, setResp] = useState();
 
-    async function vote({ sessionId, voteId, userId, voteValue }) {
+    async function vote({ sessionId, userId, voteValue }) {
         if (fetchWrapper === undefined) return;
-        const voteBody = {
-            voteid: voteId,
-            userid: userId,
-            votevalue: voteValue,
-        };
 
         fetchWrapper({
             url: `/vote/${sessionId}`,
             method: "PUT",
-            body: voteBody,
+            body: {
+                userid: userId,
+                votevalue: voteValue,
+            },
         })
             .then((response) => {
                 if (response.status === 201)

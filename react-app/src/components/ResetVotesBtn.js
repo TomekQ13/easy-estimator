@@ -11,7 +11,7 @@ export default function ResetVotesBtn({
     setShowVotes,
 }) {
     const [deleteVotes, _resp] = useDeleteVotes();
-    const { sessionId } = useContext(SessionContext);
+    const { sessionId, users, setUsers } = useContext(SessionContext);
     const [updateSession, __resp] = useUpdateSession();
 
     // this should be handled as just removing the votes components
@@ -22,7 +22,12 @@ export default function ResetVotesBtn({
                 sessionId,
             })
         );
-        setVotes([]);
+        const newUsers = [...users];
+        newUsers.map((user) => {
+            user.votevalue = null;
+        });
+        setUsers(newUsers);
+
         setMean("");
         deleteVotes({
             sessionId,

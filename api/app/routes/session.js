@@ -14,17 +14,24 @@ const { ParameterError } = require("../errors");
 router.use(authenticateToken);
 
 router.get("/:sessionId", async (req, res) => {
+    if (req.query.userId === undefined) {
+        return res.status(400).send({ message: "UserId is missing" });
+    }
     let results;
+    let users;
     try {
-        results = await getSession(req.params.sessionId);
-        votes = await getUsersInSession(req.params.sessionId);
-        votes = votes === undefined ? [] : votes;
+        [_, results, users] = await Promise.all([
+            addUserSession(req.query.userId, req.params.sessionId),
+            getSession(req.params.sessionId),
+            getUsersInSession(req.params.sessionId),
+        ]);
+        users = users === undefined ? [] : users;
         if (!results) {
             return res
                 .status(404)
                 .send({ message: "Session with this ID does not exist." });
         }
-        results["votes"] = votes;
+        results["users"] = users;
     } catch (e) {
         console.error(e);
         return res

@@ -6,29 +6,26 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import { useMakeVote } from "../models/vote";
 
-export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
-    const { sessionId } = useContext(SessionContext);
+export default function VoteButton({ voteValue, websocket }) {
+    const { sessionId, users, setUsers } = useContext(SessionContext);
     const { username, userId } = useContext(authContext);
     const [vote, resp] = useMakeVote();
 
     async function handleClick() {
-        const voteId = uuid();
         const voteBody = {
             sessionid: sessionId,
-            voteid: voteId,
             userid: userId,
             votevalue: voteValue,
+            username,
         };
-        const newVotes = [...votes];
-        // this will cause the new vote to always be placed at the bottom
-        const notThisUserVotes = newVotes.filter(
-            (vote) => vote.userid !== username
-        );
-        notThisUserVotes.push(voteBody);
+        const newUsers = [...users];
+        const userIndex = newUsers.findIndex((user) => {
+            return user.userid === userId;
+        });
+        newUsers[userIndex].votevalue = voteValue;
 
         vote({
             sessionId: sessionId,
-            voteId: voteBody.voteid,
             userId: voteBody.userid,
             voteValue: voteBody.votevalue,
         });
@@ -39,7 +36,7 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
                 sessionId: sessionId,
             })
         );
-        setVotes(notThisUserVotes);
+        setUsers(newUsers);
     }
 
     return (

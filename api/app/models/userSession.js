@@ -6,7 +6,7 @@ async function getUsersInSession(sessionId) {
         select
             us.user_id as userid,
             u.username,
-            us.vote_value as vote_value
+            us.vote_value as votevalue
         from user_session us
         left join users u
         on u.user_id = us.user_id
@@ -19,11 +19,11 @@ async function getUsersInSession(sessionId) {
 }
 
 async function addUserSession(userId, sessionId) {
-    console.log("usersession being addded");
     const resp = await client.query(
         `
         insert into user_session (session_id, user_id)
         values ($1, $2)
+        on conflict do nothing
 
     `,
         [sessionId, userId]
