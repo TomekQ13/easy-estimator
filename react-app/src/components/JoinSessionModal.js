@@ -40,7 +40,7 @@ export default function JoinSessionModal({
     return (
         <Modal show={joinSessionModal.show} onHide={handleCloseModal}>
             <Modal.Header>
-                <Modal.Title>Insert Session ID</Modal.Title>
+                <Modal.Title>Session ID</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
