@@ -43,23 +43,27 @@ export function useMakeVote() {
     // const [resp, setResp] = useState();
 
     async function vote({ sessionId, voteId, username, voteValue }) {
+        if (fetchWrapper === undefined) return;
         const voteBody = {
             voteid: voteId,
             userid: username,
             votevalue: voteValue,
         };
 
-        try {
-            const response = await fetchWrapper({
-                url: `/vote/${sessionId}`,
-                method: "PUT",
-                body: voteBody,
+        fetchWrapper({
+            url: `/vote/${sessionId}`,
+            method: "PUT",
+            body: voteBody,
+        })
+            .then((response) => {
+                if (response.status === 201)
+                    console.log("Vote added successfully");
+            })
+            .catch((error) => {
+                console.error(
+                    "There was an error while adding a vote " + error
+                );
             });
-            if (response.status === 201) console.log("Vote added successfully");
-            // setResp(response);
-        } catch (error) {
-            console.error("There was an error while adding a vote " + error);
-        }
     }
 
     // return [vote, resp];

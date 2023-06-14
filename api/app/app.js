@@ -24,8 +24,8 @@ const sessionRouter = require("./routes/session");
 app.use("/session", sessionRouter);
 const userRotuer = require("./routes/user");
 app.use("/user", userRotuer);
-const userSessionRotuer = require("./routes/userSession");
-app.use("/usersession", userRotuer);
+const userSessionRouter = require("./routes/userSession");
+app.use("/usersession", userSessionRouter);
 
 app.listen(process.env.PORT || 4000, () => {
     console.log("Application started and Listening on port 4000");

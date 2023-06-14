@@ -15,6 +15,7 @@ export default function VotesColumn({
 }) {
     const [mean, setMean] = useState();
     console.log("rendering votes");
+    console.log(users);
     return (
         <div>
             <h3>Votes</h3>
@@ -26,7 +27,7 @@ export default function VotesColumn({
                             <ListGroup.Item key={user.userid}>
                                 <div className="d-flex justify-content-between">
                                     <div className="username-box">
-                                        {user.userid}
+                                        {user.username}
                                     </div>
                                     <div className="align-self-center mx-2">
                                         {showVotes === true

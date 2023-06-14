@@ -95,9 +95,9 @@ export function Session() {
 
     useEffect(() => {
         if (username === null || username === undefined) {
-            setRegisterModal({ show: true });
+            setRegisterModal({ show: true, sessionId: sessionId });
         }
-    }, [setRegisterModal, username]);
+    }, [setRegisterModal, username, sessionId]);
 
     const sessionContextValue = {
         showVotes,

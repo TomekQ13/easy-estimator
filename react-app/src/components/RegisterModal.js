@@ -18,7 +18,10 @@ export default function RegisterModal({ setRegisterModal, registerModal }) {
                 <Modal.Title>Enter username</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <RegisterForm handleCloseModal={handleCloseModal} />
+                <RegisterForm
+                    handleCloseModal={handleCloseModal}
+                    sessionId={registerModal.sessionId}
+                />
             </Modal.Body>
         </Modal>
     );

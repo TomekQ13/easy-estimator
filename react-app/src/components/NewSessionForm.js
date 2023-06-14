@@ -2,17 +2,15 @@ import React, { useState, useRef, useEffect, useContext } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { useCreateSession } from "../models/session";
-import { useJoinUserSession } from "../models/userSession";
-import { authContext } from "../contexts/Auth";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { authContext } from "../contexts/Auth";
 
 export default function NewSessionForm({ handleCloseModal }) {
     const navigate = useNavigate();
     const sessionPassword = useRef();
     const sessionName = useRef();
     const [createSessionFunction, resp] = useCreateSession({});
-    const [joinUserSessionFunction] = useJoinUserSession();
     const [sessionId, setSessionId] = useState();
     const [errors, setErrors] = useState({});
     const { userId } = useContext(authContext);
@@ -33,11 +31,8 @@ export default function NewSessionForm({ handleCloseModal }) {
         createSessionFunction({
             sessionId: sessionId,
             sessionPassword: sessionPassword.current.value,
+            hostId: userId,
             params: { showVotes: false, name: sessionName.current.value },
-        });
-        joinUserSessionFunction({
-            sessionId,
-            userId,
         });
     }
 

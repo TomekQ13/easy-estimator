@@ -6,6 +6,7 @@ const {
     updateSession,
     deleteSession,
 } = require("../models/session");
+const { addUserSession } = require("../models/userSession");
 const { getUsersInSession } = require("../models/userSession");
 const { authenticateToken } = require("../auth");
 const { ParameterError } = require("../errors");
@@ -45,12 +46,15 @@ router.post("/:sessionId", async (req, res) => {
             .send({ message: "Session with this Id already exists" });
 
     try {
-        await createNewSession(
-            req.params.sessionId,
-            req.body.hostId,
-            req.body.sessionPassword,
-            req.body.params.name
-        );
+        await Promise.all([
+            createNewSession(
+                req.params.sessionId,
+                req.body.hostId,
+                req.body.sessionPassword,
+                req.body.params.name
+            ),
+            addUserSession(req.body.hostId, req.params.sessionId),
+        ]);
     } catch (e) {
         console.error(e);
         return res

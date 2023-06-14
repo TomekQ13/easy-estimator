@@ -4,7 +4,7 @@ async function getUsersInSession(sessionId) {
     const resp = await client.query(
         `
         select
-            us.user_id,
+            us.user_id as userid,
             u.username
         from user_session us
         left join users u
@@ -18,6 +18,7 @@ async function getUsersInSession(sessionId) {
 }
 
 async function addUserSession(userId, sessionId) {
+    console.log("usersession being addded");
     const resp = await client.query(
         `
         insert into user_session (session_id, user_id)
@@ -26,6 +27,7 @@ async function addUserSession(userId, sessionId) {
     `,
         [sessionId, userId]
     );
+    return resp;
 }
 
 async function deleteUserSession(userId, sessionId) {
@@ -37,6 +39,7 @@ async function deleteUserSession(userId, sessionId) {
     `,
         [sessionId, userId]
     );
+    return resp;
 }
 
 module.exports = { getUsersInSession, addUserSession, deleteUserSession };

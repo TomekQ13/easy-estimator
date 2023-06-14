@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const { createUser, deleteUser, getUser } = require("../models/user");
+const { createUser, deleteUser } = require("../models/user");
 const { addRefreshToken, getRefreshToken } = require("../models/refreshToken");
 const { authenticateToken, generateAccessToken } = require("../auth");
 const { v4: uuidv4 } = require("uuid");
+const { addUserSession } = require("../models/userSession");
 
 router.post("/register", async (req, res) => {
     if (req.body.username === undefined || req.body.username === "")
@@ -12,7 +13,14 @@ router.post("/register", async (req, res) => {
 
     const userId = uuidv4();
     try {
-        await createUser(userId, req.body.username);
+        if (req.body.sessionId !== undefined) {
+            await Promise.all([
+                await createUser(userId, req.body.username),
+                await addUserSession(userId, req.body.sessionId),
+            ]);
+        } else {
+            await createUser(userId, req.body.username);
+        }
     } catch (e) {
         console.error(e);
         return res

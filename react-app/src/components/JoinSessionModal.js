@@ -1,9 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import Modal from "react-bootstrap/esm/Modal";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../models/session";
+import { authContext } from "../contexts/Auth";
+import { useJoinUserSession } from "../models/userSession";
 
 export default function JoinSessionModal({
     setJoinSessionModal,
@@ -15,17 +17,23 @@ export default function JoinSessionModal({
     const { sessionName } = useSession({
         sessionId: formSessionId.current.value,
     });
+    const { userId } = useContext(authContext);
+    const [joinUserSessionFunction] = useJoinUserSession();
 
     function handleCloseModal() {
         setJoinSessionModal({ show: false });
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
         if (formSessionId.current.value.trim() === "")
             return setErrors({ sessionId: "Session ID cannot be empty" });
         if (sessionName === null || sessionName === undefined)
             return setErrors({ sessionId: "This session does not exist" });
+        await joinUserSessionFunction({
+            sessionId: formSessionId.current.value,
+            userId,
+        });
         return navigate(`/session/${event.target.sessionId.value}`);
     }
 

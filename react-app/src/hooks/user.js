@@ -3,12 +3,13 @@ import useFetch from "./useFetch";
 export function useCreateUser() {
     const fetchWrapper = useFetch(false);
 
-    function registerUser({ username }) {
+    function registerUser({ username, sessionId }) {
         return fetchWrapper({
             url: "/user/register",
             method: "POST",
             body: {
                 username,
+                sessionId,
             },
         })
             .then((response) => {

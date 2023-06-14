@@ -57,12 +57,17 @@ export function useCreateSession() {
     const fetchWrapper = useFetch();
     const [resp, setResp] = useState();
 
-    function createSessionFunction({ sessionId, sessionPassword, params }) {
+    function createSessionFunction({
+        sessionId,
+        sessionPassword,
+        hostId,
+        params,
+    }) {
         return fetchWrapper({
             url: `/session/${sessionId}`,
             method: "POST",
             body: {
-                hostId: "test",
+                hostId,
                 sessionPassword,
                 params,
             },

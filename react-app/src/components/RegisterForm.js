@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import { useCreateUser } from "../hooks/user";
 
-export default function RegisterForm({ handleCloseModal }) {
+export default function RegisterForm({ handleCloseModal, sessionId }) {
     const [inputs, setInputs] = useState({});
     const { setUsername, setAccessToken, setRefreshToken, setUserId } =
         useContext(authContext);
@@ -20,13 +20,12 @@ export default function RegisterForm({ handleCloseModal }) {
         event.preventDefault();
         const username = event.target.username.value;
 
-        const resp = await registerUser({ username });
+        const resp = await registerUser({ username, sessionId });
         if (resp === undefined) return;
         setUsername(username);
         setAccessToken(resp.accessToken);
         setRefreshToken(resp.refreshToken);
         setUserId(resp.userid);
-
         handleCloseModal({ show: false });
     }
 
