@@ -10,7 +10,6 @@ import { websocketContext } from "../contexts/Websocket";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import uuid from "react-uuid";
 
 export const SessionContext = React.createContext();
 
@@ -58,22 +57,6 @@ export function Session() {
                         return [...prevVotes, message.vote];
                     });
                 } else if (message.type === "connect") {
-                    const emptyVote = {
-                        sessionId: sessionId,
-                        voteid: uuid(),
-                        userid: message.username,
-                        votevalue: null,
-                    };
-                    setVotes((prevVotes) => {
-                        if (prevVotes.length > 0) {
-                            for (let i = 0; i < prevVotes.length; i++) {
-                                if (prevVotes[i].userid === message.username)
-                                    return prevVotes;
-                            }
-                        }
-
-                        return [...prevVotes, emptyVote];
-                    });
                     // this part is wrong because it will automatically add this to the db, it needs to be on setting up the ws
                 } else if (message.type === "showVotes") {
                     setShowVotes(true);

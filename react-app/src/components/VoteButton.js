@@ -8,7 +8,7 @@ import { useMakeVote } from "../models/vote";
 
 export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
     const { sessionId } = useContext(SessionContext);
-    const { username } = useContext(authContext);
+    const { username, userId } = useContext(authContext);
     const [vote, resp] = useMakeVote();
 
     async function handleClick() {
@@ -16,7 +16,7 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
         const voteBody = {
             sessionid: sessionId,
             voteid: voteId,
-            userid: username,
+            userid: userId,
             votevalue: voteValue,
         };
         const newVotes = [...votes];
@@ -29,7 +29,7 @@ export default function VoteButton({ voteValue, votes, setVotes, websocket }) {
         vote({
             sessionId: sessionId,
             voteId: voteBody.voteid,
-            username,
+            userId: voteBody.userid,
             voteValue: voteBody.votevalue,
         });
         websocket.send(

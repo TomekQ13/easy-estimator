@@ -42,11 +42,11 @@ export function useMakeVote() {
     const fetchWrapper = useFetch();
     // const [resp, setResp] = useState();
 
-    async function vote({ sessionId, voteId, username, voteValue }) {
+    async function vote({ sessionId, voteId, userId, voteValue }) {
         if (fetchWrapper === undefined) return;
         const voteBody = {
             voteid: voteId,
-            userid: username,
+            userid: userId,
             votevalue: voteValue,
         };
 

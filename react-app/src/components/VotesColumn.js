@@ -16,6 +16,7 @@ export default function VotesColumn({
     const [mean, setMean] = useState();
     console.log("rendering votes");
     console.log(users);
+    console.log(votes);
     return (
         <div>
             <h3>Votes</h3>
@@ -30,10 +31,10 @@ export default function VotesColumn({
                                         {user.username}
                                     </div>
                                     <div className="align-self-center mx-2">
-                                        {showVotes === true
+                                        {showVotes === true && votes.length > 0
                                             ? votes.filter(
                                                   votes.userid === user.userid
-                                              ).vote
+                                              ).votevalue
                                             : "?"}
                                     </div>
                                 </div>

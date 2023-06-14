@@ -5,7 +5,8 @@ async function getUsersInSession(sessionId) {
         `
         select
             us.user_id as userid,
-            u.username
+            u.username,
+            us.vote_value as vote_value
         from user_session us
         left join users u
         on u.user_id = us.user_id
@@ -42,4 +43,35 @@ async function deleteUserSession(userId, sessionId) {
     return resp;
 }
 
-module.exports = { getUsersInSession, addUserSession, deleteUserSession };
+async function vote(sessionId, userId, voteValue) {
+    const resp = await client.query(
+        `
+        update user_session
+        set vote_value = $3
+        where session_id = $1 and user_id = $2
+    
+    `,
+        [sessionId, userId, voteValue]
+    );
+    return resp;
+}
+
+async function deleteVotesFromSession(sessionId) {
+    const resp = await client.query(
+        `
+        update user_session
+        set vote_value = null
+        where session_id = $1
+    
+    `,
+        [sessionId]
+    );
+}
+
+module.exports = {
+    getUsersInSession,
+    addUserSession,
+    deleteUserSession,
+    vote,
+    deleteVotesFromSession,
+};

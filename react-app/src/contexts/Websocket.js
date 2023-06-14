@@ -1,12 +1,8 @@
 import React from "react";
-import uuid from "react-uuid";
-import { useMakeVote } from "../models/vote";
 
 export const websocketContext = React.createContext();
 
 export default function Websocket({ children }) {
-    const [vote] = useMakeVote();
-
     async function makeWebsocket({ sessionId, username }) {
         const ws = await connectToWebsocket();
         ws.heartbeat = heartbeat;
@@ -17,12 +13,6 @@ export default function Websocket({ children }) {
                 username,
             })
         );
-        vote({
-            sessionId: sessionId,
-            voteId: uuid(),
-            username,
-            voteValue: null,
-        });
         return ws;
     }
 

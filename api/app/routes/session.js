@@ -17,14 +17,14 @@ router.get("/:sessionId", async (req, res) => {
     let results;
     try {
         results = await getSession(req.params.sessionId);
-        users = await getUsersInSession(req.params.sessionId);
-        users = users === undefined ? [] : users;
+        votes = await getUsersInSession(req.params.sessionId);
+        votes = votes === undefined ? [] : votes;
         if (!results) {
             return res
                 .status(404)
                 .send({ message: "Session with this ID does not exist." });
         }
-        results["users"] = users;
+        results["votes"] = votes;
     } catch (e) {
         console.error(e);
         return res
