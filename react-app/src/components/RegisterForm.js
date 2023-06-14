@@ -6,7 +6,7 @@ import { useCreateUser } from "../hooks/user";
 
 export default function RegisterForm({ handleCloseModal }) {
     const [inputs, setInputs] = useState({});
-    const { setUsername, setAccessToken, setRefreshToken } =
+    const { setUsername, setAccessToken, setRefreshToken, setUserId } =
         useContext(authContext);
     const registerUser = useCreateUser();
 
@@ -25,6 +25,7 @@ export default function RegisterForm({ handleCloseModal }) {
         setUsername(username);
         setAccessToken(resp.accessToken);
         setRefreshToken(resp.refreshToken);
+        setUserId(resp.userid);
 
         handleCloseModal({ show: false });
     }

@@ -16,6 +16,7 @@ export default function Auth({ children }) {
     const [refreshToken, setRefreshToken] = useState();
     const [username, setUsername] = useState();
     const [registerModal, setRegisterModal] = useState({ show: false });
+    const [userId, setUserId] = useState();
 
     useEffect(() => {
         const accessToken = getFromLocalStorage({ key: "accessToken" });
@@ -81,6 +82,22 @@ export default function Auth({ children }) {
         }
     }, [username]);
 
+    useEffect(() => {
+        const userId = getFromLocalStorage({ key: "easy-userId" });
+        if (window._env_.DEBUG)
+            console.log(`UserId read from local storage. Value ${userId}`);
+        if (userId !== undefined && userId !== null && userId !== "")
+            setUserId(userId);
+    }, [setUserId]);
+
+    useEffect(() => {
+        if (userId !== undefined && userId !== "") {
+            saveToLocalStorage({ key: "easy-userId", value: userId });
+            if (window._env_.DEBUG)
+                console.log("UserId saved to local storage");
+        }
+    }, [userId]);
+
     const authContextValue = {
         username,
         setUsername,
@@ -91,6 +108,8 @@ export default function Auth({ children }) {
         getUsernameFromLS,
         registerModal,
         setRegisterModal,
+        userId,
+        setUserId,
     };
 
     return (

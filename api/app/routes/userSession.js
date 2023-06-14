@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { addUserSession, deleteUserSession } = require("../models/userSession");
+const { authenticateToken } = require("../auth");
 
 router.use(authenticateToken);
 

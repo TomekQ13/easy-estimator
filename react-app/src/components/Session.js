@@ -161,6 +161,7 @@ export function Session() {
                                 <VotesColumn
                                     votes={votes}
                                     users={users}
+                                    setUsers={setUsers}
                                     setVotes={setVotes}
                                     websocket={websocket}
                                     showVotes={showVotes}

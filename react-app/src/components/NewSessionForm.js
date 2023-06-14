@@ -1,7 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import uuid from "react-uuid";
 import { useNavigate } from "react-router-dom";
 import { useCreateSession } from "../models/session";
+import { useJoinUserSession } from "../models/userSession";
+import { authContext } from "../contexts/Auth";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -9,13 +11,17 @@ export default function NewSessionForm({ handleCloseModal }) {
     const navigate = useNavigate();
     const sessionPassword = useRef();
     const sessionName = useRef();
-    const [createSessionFunction, resp] = useCreateSession();
+    const [createSessionFunction, resp] = useCreateSession({});
+    const [joinUserSessionFunction] = useJoinUserSession();
     const [sessionId, setSessionId] = useState();
     const [errors, setErrors] = useState({});
+    const { userId } = useContext(authContext);
 
     useEffect(() => {
         if (resp === undefined || sessionId === undefined) return;
-        if (resp.status === 201) return navigate(`/session/${sessionId}`);
+        if (resp.status === 201) {
+            return navigate(`/session/${sessionId}`);
+        }
     }, [resp, sessionId, navigate]);
 
     function handleSubmit(event) {
@@ -28,6 +34,10 @@ export default function NewSessionForm({ handleCloseModal }) {
             sessionId: sessionId,
             sessionPassword: sessionPassword.current.value,
             params: { showVotes: false, name: sessionName.current.value },
+        });
+        joinUserSessionFunction({
+            sessionId,
+            userId,
         });
     }
 

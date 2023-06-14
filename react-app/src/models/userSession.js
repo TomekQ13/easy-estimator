@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 
-export function useJoinUserSession({ sessionId, userId }) {
+export function useJoinUserSession() {
     const fetchWrapper = useFetch();
 
     const [response, setResponse] = useState([]);
@@ -29,17 +29,5 @@ export function useJoinUserSession({ sessionId, userId }) {
         [fetchWrapper]
     );
 
-    useEffect(() => {
-        if (
-            sessionId === undefined ||
-            userId === undefined ||
-            sessionId.trim() === ""
-        )
-            return;
-        joinUserSessionFunction({ sessionId, userId });
-    }, [sessionId, userId, joinUserSessionFunction]);
-
-    return {
-        response,
-    };
+    return [joinUserSessionFunction, response];
 }
