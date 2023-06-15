@@ -69,7 +69,6 @@ export default function useFetch(authorization) {
                     requestUrl =
                         `${window._env_.API_URL}${url}?` +
                         new URLSearchParams(searchParams);
-                console.log(requestUrl);
                 const response = await fetch(requestUrl, requestOptions);
                 if (response.status === 403) {
                     if (window._env_.DEBUG)

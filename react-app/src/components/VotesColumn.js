@@ -5,15 +5,13 @@ import VotesSummary from "./VotesSummary";
 import ShowVotesBtn from "./ShowVotesBtn";
 
 export default function VotesColumn({
-    votes,
-    setVotes,
     websocket,
     showVotes,
     setShowVotes,
     users,
+    setUsers,
 }) {
     const [mean, setMean] = useState();
-    console.log(users);
     return (
         <div>
             <h3>Votes</h3>
@@ -28,9 +26,11 @@ export default function VotesColumn({
                                         {user.username}
                                     </div>
                                     <div className="align-self-center mx-2">
-                                        {showVotes === true
-                                            ? user.votevalue || ""
-                                            : "?"}
+                                        {user.votevalue !== null
+                                            ? showVotes === true
+                                                ? user.votevalue
+                                                : "?"
+                                            : ""}
                                     </div>
                                 </div>
                             </ListGroup.Item>
@@ -38,7 +38,7 @@ export default function VotesColumn({
                     })}
             </ListGroup>
             <VotesSummary
-                votes={votes}
+                users={users}
                 showVotes={showVotes}
                 mean={mean}
                 setMean={setMean}
@@ -46,7 +46,6 @@ export default function VotesColumn({
             <div className="float-end">
                 <ShowVotesBtn websocket={websocket} />
                 <ResetVotesBtn
-                    setVotes={setVotes}
                     websocket={websocket}
                     setMean={setMean}
                     setShowVotes={setShowVotes}

@@ -4,12 +4,7 @@ import { SessionContext } from "./Session";
 import Button from "react-bootstrap/Button";
 import { useUpdateSession } from "../models/session";
 
-export default function ResetVotesBtn({
-    setVotes,
-    websocket,
-    setMean,
-    setShowVotes,
-}) {
+export default function ResetVotesBtn({ websocket, setMean, setShowVotes }) {
     const [deleteVotes, _resp] = useDeleteVotes();
     const { sessionId, users, setUsers } = useContext(SessionContext);
     const [updateSession, __resp] = useUpdateSession();
