@@ -5,6 +5,7 @@ import VotesColumn from "./VotesColumn";
 import { authContext } from "../contexts/Auth";
 import { useSession } from "../models/session";
 import { websocketContext } from "../contexts/Websocket";
+import Notifications from "./Notifications";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -15,6 +16,7 @@ export const SessionContext = React.createContext();
 export function Session() {
     const sessionId = useParams().session_id;
     const { username, setRegisterModal, userId } = useContext(authContext);
+    const [messages, setMessages] = useState([]);
 
     const [websocket, setWebsocket] = useState();
     const {
@@ -27,7 +29,6 @@ export function Session() {
         users,
         setUsers,
     } = useSession({ sessionId, userId });
-    // const [votes, setVotes] = useVotes({ sessionId });
 
     const { makeWebsocket } = useContext(websocketContext);
 
@@ -44,9 +45,21 @@ export function Session() {
                     setResetVoting(true);
                     setShowVotes(false);
                 } else if (message.type === "vote") {
-                    if (message.vote.userid === userId) return;
+                    if (message.voteBody.userId === userId) return;
+                    const newMessages = [...messages];
+                    newMessages.push({
+                        text: `${message.voteBody.username} voted`,
+                        type: "ok",
+                    });
+                    setMessages(newMessages);
                 } else if (message.type === "connect") {
-                    // this part is wrong because it will automatically add this to the db, it needs to be on setting up the ws
+                    if (message.voteBody.userId === userId) return;
+                    const newMessages = [...messages];
+                    newMessages.push({
+                        text: `${message.voteBody.username} joined`,
+                        type: "ok",
+                    });
+                    setMessages(newMessages);
                 } else if (message.type === "showVotes") {
                     setShowVotes(true);
                 } else {
@@ -131,6 +144,7 @@ export function Session() {
                                 />
                             </Col>
                         </Row>
+                        <Notiifications messages={messages} />
                     </Container>
                 </SessionContext.Provider>
             )}
