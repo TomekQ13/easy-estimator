@@ -45,16 +45,6 @@ export function Session() {
                     setShowVotes(false);
                 } else if (message.type === "vote") {
                     if (message.vote.userid === userId) return;
-                    // setVotes((prevVotes) => {
-                    //     for (let i = 0; i < prevVotes.length; i++) {
-                    //         if (prevVotes[i].userid === message.vote.userid) {
-                    //             prevVotes[i].votevalue = message.vote.votevalue;
-                    //             console.log(prevVotes);
-                    //             return [...prevVotes];
-                    //         }
-                    //     }
-                    //     return [...prevVotes, message.vote];
-                    // });
                 } else if (message.type === "connect") {
                     // this part is wrong because it will automatically add this to the db, it needs to be on setting up the ws
                 } else if (message.type === "showVotes") {
@@ -111,42 +101,30 @@ export function Session() {
                                 <Row className="g-4">
                                     <VoteButton
                                         voteValue={1}
-                                        // votes={votes}
-                                        // setVotes={setVotes}
                                         websocket={websocket}
                                     />
                                     <VoteButton
                                         voteValue={2}
-                                        // votes={votes}
-                                        // setVotes={setVotes}
                                         websocket={websocket}
                                     />
                                     <VoteButton
                                         voteValue={3}
-                                        // votes={votes}
-                                        // setVotes={setVotes}
                                         websocket={websocket}
                                     />
                                     <VoteButton
                                         voteValue={5}
-                                        // votes={votes}
-                                        // setVotes={setVotes}
                                         websocket={websocket}
                                     />
                                     <VoteButton
                                         voteValue={8}
-                                        // votes={votes}
-                                        // setVotes={setVotes}
                                         websocket={websocket}
                                     />
                                 </Row>
                             </Col>
                             <Col md={4}>
                                 <VotesColumn
-                                    // votes={votes}
                                     users={users}
                                     setUsers={setUsers}
-                                    // setVotes={setVotes}
                                     websocket={websocket}
                                     showVotes={showVotes}
                                     setShowVotes={setShowVotes}
