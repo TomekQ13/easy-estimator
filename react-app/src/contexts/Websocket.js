@@ -3,7 +3,7 @@ import React from "react";
 export const websocketContext = React.createContext();
 
 export default function Websocket({ children }) {
-    async function makeWebsocket({ sessionId, username }) {
+    async function makeWebsocket({ sessionId, username, userId }) {
         const ws = await connectToWebsocket();
         ws.heartbeat = heartbeat;
         ws.send(
@@ -11,6 +11,7 @@ export default function Websocket({ children }) {
                 type: "connect",
                 sessionId,
                 username,
+                userId,
             })
         );
         return ws;

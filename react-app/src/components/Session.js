@@ -35,9 +35,10 @@ export function Session() {
     useEffect(() => {
         async function setupWebsocket() {
             if (username === undefined || sessionId === undefined) return;
-            const ws = await makeWebsocket({ sessionId, username });
+            const ws = await makeWebsocket({ sessionId, username, userId });
             ws.onmessage = (messageString) => {
                 const message = JSON.parse(messageString.data);
+                console.log(message);
                 if (message.type === "heartbeat") {
                     ws.heartbeat();
                 } else if (message.type === "resetVoting") {
@@ -53,10 +54,10 @@ export function Session() {
                     });
                     setMessages(newMessages);
                 } else if (message.type === "connect") {
-                    if (message.voteBody.userId === userId) return;
+                    if (message.userId === userId) return;
                     const newMessages = [...messages];
                     newMessages.push({
-                        text: `${message.voteBody.username} joined`,
+                        text: `${message.username} joined`,
                         type: "ok",
                     });
                     setMessages(newMessages);
@@ -132,6 +133,14 @@ export function Session() {
                                         voteValue={8}
                                         websocket={websocket}
                                     />
+                                    <VoteButton
+                                        voteValue={13}
+                                        websocket={websocket}
+                                    />
+                                    <VoteButton
+                                        voteValue={21}
+                                        websocket={websocket}
+                                    />
                                 </Row>
                             </Col>
                             <Col md={4}>
@@ -144,7 +153,7 @@ export function Session() {
                                 />
                             </Col>
                         </Row>
-                        <Notiifications messages={messages} />
+                        <Notifications messages={messages} />
                     </Container>
                 </SessionContext.Provider>
             )}
