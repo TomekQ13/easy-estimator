@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function Notification({ text, type }) {
-    const className = type === "ok" ? "notification-ok" : "notification-error";
+    const className =
+        type === "success" ? "notification-success" : "notification-error";
     const classNameText =
-        type === "ok" ? "notification-ok-text" : "notification-error-text";
+        type === "success"
+            ? "notification-success-text"
+            : "notification-error-text";
+
+    const [isVisible, setIsVisible] = useState("");
+
+    // setTimeout(() => {
+    //     setIsVisible(" hide");
+    // }, 3000);
+
     return (
-        <div className={className}>
-            <span className={classNameText}>{text}</span>
-        </div>
+        <>
+            <div className={"notification " + className + isVisible}>
+                <span className={classNameText}>{text}</span>
+            </div>
+        </>
     );
 }

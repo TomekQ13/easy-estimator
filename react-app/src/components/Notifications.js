@@ -3,11 +3,15 @@ import Notification from "./Notification";
 
 export default function Notifications({ messages }) {
     return (
-        <div calssName="notification-box">
+        <div className="notification-box">
             {messages &&
                 messages.map((message) => {
                     return (
-                        <Notification text={message.text} type={message.type} />
+                        <Notification
+                            text={message.text}
+                            type={message.type}
+                            key={message.id}
+                        />
                     );
                 })}
         </div>

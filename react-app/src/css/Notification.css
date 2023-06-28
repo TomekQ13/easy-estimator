@@ -1,0 +1,43 @@
+.notification {
+    border: 1px solid;
+    border-radius: 5px;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding: 1rem 1rem 1rem 1rem;
+    font-weight: bold;
+    box-shadow: var(--boxShadow);
+    background-color: #ffffff;
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    max-width: 500px;
+    min-height: 40px;
+    z-index: 1030;
+}
+
+
+.notification-error {
+    color: var(--red);    
+}
+
+.notification-info {
+    color: var(--button);    
+}
+
+.notification-warning {
+    color: #FFC20A;    
+}
+
+.notification-success {
+    color: var(--green);    
+}
+
+.hide {
+    opacity: 0;
+    transition: opacity 400ms;
+}
