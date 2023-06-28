@@ -40,30 +40,31 @@ export function Session() {
     const ws = useRef();
     const [isConnectionOpen, setConnectionOpen] = useState(false);
 
-    const updateUserVote = useCallback(
-        ({ userId, newVoteValue }) => {
-            setUsers((prevUsers) => {
-                const newUsers = [...prevUsers];
-                const userIndex = newUsers.findIndex((user) => {
-                    return user.userid === userId;
-                });
-                newUsers[userIndex].votevalue = newVoteValue;
-                return newUsers;
+    function updateUserVote({ userId, newVoteValue }) {
+        setUsers((prevUsers) => {
+            const newUsers = [...prevUsers];
+            const userIndex = newUsers.findIndex((user) => {
+                return user.userid === userId;
             });
-        },
-        [users, setUsers]
-    );
-
-    function resetUsersVotes({ users, setUsers }) {
-        const newUsers = [...users];
-        newUsers.map((user) => {
-            user.votevalue = null;
+            newUsers[userIndex].votevalue = newVoteValue;
+            return newUsers;
         });
-        setUsers(newUsers);
     }
 
-    function addMessage({ messages, setMessages, newMessage }) {
-        setMessages([...messages, newMessage]);
+    function resetUsersVotes() {
+        setUsers((prevUsers) => {
+            const newUsers = [...prevUsers];
+            newUsers.map((user) => {
+                user.votevalue = null;
+            });
+            return newUsers;
+        });
+    }
+
+    function addMessage({ newMessage }) {
+        setMessages((prevMessages) => {
+            return [...prevMessages, newMessage];
+        });
     }
 
     useEffect(() => {
@@ -93,13 +94,13 @@ export function Session() {
             } else if (message.type === "resetVoting") {
                 setResetVoting(true);
                 setShowVotes(false);
-                resetUsersVotes({ users, setUsers });
+                resetUsersVotes();
                 const newMessage = {
                     text: `Voting reset`,
                     type: "default",
                     id: uuid(),
                 };
-                addMessage({ messages, setMessages, newMessage });
+                addMessage({ newMessage });
             } else if (message.type === "vote") {
                 updateUserVote({
                     userId: message.vote.userid,
@@ -110,7 +111,7 @@ export function Session() {
                     type: "ok",
                     id: uuid(),
                 };
-                addMessage({ messages, setMessages, newMessage });
+                addMessage({ newMessage });
             } else if (message.type === "connect") {
                 if (message.userId === userId) return;
                 const newMessage = {
@@ -118,7 +119,7 @@ export function Session() {
                     type: "ok",
                     id: uuid(),
                 };
-                addMessage({ messages, setMessages, newMessage });
+                addMessage({ newMessage });
             } else if (message.type === "showVotes") {
                 setShowVotes(true);
                 const newMessage = {
