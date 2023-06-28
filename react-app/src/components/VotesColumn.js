@@ -9,7 +9,6 @@ export default function VotesColumn({
     showVotes,
     setShowVotes,
     users,
-    setUsers,
 }) {
     const [mean, setMean] = useState();
     return (

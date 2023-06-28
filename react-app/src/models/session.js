@@ -8,6 +8,11 @@ export function useSession({ sessionId, userId }) {
     const [sessionName, setSessionName] = useState();
     const [users, setUsers] = useState([]);
 
+    useEffect(() => {
+        console.log("users changed");
+        console.log("new users length = " + users);
+    }, [users]);
+
     const getSessionFunction = useCallback(
         ({ sessionId, userId }) => {
             if (fetchWrapper !== undefined) {

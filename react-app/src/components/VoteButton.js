@@ -18,11 +18,6 @@ export default function VoteButton({ voteValue, websocket }) {
             votevalue: voteValue,
             username,
         };
-        const newUsers = [...users];
-        const userIndex = newUsers.findIndex((user) => {
-            return user.userid === userId;
-        });
-        newUsers[userIndex].votevalue = voteValue;
 
         vote({
             sessionId: sessionId,
@@ -36,7 +31,6 @@ export default function VoteButton({ voteValue, websocket }) {
                 sessionId: sessionId,
             })
         );
-        setUsers(newUsers);
     }
 
     return (

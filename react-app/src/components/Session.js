@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, {
+    useCallback,
+    useContext,
+    useEffect,
+    useRef,
+    useState,
+} from "react";
 import { useParams } from "react-router-dom";
 import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
@@ -34,8 +40,39 @@ export function Session() {
     const ws = useRef();
     const [isConnectionOpen, setConnectionOpen] = useState(false);
 
+    const updateUserVote = useCallback(
+        ({ userId, newVoteValue }) => {
+            setUsers((prevUsers) => {
+                const newUsers = [...prevUsers];
+                const userIndex = newUsers.findIndex((user) => {
+                    return user.userid === userId;
+                });
+                newUsers[userIndex].votevalue = newVoteValue;
+                return newUsers;
+            });
+        },
+        [users, setUsers]
+    );
+
+    function resetUsersVotes({ users, setUsers }) {
+        const newUsers = [...users];
+        newUsers.map((user) => {
+            user.votevalue = null;
+        });
+        setUsers(newUsers);
+    }
+
+    function addMessage({ messages, setMessages, newMessage }) {
+        setMessages([...messages, newMessage]);
+    }
+
     useEffect(() => {
-        if (username === undefined || sessionId === undefined) return;
+        if (
+            username === undefined ||
+            sessionId === undefined ||
+            userId === undefined
+        )
+            return;
         ws.current = makeWebsocket();
         ws.current.onopen = () => {
             console.log("Connection opened");
@@ -51,62 +88,55 @@ export function Session() {
         };
         ws.current.onmessage = (messageString) => {
             const message = JSON.parse(messageString.data);
-            console.log(message);
             if (message.type === "heartbeat") {
                 ws.current.heartbeat();
             } else if (message.type === "resetVoting") {
-                // setVotes([]);
                 setResetVoting(true);
                 setShowVotes(false);
-                const newMessages = [...messages];
-                newMessages.push({
+                resetUsersVotes({ users, setUsers });
+                const newMessage = {
                     text: `Voting reset`,
                     type: "default",
                     id: uuid(),
-                });
-                setMessages(newMessages);
+                };
+                addMessage({ messages, setMessages, newMessage });
             } else if (message.type === "vote") {
-                if (message.vote.userid === userId) return;
-                const newUsers = [...users];
-                const userIndex = newUsers.findIndex((user) => {
-                    return user.userid === message.vote.userid;
+                updateUserVote({
+                    userId: message.vote.userid,
+                    newVoteValue: message.vote.votevalue,
                 });
-                newUsers[userIndex].votevalue = message.vote.votevalue;
-                setUsers(newUsers);
-                const newMessages = [...messages];
-                newMessages.push({
+                const newMessage = {
                     text: `${message.vote.username} voted`,
                     type: "ok",
                     id: uuid(),
-                });
-                setMessages(newMessages);
+                };
+                addMessage({ messages, setMessages, newMessage });
             } else if (message.type === "connect") {
                 if (message.userId === userId) return;
-                const newMessages = [...messages];
-                newMessages.push({
+                const newMessage = {
                     text: `${message.username} joined`,
                     type: "ok",
                     id: uuid(),
-                });
-                setMessages(newMessages);
+                };
+                addMessage({ messages, setMessages, newMessage });
             } else if (message.type === "showVotes") {
                 setShowVotes(true);
-                const newMessages = [...messages];
-                newMessages.push({
+                const newMessage = {
                     text: `Votes shown`,
                     type: "default",
                     id: uuid(),
-                });
-                setMessages(newMessages);
+                };
+                addMessage({ messages, setMessages, newMessage });
             } else {
                 console.warn("Unrecognized message type - " + message.type);
             }
         };
 
-        return () => {
-            ws.close();
-        };
-    }, []);
+        // return () => {
+        //     console.log("Closing connection to ws");
+        //     ws.current.close();
+        // };
+    }, [username, sessionId, userId]);
 
     useEffect(() => {
         if (username === null || username === undefined) {
@@ -142,20 +172,41 @@ export function Session() {
                         <Row className="h-75" xs={1} md={2}>
                             <Col md={8} className="mb-3">
                                 <Row className="g-4">
-                                    <VoteButton voteValue={1} websocket={ws} />
-                                    <VoteButton voteValue={2} websocket={ws} />
-                                    <VoteButton voteValue={3} websocket={ws} />
-                                    <VoteButton voteValue={5} websocket={ws} />
-                                    <VoteButton voteValue={8} websocket={ws} />
-                                    <VoteButton voteValue={13} websocket={ws} />
-                                    <VoteButton voteValue={21} websocket={ws} />
+                                    <VoteButton
+                                        voteValue={1}
+                                        websocket={ws.current}
+                                    />
+                                    <VoteButton
+                                        voteValue={2}
+                                        websocket={ws.current}
+                                    />
+                                    <VoteButton
+                                        voteValue={3}
+                                        websocket={ws.current}
+                                    />
+                                    <VoteButton
+                                        voteValue={5}
+                                        websocket={ws.current}
+                                    />
+                                    <VoteButton
+                                        voteValue={8}
+                                        websocket={ws.current}
+                                    />
+                                    <VoteButton
+                                        voteValue={13}
+                                        websocket={ws.current}
+                                    />
+                                    <VoteButton
+                                        voteValue={21}
+                                        websocket={ws.current}
+                                    />
                                 </Row>
                             </Col>
                             <Col md={4}>
                                 <VotesColumn
                                     users={users}
                                     setUsers={setUsers}
-                                    websocket={ws}
+                                    websocket={ws.current}
                                     showVotes={showVotes}
                                     setShowVotes={setShowVotes}
                                 />
