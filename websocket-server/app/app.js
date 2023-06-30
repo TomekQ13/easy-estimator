@@ -9,7 +9,7 @@ wss.on("connection", (ws) => {
 
     ws.on("message", (messageString) => {
         const message = JSON.parse(messageString);
-        if (process.env.NDOE_ENV !== "production") console.log(message);
+        if (process.env.NODE_ENV !== "production") console.log(message);
         if (message.sessionId === undefined)
             return console.error("Missing sessionId on a message");
 
@@ -17,13 +17,10 @@ wss.on("connection", (ws) => {
             if (!(message.sessionId in sessions))
                 sessions[message.sessionId] = new Map();
 
-            sessions[message.sessionId].set(ws, message.username);
-            // ws.send(
-            //     JSON.stringify({
-            //         type: "usernames",
-            //         usernames: getUsernames(clients),
-            //     })
-            // );
+            sessions[message.sessionId].set(ws, {
+                username: message.username,
+                userId: message.userId,
+            });
         }
         sendMessageToAllClients(sessions[message.sessionId], message);
     });
@@ -36,12 +33,13 @@ wss.on("connection", (ws) => {
         );
         if (ws.readyState !== 1) {
             ws.close();
-            // const disconnectUsername = clients.get(client).username;
+            const disconnectUser = connectedClients.get(ws);
             connectedClients.delete(ws);
-            // sendMessageToAllClients(clients, {
-            //     type: "disconnect",
-            //     username: disconnectUsername,
-            // });
+            sendMessageToAllClients(connectedClients, {
+                type: "disconnect",
+                username: disconnectUser.username,
+                userId: disconnectUser.userId,
+            });
         }
     }, 1000 * 5);
 });

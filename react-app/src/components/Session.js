@@ -1,10 +1,4 @@
-import React, {
-    useCallback,
-    useContext,
-    useEffect,
-    useRef,
-    useState,
-} from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
@@ -17,6 +11,7 @@ import uuid from "react-uuid";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useDeleteUserSession } from "../models/userSession";
 
 export const SessionContext = React.createContext();
 
@@ -35,6 +30,7 @@ export function Session() {
         users,
         setUsers,
     } = useSession({ sessionId, userId });
+    const [deleteUserSessionFunction] = useDeleteUserSession();
 
     const { makeWebsocket } = useContext(websocketContext);
     const ws = useRef();
@@ -63,9 +59,25 @@ export function Session() {
 
     function addMessage({ newMessage }) {
         setMessages((prevMessages) => {
-            return [...prevMessages, newMessage];
+            const newMessages = [...prevMessages];
+            if (newMessages.length >= 5) {
+                newMessages.pop();
+            }
+            return [newMessage, ...newMessages];
         });
     }
+
+    function removeUser({ userId }) {
+        setUsers((prevUsers) => {
+            const newUsers = [...prevUsers];
+            const filteredUsers = newUsers.filter((user) => {
+                return user.userId != userId;
+            });
+            return filteredUsers;
+        });
+    }
+
+    useEffect(() => {}, [messages]);
 
     useEffect(() => {
         if (
@@ -108,7 +120,7 @@ export function Session() {
                 });
                 const newMessage = {
                     text: `${message.vote.username} voted`,
-                    type: "ok",
+                    type: "success",
                     id: uuid(),
                 };
                 addMessage({ newMessage });
@@ -116,7 +128,7 @@ export function Session() {
                 if (message.userId === userId) return;
                 const newMessage = {
                     text: `${message.username} joined`,
-                    type: "ok",
+                    type: "success",
                     id: uuid(),
                 };
                 addMessage({ newMessage });
@@ -127,6 +139,15 @@ export function Session() {
                     type: "default",
                     id: uuid(),
                 };
+                addMessage({ messages, setMessages, newMessage });
+            } else if (message.type === "disconnect") {
+                const newMessage = {
+                    text: `${message.username} disconnected`,
+                    type: "error",
+                    id: uuid(),
+                };
+                deleteUserSessionFunction({ sessionId, userId });
+                removeUser({ userId: message.userId });
                 addMessage({ messages, setMessages, newMessage });
             } else {
                 console.warn("Unrecognized message type - " + message.type);
@@ -165,7 +186,7 @@ export function Session() {
                         <Row className="h-auto">
                             <Col>
                                 <div className="mb-3">
-                                    <h3>{sessionName}</h3>
+                                    <h3>Session ID: {sessionId}</h3>
                                     {/* Host: {sessionData && <p>{sessionData.hostid}</p>} */}
                                 </div>
                             </Col>
@@ -213,8 +234,8 @@ export function Session() {
                                 />
                             </Col>
                         </Row>
-                        <Notifications messages={messages} />
                     </Container>
+                    <Notifications messages={messages} />
                 </SessionContext.Provider>
             )}
         </>

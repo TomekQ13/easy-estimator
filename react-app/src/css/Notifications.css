@@ -2,5 +2,11 @@
 
     position: fixed;
     bottom: 0;
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+
 
 }

@@ -10,9 +10,9 @@ export default function Notification({ text, type }) {
 
     const [isVisible, setIsVisible] = useState("");
 
-    // setTimeout(() => {
-    //     setIsVisible(" hide");
-    // }, 3000);
+    setTimeout(() => {
+        setIsVisible(" hide");
+    }, 3000);
 
     return (
         <>

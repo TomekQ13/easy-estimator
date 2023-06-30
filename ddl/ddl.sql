@@ -5,7 +5,7 @@ create table estimation_session (
     host_id varchar not null,
     show_votes boolean default false,
     reset_voting boolean default false,
-    session_name varchar not null,
+    session_name varchar,
     added_dttm timestamp not null default now()
 );
 
