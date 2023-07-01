@@ -77,6 +77,22 @@ export function Session() {
         });
     }
 
+    function addUser({ newUser }) {
+        // skip adding new user if the user already exists
+        let userExistCheck;
+
+        setUsers((prevUsers) => {
+            userExistCheck = prevUsers.filter((user) => {
+                return user.userid === newUser.userid;
+            });
+            if (userExistCheck !== undefined) return prevUsers;
+            else return [...prevUsers, newUser];
+        });
+
+        if (userExistCheck === undefined) return true;
+        else return false;
+    }
+
     useEffect(() => {}, [messages]);
 
     useEffect(() => {
@@ -126,12 +142,19 @@ export function Session() {
                 addMessage({ newMessage });
             } else if (message.type === "connect") {
                 if (message.userId === userId) return;
-                const newMessage = {
-                    text: `${message.username} joined`,
-                    type: "success",
-                    id: uuid(),
-                };
-                addMessage({ newMessage });
+                const userAdded = addUser({
+                    user: {
+                        userId: message.userId,
+                    },
+                });
+                if (userAdded === true) {
+                    const newMessage = {
+                        text: `${message.username} joined`,
+                        type: "success",
+                        id: uuid(),
+                    };
+                    addMessage({ newMessage });
+                }
             } else if (message.type === "showVotes") {
                 setShowVotes(true);
                 const newMessage = {
