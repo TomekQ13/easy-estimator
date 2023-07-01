@@ -85,11 +85,11 @@ export function Session() {
             userExistCheck = prevUsers.filter((user) => {
                 return user.userid === newUser.userid;
             });
-            if (userExistCheck !== undefined) return prevUsers;
+            if (userExistCheck.length > 0) return prevUsers;
             else return [...prevUsers, newUser];
         });
 
-        if (userExistCheck === undefined) return true;
+        if (userExistCheck.length === 0) return true;
         else return false;
     }
 
@@ -143,8 +143,10 @@ export function Session() {
             } else if (message.type === "connect") {
                 if (message.userId === userId) return;
                 const userAdded = addUser({
-                    user: {
-                        userId: message.userId,
+                    newUser: {
+                        userid: message.userId,
+                        username: message.username,
+                        votevalue: null,
                     },
                 });
                 if (userAdded === true) {
@@ -164,14 +166,14 @@ export function Session() {
                 };
                 addMessage({ messages, setMessages, newMessage });
             } else if (message.type === "disconnect") {
-                const newMessage = {
+                /*const newMessage = {
                     text: `${message.username} disconnected`,
                     type: "error",
                     id: uuid(),
                 };
                 deleteUserSessionFunction({ sessionId, userId });
                 removeUser({ userId: message.userId });
-                addMessage({ messages, setMessages, newMessage });
+                addMessage({ messages, setMessages, newMessage });*/
             } else {
                 console.warn("Unrecognized message type - " + message.type);
             }

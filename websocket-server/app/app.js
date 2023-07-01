@@ -34,17 +34,20 @@ wss.on("connection", (ws) => {
         if (ws.readyState !== 1) {
             ws.close();
             const disconnectedSession = wsSession.get(ws);
-            const disconnectUser = sessions[disconnectedSession].get(ws);
-            console.log(
-                `Client ${disconnectUser.username}, ${disconnectUser.userId} has disconnected`
-            );
-            sessions[disconnectedSession].delete(ws);
-            wsSession.delete(ws);
-            sendMessageToAllClients(sessions[disconnectedSession], {
-                type: "disconnect",
-                username: disconnectUser.username,
-                userId: disconnectUser.userId,
-            });
+            if (disconnectedSession !== undefined) {
+                const disconnectUser = sessions[disconnectedSession].get(ws);
+                console.log(
+                    `Client ${disconnectUser.username}, ${disconnectUser.userId} has disconnected`
+                );
+                sessions[disconnectedSession].delete(ws);
+                wsSession.delete(ws);
+                // sendMessageToAllClients(sessions[disconnectedSession], {
+                //     type: "disconnect",
+                //     username: disconnectUser.username,
+                //     userId: disconnectUser.userId,
+                // });
+            }
+            clearInterval(ping);
         }
     }, 1000 * 5);
 });
