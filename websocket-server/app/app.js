@@ -2,11 +2,9 @@ const WebSocket = require("ws");
 
 const wss = new WebSocket.Server({ port: 7000 });
 const sessions = {};
-const connectedClients = new Set();
+const wsSession = new Map();
 
 wss.on("connection", (ws) => {
-    connectedClients.add(ws);
-
     ws.on("message", (messageString) => {
         const message = JSON.parse(messageString);
         if (process.env.NODE_ENV !== "production") console.log(message);
@@ -21,6 +19,8 @@ wss.on("connection", (ws) => {
                 username: message.username,
                 userId: message.userId,
             });
+
+            wsSession.set(ws, message.sessionId);
         }
         sendMessageToAllClients(sessions[message.sessionId], message);
     });
@@ -33,9 +33,14 @@ wss.on("connection", (ws) => {
         );
         if (ws.readyState !== 1) {
             ws.close();
-            const disconnectUser = connectedClients.get(ws);
-            connectedClients.delete(ws);
-            sendMessageToAllClients(connectedClients, {
+            const disconnectedSession = wsSession.get(ws);
+            const disconnectUser = sessions[disconnectedSession].get(ws);
+            console.log(
+                `Client ${disconnectUser.username}, ${disconnectUser.userId} has disconnected`
+            );
+            sessions[disconnectedSession].delete(ws);
+            wsSession.delete(ws);
+            sendMessageToAllClients(sessions[disconnectedSession], {
                 type: "disconnect",
                 username: disconnectUser.username,
                 userId: disconnectUser.userId,
@@ -56,11 +61,6 @@ function sendMessageToAllClients(clients, message) {
     }
 
     [...clients.keys()].forEach((client) => {
-        // remove disconnected clients
-        if (connectedClients.has(client) === false) {
-            sessions[message.sessionId].delete(client);
-            return;
-        }
         client.send(JSON.stringify(message));
     });
 }

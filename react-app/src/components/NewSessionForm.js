@@ -30,7 +30,8 @@ export default function NewSessionForm({ handleCloseModal }) {
         setSessionId(sessionId);
         createSessionFunction({
             sessionId: sessionId,
-            sessionPassword: sessionPassword.current.value,
+            // sessionPassword: sessionPassword.current.value,
+            sessionPassword: "",
             hostId: userId,
             params: { showVotes: false, name: sessionName.current.value },
         });
@@ -51,7 +52,7 @@ export default function NewSessionForm({ handleCloseModal }) {
                     {errors.sessionName}
                 </Form.Control.Feedback>
             </Form.Group>
-            <Form.Group controlId="formSessionPassword">
+            {/* <Form.Group controlId="formSessionPassword">
                 <Form.Control
                     type="password"
                     name="sessionPassword"
@@ -59,7 +60,7 @@ export default function NewSessionForm({ handleCloseModal }) {
                     ref={sessionPassword}
                 ></Form.Control>
                 <Form.Text>Password can be empty</Form.Text>
-            </Form.Group>
+            </Form.Group> */}
             <Form.Group controlId="formSessionButtons">
                 <div className="float-end">
                     <Button variant="primary" type="submit" className="mx-2">
