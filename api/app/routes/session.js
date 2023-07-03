@@ -42,11 +42,10 @@ router.get("/:sessionId", async (req, res) => {
 });
 
 router.post("/:sessionId", async (req, res) => {
-    console.log(req.body);
     if (req.params.sessionId === undefined)
         return res.status(400).send({ message: "SessionId is missing" });
-    if (req.body.hostId === undefined)
-        return res.status(400).send({ message: "HostId is missing" });
+    // if (req.body.hostId === undefined)
+    //     return res.status(400).send({ message: "HostId is missing" });
     if ((await getSession(req.params.sessionId)) !== undefined)
         return res
             .status(400)
