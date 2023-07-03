@@ -1,0 +1,12 @@
+.button-box {
+    display: flex;
+    justify-content: end;
+    gap: 0.5rem;
+}
+
+@media (max-width: 991px) {
+    .button-box {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}

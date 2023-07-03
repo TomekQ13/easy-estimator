@@ -23,7 +23,7 @@ export default function ResetVotesBtn({ websocket, setMean, setShowVotes }) {
         });
         setUsers(newUsers);
 
-        setMean("");
+        // setMean("");
         deleteVotes({
             sessionId,
         });
@@ -36,7 +36,7 @@ export default function ResetVotesBtn({ websocket, setMean, setShowVotes }) {
     }
 
     return (
-        <Button onClick={handleClick} variant="secondary">
+        <Button onClick={handleClick} variant="danger">
             Reset voting
         </Button>
     );

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
 import { authContext } from "../contexts/Auth";
@@ -11,7 +11,6 @@ import uuid from "react-uuid";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { useDeleteUserSession } from "../models/userSession";
 
 export const SessionContext = React.createContext();
 
@@ -25,16 +24,15 @@ export function Session() {
         setShowVotes,
         resetVoting,
         setResetVoting,
-        sessionName,
         setSessionName,
         users,
         setUsers,
     } = useSession({ sessionId, userId });
-    const [deleteUserSessionFunction] = useDeleteUserSession();
 
     const { makeWebsocket } = useContext(websocketContext);
     const ws = useRef();
     const [isConnectionOpen, setConnectionOpen] = useState(false);
+    const navigate = useNavigate();
 
     function updateUserVote({ userId, newVoteValue }) {
         setUsers((prevUsers) => {
@@ -42,8 +40,12 @@ export function Session() {
             const userIndex = newUsers.findIndex((user) => {
                 return user.userid === userId;
             });
-            newUsers[userIndex].votevalue = newVoteValue;
-            return newUsers;
+            // done to avoid crashing the app by removed users voting at the same time
+            if (userIndex > -1) {
+                newUsers[userIndex].votevalue = newVoteValue;
+                return newUsers;
+            }
+            return [...prevUsers];
         });
     }
 
@@ -71,7 +73,7 @@ export function Session() {
         setUsers((prevUsers) => {
             const newUsers = [...prevUsers];
             const filteredUsers = newUsers.filter((user) => {
-                return user.userId != userId;
+                return user.userid != userId;
             });
             return filteredUsers;
         });
@@ -92,8 +94,6 @@ export function Session() {
         if (userExistCheck.length === 0) return true;
         else return false;
     }
-
-    useEffect(() => {}, [messages]);
 
     useEffect(() => {
         if (
@@ -164,7 +164,7 @@ export function Session() {
                     type: "default",
                     id: uuid(),
                 };
-                addMessage({ messages, setMessages, newMessage });
+                addMessage({ newMessage });
             } else if (message.type === "disconnect") {
                 /*const newMessage = {
                     text: `${message.username} disconnected`,
@@ -174,6 +174,20 @@ export function Session() {
                 deleteUserSessionFunction({ sessionId, userId });
                 removeUser({ userId: message.userId });
                 addMessage({ messages, setMessages, newMessage });*/
+            } else if (message.type === "remove") {
+                console.log(message);
+                if (message.userId === userId) {
+                    console.log("navigating");
+                    return navigate(`/`);
+                }
+                console.log("got here asd");
+                const newMessage = {
+                    text: `${message.username} removed`,
+                    type: "error",
+                    id: uuid(),
+                };
+                addMessage({ newMessage });
+                console.log("got here");
             } else {
                 console.warn("Unrecognized message type - " + message.type);
             }
@@ -196,16 +210,17 @@ export function Session() {
         setShowVotes,
         resetVoting,
         setResetVoting,
-        sessionName,
         setSessionName,
         sessionId,
         users,
         setUsers,
+        removeUser,
+        ws: ws.current,
     };
 
     return (
         <>
-            {sessionName && (
+            {sessionId && (
                 <SessionContext.Provider value={sessionContextValue}>
                     <Container>
                         <Row className="h-auto">
@@ -219,34 +234,15 @@ export function Session() {
                         <Row className="h-75" xs={1} md={2}>
                             <Col md={8} className="mb-3">
                                 <Row className="g-4">
-                                    <VoteButton
-                                        voteValue={1}
-                                        websocket={ws.current}
-                                    />
-                                    <VoteButton
-                                        voteValue={2}
-                                        websocket={ws.current}
-                                    />
-                                    <VoteButton
-                                        voteValue={3}
-                                        websocket={ws.current}
-                                    />
-                                    <VoteButton
-                                        voteValue={5}
-                                        websocket={ws.current}
-                                    />
-                                    <VoteButton
-                                        voteValue={8}
-                                        websocket={ws.current}
-                                    />
-                                    <VoteButton
-                                        voteValue={13}
-                                        websocket={ws.current}
-                                    />
-                                    <VoteButton
-                                        voteValue={21}
-                                        websocket={ws.current}
-                                    />
+                                    {[1, 2, 3, 5, 8, 13, 21].map((value) => {
+                                        return (
+                                            <VoteButton
+                                                voteValue={value}
+                                                websocket={ws.current}
+                                                key={value}
+                                            />
+                                        );
+                                    })}
                                 </Row>
                             </Col>
                             <Col md={4}>

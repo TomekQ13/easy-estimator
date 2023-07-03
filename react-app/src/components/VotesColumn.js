@@ -3,6 +3,7 @@ import ResetVotesBtn from "./ResetVotesBtn";
 import ListGroup from "react-bootstrap/ListGroup";
 import VotesSummary from "./VotesSummary";
 import ShowVotesBtn from "./ShowVotesBtn";
+import UsernameBox from "./UsernameBox";
 
 export default function VotesColumn({
     websocket,
@@ -10,7 +11,6 @@ export default function VotesColumn({
     setShowVotes,
     users,
 }) {
-    const [mean, setMean] = useState();
     return (
         <div>
             <h3>Votes</h3>
@@ -21,9 +21,10 @@ export default function VotesColumn({
                         return (
                             <ListGroup.Item key={user.userid}>
                                 <div className="d-flex justify-content-between">
-                                    <div className="username-box">
-                                        {user.username}
-                                    </div>
+                                    <UsernameBox
+                                        username={user.username}
+                                        userId={user.userid}
+                                    />
                                     <div className="align-self-center mx-2">
                                         {user.votevalue !== null
                                             ? showVotes === true
@@ -36,17 +37,11 @@ export default function VotesColumn({
                         );
                     })}
             </ListGroup>
-            <VotesSummary
-                users={users}
-                showVotes={showVotes}
-                mean={mean}
-                setMean={setMean}
-            />
-            <div className="float-end">
+            <VotesSummary users={users} showVotes={showVotes} />
+            <div className="button-box">
                 <ShowVotesBtn websocket={websocket} />
                 <ResetVotesBtn
                     websocket={websocket}
-                    setMean={setMean}
                     setShowVotes={setShowVotes}
                 />
             </div>

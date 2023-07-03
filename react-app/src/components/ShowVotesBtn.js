@@ -34,7 +34,7 @@ export default function ShowVotesBtn({ websocket }) {
     }
 
     return (
-        <Button variant="primary" className="me-2" onClick={handleClick}>
+        <Button variant="primary" className="" onClick={handleClick}>
             Show votes
         </Button>
     );

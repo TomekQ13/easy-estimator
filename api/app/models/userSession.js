@@ -34,7 +34,7 @@ async function addUserSession(userId, sessionId) {
 async function deleteUserSession(userId, sessionId) {
     const resp = await client.query(
         `
-        delete from user_session (session_id, user_id)
+        delete from user_session
         where session_id = $1 and user_id = $2    
     
     `,
