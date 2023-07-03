@@ -29,7 +29,7 @@ services:
       - '7000:7000'
     restart: always
   react-app:
-    image: 'tomekq13/easy-estimator-react'
+    image: 'tomekq13/easy-estimator-react:latest'
     restart: always
     ports:
       - '80:80'
