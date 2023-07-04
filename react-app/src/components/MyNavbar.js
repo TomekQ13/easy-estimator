@@ -9,7 +9,9 @@ export default function MyNavbar() {
     return (
         <Navbar className="mb-3">
             <Container>
-                <Navbar.Brand href="/">Easy Estimator</Navbar.Brand>
+                <Navbar.Brand href="/">
+                    Super cool name, probably estimation poker
+                </Navbar.Brand>
                 {username && (
                     <Navbar.Text className="justify-content-end">
                         Username: {username}
