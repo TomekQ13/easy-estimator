@@ -36,7 +36,7 @@ export default function ResetVotesBtn({ websocket, setMean, setShowVotes }) {
     }
 
     return (
-        <Button onClick={handleClick} variant="danger">
+        <Button onClick={handleClick} variant="danger" className="mb-2">
             Reset voting
         </Button>
     );
