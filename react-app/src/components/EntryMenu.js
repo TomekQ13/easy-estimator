@@ -12,10 +12,15 @@ export default function EntryMeny() {
     const [newSessionModal, setNewSessionModal] = useState({ show: false });
     const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
 
-    const { username, setRegisterModal } = useContext(authContext);
+    const { username, setRegisterModal, userId } = useContext(authContext);
 
     useEffect(() => {
-        if (username === null || username === undefined) {
+        if (
+            username === null ||
+            username === undefined ||
+            userId === null ||
+            userId === undefined
+        ) {
             setRegisterModal({ show: true });
         }
     }, [username, setRegisterModal]);
