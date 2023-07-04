@@ -2,7 +2,7 @@ drop table if exists estimation_session;
 create table estimation_session (
     session_id varchar not null primary key,
     password varchar,
-    host_id varchar not null,
+    host_id varchar,
     show_votes boolean default false,
     reset_voting boolean default false,
     session_name varchar,
