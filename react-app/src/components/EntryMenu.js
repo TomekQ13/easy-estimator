@@ -35,12 +35,6 @@ export default function EntryMeny() {
                             setJoinSessionModal={setJoinSessionModal}
                         />
                     </Row>
-                    {newSessionModal.show && (
-                        <NewSessionModal
-                            setNewSessionModal={setNewSessionModal}
-                            newSessionModal={newSessionModal}
-                        />
-                    )}
                     {joinSessionModal.show && (
                         <JoinSessionModal
                             setJoinSessionModal={setJoinSessionModal}
