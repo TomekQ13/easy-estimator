@@ -125,7 +125,7 @@ export function Session() {
                 resetUsersVotes();
                 const newMessage = {
                     text: `Voting reset`,
-                    type: "default",
+                    type: "success",
                     id: uuid(),
                 };
                 addMessage({ newMessage });
@@ -161,7 +161,7 @@ export function Session() {
                 setShowVotes(true);
                 const newMessage = {
                     text: `Votes shown`,
-                    type: "default",
+                    type: "success",
                     id: uuid(),
                 };
                 addMessage({ newMessage });
@@ -180,14 +180,12 @@ export function Session() {
                     console.log("navigating");
                     return navigate(`/`);
                 }
-                console.log("got here asd");
                 const newMessage = {
                     text: `${message.username} removed`,
                     type: "error",
                     id: uuid(),
                 };
                 addMessage({ newMessage });
-                console.log("got here");
             } else {
                 console.warn("Unrecognized message type - " + message.type);
             }
