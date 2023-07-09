@@ -65,7 +65,11 @@ export default function VotesSummary({ users, showVotes, setShowVotes }) {
     }
 
     function show({ value }) {
-        return users.length === 0 ? "" : showVotes === true ? value : "?";
+        return users.length === 0 || isNaN(value)
+            ? ""
+            : showVotes === true
+            ? value
+            : "?";
     }
 
     function removeNotNumbers(array) {
