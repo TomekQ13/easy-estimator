@@ -41,7 +41,7 @@ export function useDeleteVotes() {
                 url: `/vote/all/${sessionId}`,
                 method: "DELETE",
             });
-            if (window._env_.DEBUG) {
+            if (window._env_.DEBUG === "true") {
                 if (response.status === 200)
                     console.log(
                         "Votes deleted successfully for sessionId " + sessionId

@@ -14,7 +14,7 @@ export function useCreateUser() {
         })
             .then((response) => {
                 if (response.status === 201) {
-                    if (window._env_.DEBUG)
+                    if (window._env_.DEBUG === "true")
                         console.log("User registered successfully");
                     return response.json();
                 }

@@ -28,7 +28,7 @@ export default function useFetch(authorization) {
                     tokenRefreshRequestOptions
                 );
                 const data = await resp.json();
-                if (window._env_.DEBUG)
+                if (window._env_.DEBUG === "true")
                     console.log(
                         "Setting new access token to " + data.accessToken
                     );
@@ -45,7 +45,7 @@ export default function useFetch(authorization) {
 
     const fetchWrapper = useCallback(
         async ({ url, method, body, searchParams }) => {
-            if (window._env_.DEBUG) {
+            if (window._env_.DEBUG === "true") {
                 console.log(
                     "Using fetch to " +
                         url +
@@ -79,7 +79,7 @@ export default function useFetch(authorization) {
 
                 const response = await fetch(requestUrl, requestOptions);
                 if (response.status !== 403) return response;
-                if (window._env_.DEBUG)
+                if (window._env_.DEBUG === "true")
                     console.log("Received 403. Refreshing accessToken");
 
                 const data = await refreshAccessToken({
@@ -94,7 +94,7 @@ export default function useFetch(authorization) {
 
                 if (responseCall2.status !== 403) return responseCall2;
                 if (responseCall2.status === 403) {
-                    if (window._env_.DEBUG)
+                    if (window._env_.DEBUG === "true")
                         console.error("Received 403 for the second time.");
                     return responseCall2;
                 }
