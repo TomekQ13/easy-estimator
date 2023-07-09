@@ -22,7 +22,7 @@ function generateAccessToken(user) {
         );
     console.log(user);
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: 60 * 60 * 60,
+        expiresIn: 60,
     });
     console.log(accessToken);
     return accessToken;

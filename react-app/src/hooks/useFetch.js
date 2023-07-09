@@ -45,8 +45,15 @@ export default function useFetch(authorization) {
 
     const fetchWrapper = useCallback(
         async ({ url, method, body, searchParams }) => {
-            if (window._env_.DEBUG)
-                console.log("Using fetch to " + url + " with method " + method);
+            if (window._env_.DEBUG) {
+                console.log(
+                    "Using fetch to " +
+                        url +
+                        " with method " +
+                        method +
+                        " and search params "
+                );
+            }
 
             const requestOptions = {
                 method: method,
@@ -69,31 +76,28 @@ export default function useFetch(authorization) {
                     requestUrl =
                         `${window._env_.API_URL}${url}?` +
                         new URLSearchParams(searchParams);
-                const response = await fetch(requestUrl, requestOptions);
-                if (response.status === 403) {
-                    if (window._env_.DEBUG)
-                        console.log("Received 403. Refreshing accessToken");
 
-                    refreshAccessToken({
-                        refreshToken,
-                        setAccessToken,
-                    }).then((data) => {
-                        requestOptions.headers[
-                            "Authorization"
-                        ] = `Bearer ${data.accessToken}`;
-                        fetch(
-                            `${window._env_.API_URL}${url}`,
-                            requestOptions
-                        ).then((response_1) => {
-                            if (response_1.status === 403)
-                                if (window._env_.DEBUG)
-                                    console.error(
-                                        "Received 403 for the second time."
-                                    );
-                        });
-                    });
+                const response = await fetch(requestUrl, requestOptions);
+                if (response.status !== 403) return response;
+                if (window._env_.DEBUG)
+                    console.log("Received 403. Refreshing accessToken");
+
+                const data = await refreshAccessToken({
+                    refreshToken,
+                    setAccessToken,
+                });
+
+                requestOptions.headers[
+                    "Authorization"
+                ] = `Bearer ${data.accessToken}`;
+                const responseCall2 = await fetch(requestUrl, requestOptions);
+
+                if (responseCall2.status !== 403) return responseCall2;
+                if (responseCall2.status === 403) {
+                    if (window._env_.DEBUG)
+                        console.error("Received 403 for the second time.");
+                    return responseCall2;
                 }
-                return response;
             } catch (error) {
                 console.error(
                     "There was an error while fetching data " + error
