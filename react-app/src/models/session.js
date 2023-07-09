@@ -43,7 +43,8 @@ export function useSession({ sessionId, userId }) {
         if (
             sessionId === undefined ||
             sessionId.trim() === "" ||
-            userId === undefined
+            userId === undefined ||
+            userId.trim() === ""
         )
             return;
         getSessionFunction({ sessionId, userId });
@@ -71,7 +72,7 @@ export function useCreateSession() {
         hostId,
         params,
     }) {
-        return fetchWrapper({
+        fetchWrapper({
             url: `/session/${sessionId}`,
             method: "POST",
             body: {
@@ -84,7 +85,7 @@ export function useCreateSession() {
                 if (response.status === 201)
                     console.log("Session created successfully");
                 if (response.status === 403 || response.status === 404)
-                    return console.error(
+                    console.error(
                         "Received an error status from the server while creating session"
                     );
                 setResp(response);

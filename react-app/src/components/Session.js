@@ -175,9 +175,7 @@ export function Session() {
                 removeUser({ userId: message.userId });
                 addMessage({ messages, setMessages, newMessage });*/
             } else if (message.type === "remove") {
-                console.log(message);
                 if (message.userId === userId) {
-                    console.log("navigating");
                     return navigate(`/`);
                 }
                 const newMessage = {
