@@ -21,26 +21,40 @@ export default function VotesSummary({ users, showVotes }) {
     function calculateMean(votesValues) {
         if (votesValues.length === 0 || votesValues.length === undefined)
             return undefined;
+        // remove not numbers
+        votesValues = removeNotNumbers(votesValues);
         const sum = votesValues.reduce((prevSum, i) => prevSum + i, 0);
-        return sum / votesValues.length;
+        return roundToOne(sum / votesValues.length);
     }
 
     function calculateMedian(arr) {
         if (arr.length === 0 || arr.length === undefined) return undefined;
         if (arr.length == 0) {
-            return; // 0.
+            return;
         }
+        // remove not numbers
+        arr = removeNotNumbers(arr);
         arr.sort((a, b) => a - b); // 1.
         const midpoint = Math.floor(arr.length / 2); // 2.
         const median =
             arr.length % 2 === 1
                 ? arr[midpoint] // 3.1. If odd length, just take midpoint
                 : (arr[midpoint - 1] + arr[midpoint]) / 2; // 3.2. If even length, take median of midpoints
-        return median;
+        return roundToOne(median);
+    }
+
+    function roundToOne(number) {
+        return Math.round(number * 10) / 10;
     }
 
     function show({ value }) {
-        return users.length === 0 ? "" : showVotes === true ? mean : "?";
+        return users.length === 0 ? "" : showVotes === true ? value : "?";
+    }
+
+    function removeNotNumbers(array) {
+        return array.filter((element) => {
+            return !isNaN(element) && element !== null;
+        });
     }
 
     return (

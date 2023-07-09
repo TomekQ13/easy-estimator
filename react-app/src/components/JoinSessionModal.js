@@ -5,7 +5,6 @@ import Button from "react-bootstrap/esm/Button";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "../models/session";
 import { authContext } from "../contexts/Auth";
-import { useJoinUserSession } from "../models/userSession";
 
 export default function JoinSessionModal({
     setJoinSessionModal,
@@ -14,11 +13,11 @@ export default function JoinSessionModal({
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const formSessionId = useRef({});
-    const { sessionName } = useSession({
-        sessionId: formSessionId.current.value,
-    });
     const { userId } = useContext(authContext);
-    const [joinUserSessionFunction] = useJoinUserSession();
+    const { users } = useSession({
+        sessionId: formSessionId.current.value,
+        userId,
+    });
 
     function handleCloseModal() {
         setJoinSessionModal({ show: false });
@@ -28,12 +27,8 @@ export default function JoinSessionModal({
         event.preventDefault();
         if (formSessionId.current.value.trim() === "")
             return setErrors({ sessionId: "Session ID cannot be empty" });
-        if (sessionName === null || sessionName === undefined)
+        if (users === undefined)
             return setErrors({ sessionId: "This session does not exist" });
-        await joinUserSessionFunction({
-            sessionId: formSessionId.current.value,
-            userId,
-        });
         return navigate(`/session/${event.target.sessionId.value}`);
     }
 

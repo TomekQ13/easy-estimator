@@ -230,15 +230,17 @@ export function Session() {
                         <Row className="h-75" xs={1} md={2}>
                             <Col md={8} className="mb-3">
                                 <Row className="g-4">
-                                    {[1, 2, 3, 5, 8, 13, 21].map((value) => {
-                                        return (
-                                            <VoteButton
-                                                voteValue={value}
-                                                websocket={ws.current}
-                                                key={value}
-                                            />
-                                        );
-                                    })}
+                                    {[0, 1, 2, 3, 5, 8, 13, 21, "?"].map(
+                                        (value) => {
+                                            return (
+                                                <VoteButton
+                                                    voteValue={value}
+                                                    websocket={ws.current}
+                                                    key={value}
+                                                />
+                                            );
+                                        }
+                                    )}
                                 </Row>
                             </Col>
                             <Col md={4}>

@@ -4,7 +4,7 @@ import { SessionContext } from "./Session";
 import Button from "react-bootstrap/Button";
 import { useUpdateSession } from "../models/session";
 
-export default function ResetVotesBtn({ websocket, setMean, setShowVotes }) {
+export default function ResetVotesBtn({ websocket, setShowVotes }) {
     const [deleteVotes, _resp] = useDeleteVotes();
     const { sessionId, users, setUsers } = useContext(SessionContext);
     const [updateSession, __resp] = useUpdateSession();
@@ -23,7 +23,6 @@ export default function ResetVotesBtn({ websocket, setMean, setShowVotes }) {
         });
         setUsers(newUsers);
 
-        // setMean("");
         deleteVotes({
             sessionId,
         });
@@ -36,7 +35,7 @@ export default function ResetVotesBtn({ websocket, setMean, setShowVotes }) {
     }
 
     return (
-        <Button onClick={handleClick} variant="danger" className="mb-2">
+        <Button onClick={handleClick} variant="danger" className="">
             Reset voting
         </Button>
     );
