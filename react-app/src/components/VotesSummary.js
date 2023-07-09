@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ListGroupItem from "react-bootstrap/esm/ListGroupItem";
 import ListGroup from "react-bootstrap/ListGroup";
+import { useUpdateSession } from "../models/session";
+import { SessionContext } from "./Session";
 
-export default function VotesSummary({ users, showVotes }) {
+export default function VotesSummary({ users, showVotes, setShowVotes }) {
     const [mean, setMean] = useState();
     const [median, setMedian] = useState();
+    const { sessionId } = useContext(SessionContext);
+    const [updateSession, _resp] = useUpdateSession();
 
     useEffect(() => {
         const votesValues = [];
@@ -16,6 +20,19 @@ export default function VotesSummary({ users, showVotes }) {
         if (mean === undefined || median === undefined) return;
         setMean(mean);
         setMedian(median);
+
+        // check if all users votes if yes show votes
+        const emptyVotes = users.filter((user) => {
+            return user.votevalue === null;
+        });
+
+        if (emptyVotes.length === 0) {
+            setShowVotes(true);
+            updateSession({
+                sessionId,
+                newParam: { showVotes: true },
+            });
+        }
     }, [users]);
 
     function calculateMean(votesValues) {

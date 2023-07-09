@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import ResetVotesBtn from "./ResetVotesBtn";
 import ListGroup from "react-bootstrap/ListGroup";
 import VotesSummary from "./VotesSummary";
@@ -37,7 +37,11 @@ export default function VotesColumn({
                         );
                     })}
             </ListGroup>
-            <VotesSummary users={users} showVotes={showVotes} />
+            <VotesSummary
+                users={users}
+                showVotes={showVotes}
+                setShowVotes={setShowVotes}
+            />
             <div className="button-box">
                 <ShowVotesBtn websocket={websocket} />
                 <ResetVotesBtn
