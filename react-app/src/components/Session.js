@@ -165,6 +165,14 @@ export function Session() {
                     id: uuid(),
                 };
                 addMessage({ newMessage });
+            } else if (message.type === "votingEnded") {
+                setShowVotes(true);
+                const newMessage = {
+                    text: `Voting ended`,
+                    type: "success",
+                    id: uuid(),
+                };
+                addMessage({ newMessage });
             } else if (message.type === "disconnect") {
                 /*const newMessage = {
                     text: `${message.username} disconnected`,

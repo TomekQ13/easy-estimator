@@ -35,7 +35,7 @@ export default function VotesSummary({ users, showVotes, setShowVotes }) {
             ws.send(
                 JSON.stringify({
                     sessionId,
-                    type: "showVotes",
+                    type: "votingEnded",
                 })
             );
         }
