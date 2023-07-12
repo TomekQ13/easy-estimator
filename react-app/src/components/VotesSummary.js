@@ -7,7 +7,7 @@ import { SessionContext } from "./Session";
 export default function VotesSummary({ users, showVotes, setShowVotes }) {
     const [mean, setMean] = useState();
     const [median, setMedian] = useState();
-    const { sessionId } = useContext(SessionContext);
+    const { sessionId, ws } = useContext(SessionContext);
     const [updateSession, _resp] = useUpdateSession();
 
     useEffect(() => {
@@ -32,6 +32,12 @@ export default function VotesSummary({ users, showVotes, setShowVotes }) {
                 sessionId,
                 newParam: { showVotes: true },
             });
+            ws.send(
+                JSON.stringify({
+                    sessionId,
+                    type: "showVotes",
+                })
+            );
         }
     }, [users]);
 
