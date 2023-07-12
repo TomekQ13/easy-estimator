@@ -31,7 +31,7 @@ export function Session() {
 
     const { makeWebsocket } = useContext(websocketContext);
     const ws = useRef();
-    const [isConnectionOpen, setConnectionOpen] = useState(false);
+    const [_isConnectionOpen, setConnectionOpen] = useState(false);
     const navigate = useNavigate();
 
     function updateUserVote({ userId, newVoteValue }) {
@@ -73,7 +73,7 @@ export function Session() {
         setUsers((prevUsers) => {
             const newUsers = [...prevUsers];
             const filteredUsers = newUsers.filter((user) => {
-                return user.userid != userId;
+                return user.userid !== userId;
             });
             return filteredUsers;
         });
