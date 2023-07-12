@@ -117,7 +117,8 @@ export function useUpdateSession() {
             if (response.status === 404)
                 return console.error("Session to update not found");
             if (response.status === 201) {
-                return console.log("Session data updated successfully");
+                if (window._env_.DEBUG === "true")
+                    return console.log("Session data updated successfully");
             }
         } catch {
             console.error("There was an error while updating session data");

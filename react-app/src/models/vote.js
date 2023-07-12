@@ -18,7 +18,8 @@ export function useMakeVote() {
         })
             .then((response) => {
                 if (response.status === 201)
-                    console.log("Vote added successfully");
+                    if (window._env_.DEBUG === "true")
+                        console.log("Vote added successfully");
             })
             .catch((error) => {
                 console.error(
