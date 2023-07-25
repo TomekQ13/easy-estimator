@@ -11,6 +11,11 @@ router.post("/register", async (req, res) => {
     if (req.body.username === undefined || req.body.username === "")
         return res.status(400).send({ message: "Username is missing" });
 
+    if (req.body.username.length > 20)
+        return res
+            .status(400)
+            .send({ message: "Username can be maximum 20 characters long" });
+
     const userId = uuidv4();
     try {
         if (req.body.sessionId !== undefined) {

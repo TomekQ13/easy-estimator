@@ -27,8 +27,16 @@ export default function RegisterForm({ handleCloseModal, sessionId }) {
                 username: "Username can be maximum 20 characters long",
             });
 
-        const resp = await registerUser({ username, sessionId });
-        if (resp === undefined) return;
+        let resp;
+        try {
+            resp = await registerUser({ username, sessionId });
+            if (resp === undefined) return;
+        } catch {
+            if (window._env_.DEBUG === "true")
+                console.error("There was an error while registering the user");
+            return;
+        }
+
         setUsername(username);
         setAccessToken(resp.accessToken);
         setRefreshToken(resp.refreshToken);
