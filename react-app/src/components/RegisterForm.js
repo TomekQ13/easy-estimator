@@ -9,6 +9,7 @@ export default function RegisterForm({ handleCloseModal, sessionId }) {
     const { setUsername, setAccessToken, setRefreshToken, setUserId } =
         useContext(authContext);
     const registerUser = useCreateUser();
+    const [errors, setErrors] = useState({});
 
     function handleChange(event) {
         const name = event.target.name;
@@ -19,6 +20,12 @@ export default function RegisterForm({ handleCloseModal, sessionId }) {
     async function handleSubmit(event) {
         event.preventDefault();
         const username = event.target.username.value;
+
+        // username validation
+        if (username.trim().length > 20)
+            return setErrors({
+                username: "Username can be maximum 20 characters long",
+            });
 
         const resp = await registerUser({ username, sessionId });
         if (resp === undefined) return;
@@ -38,8 +45,12 @@ export default function RegisterForm({ handleCloseModal, sessionId }) {
                     value={inputs.username || ""}
                     onChange={handleChange}
                     placeholder="Username"
+                    isInvalid={!!errors.username}
                     required
                 />
+                <Form.Control.Feedback type="invalid">
+                    {errors.username}
+                </Form.Control.Feedback>
                 <Form.Text>
                     This will be your username displayed in a session
                 </Form.Text>
