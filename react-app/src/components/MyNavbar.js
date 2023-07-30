@@ -7,11 +7,9 @@ export default function MyNavbar() {
     const { username } = useContext(authContext);
 
     return (
-        <Navbar className="mb-3">
+        <Navbar className="mb-3 w-100 flex-column">
             <Container>
-                <Navbar.Brand href="/">
-                    Super cool name, probably estimation poker
-                </Navbar.Brand>
+                <Navbar.Brand href="/">Cool name</Navbar.Brand>
                 {username && (
                     <Navbar.Text className="justify-content-end">
                         Username: {username}
