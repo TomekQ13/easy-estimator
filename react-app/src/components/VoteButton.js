@@ -6,8 +6,8 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import { useMakeVote } from "../models/vote";
 
-export default function VoteButton({ voteValue, websocket }) {
-    const { sessionId, users, setUsers } = useContext(SessionContext);
+export default function VoteButton({ voteValue }) {
+    const { sessionId, addMessage, ws } = useContext(SessionContext);
     const { username, userId } = useContext(authContext);
     const [vote, resp] = useMakeVote();
 
@@ -18,19 +18,25 @@ export default function VoteButton({ voteValue, websocket }) {
             votevalue: voteValue,
             username,
         };
-
-        vote({
-            sessionId: sessionId,
-            userId: voteBody.userid,
-            voteValue: voteBody.votevalue,
-        });
-        websocket.send(
-            JSON.stringify({
+        try {
+            ws.sendMessage({
                 type: "vote",
                 vote: voteBody,
                 sessionId: sessionId,
-            })
-        );
+            });
+            vote({
+                sessionId: sessionId,
+                userId: voteBody.userid,
+                voteValue: voteBody.votevalue,
+            });
+        } catch {
+            const newMessage = {
+                text: `Connection lost. Please refresh the page.`,
+                type: "error",
+                id: uuid(),
+            };
+            addMessage({ newMessage });
+        }
     }
 
     return (

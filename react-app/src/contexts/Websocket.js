@@ -6,6 +6,7 @@ export default function Websocket({ children }) {
     function makeWebsocket() {
         const ws = new WebSocket(window._env_.WS_URL);
         ws.heartbeat = heartbeat;
+        ws.sendMessage = sendMessage;
         return ws;
     }
 
@@ -14,6 +15,14 @@ export default function Websocket({ children }) {
         this.pingTimeout = setTimeout(() => {
             console.error("You have been disconnected");
         }, 1000 * 10 + 2000);
+    }
+
+    function sendMessage(body) {
+        if (this.readyState !== 1) {
+            throw new Error("Websocket is not in state 1");
+        }
+
+        this.send(JSON.stringify(body));
     }
 
     const websocketContextValue = {

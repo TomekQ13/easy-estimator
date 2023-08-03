@@ -220,6 +220,7 @@ export function Session() {
         setUsers,
         removeUser,
         ws: ws.current,
+        addMessage,
     };
 
     return (
