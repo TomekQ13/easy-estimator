@@ -1,3 +1,13 @@
 .username-box {
     word-break: break-all;
 }
+
+
+
+@media (max-width: 576px) {
+    .session-id {
+        font-size:medium;
+    }
+
+
+}

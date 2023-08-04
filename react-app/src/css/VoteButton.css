@@ -8,18 +8,16 @@
     font-size: 50px;
 }
 
-.votes-list-box {
-    height: 500px;
-    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
-}
+
 
 @media (max-width: 576px) {
     .vote-btn {
-        width: 80px;
-        height: 120px;
+        width: 5rem;
+        height: 7rem;
     }
 
     .vote-btn-font-size {
-        font-size: 30px;
+        font-size: 2rem;
     }
+
 }

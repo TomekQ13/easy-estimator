@@ -1,20 +1,27 @@
 import React, { useContext } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 import { authContext } from "../contexts/Auth";
 
 export default function MyNavbar() {
     const { username } = useContext(authContext);
 
     return (
-        <Navbar className="mb-3 w-100 flex-column">
+        <Navbar className="w-100" expand="lg">
             <Container>
-                <Navbar.Brand href="/">Cool name</Navbar.Brand>
-                {username && (
-                    <Navbar.Text className="justify-content-end">
-                        Username: {username}
-                    </Navbar.Text>
-                )}
+                <Navbar.Brand href="/">Cool name Cool name</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Collapse>
+                    <Nav className="me-auto">
+                        <Nav.Link href="#link">About</Nav.Link>
+                    </Nav>
+                    {username && (
+                        <Navbar.Text className="text-right">
+                            Username: {username}
+                        </Navbar.Text>
+                    )}
+                </Navbar.Collapse>
             </Container>
         </Navbar>
     );

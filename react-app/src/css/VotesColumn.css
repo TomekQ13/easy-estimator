@@ -4,9 +4,23 @@
     gap: 0.5rem;
 }
 
+.votes-list-box {
+    height: auto;
+    border: var(--bs-list-group-border-width) solid var(--bs-list-group-border-color);
+}
+
 @media (max-width: 991px) {
     .button-box {
         flex-direction: column;
         gap: 0.3rem;
     }
+}
+
+@media (max-width: 576px) {
+
+    .votes-list-box {
+        height:auto;
+        flex-direction: column-reverse;
+    }
+
 }

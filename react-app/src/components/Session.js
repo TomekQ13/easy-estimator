@@ -231,7 +231,9 @@ export function Session() {
                         <Row className="h-auto">
                             <Col>
                                 <div className="mb-3">
-                                    <h3>Session ID: {sessionId}</h3>
+                                    <h3 className="session-id">
+                                        Session ID: {sessionId}
+                                    </h3>
                                     {/* Host: {sessionData && <p>{sessionData.hostid}</p>} */}
                                 </div>
                             </Col>
