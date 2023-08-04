@@ -4,7 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { useUpdateSession } from "../models/session";
 import { SessionContext } from "./Session";
 
-export default function VotesSummary({ users, showVotes, setShowVotes }) {
+export default function VotesSummary({ users, showVotes }) {
     const [mean, setMean] = useState();
     const [median, setMedian] = useState();
     const { sessionId, ws } = useContext(SessionContext);
@@ -22,12 +22,13 @@ export default function VotesSummary({ users, showVotes, setShowVotes }) {
         setMedian(median);
 
         // check if all users votes if yes show votes
+        if (showVotes === true) return;
+
         const emptyVotes = users.filter((user) => {
             return user.votevalue === null;
         });
 
         if (emptyVotes.length === 0) {
-            setShowVotes(true);
             updateSession({
                 sessionId,
                 newParam: { showVotes: true },

@@ -19,7 +19,9 @@ export default function Websocket({ children }) {
 
     function sendMessage(body) {
         if (this.readyState !== 1) {
-            throw new Error("Websocket is not in state 1");
+            throw new Error(
+                "Connection to websocket lost. Displaying error notification."
+            );
         }
 
         this.send(JSON.stringify(body));
