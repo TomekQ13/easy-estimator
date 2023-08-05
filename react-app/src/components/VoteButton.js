@@ -40,7 +40,7 @@ export default function VoteButton({ voteValue }) {
     }
 
     return (
-        <Col className="">
+        <Col className="d-flex justify-content-center">
             <Button
                 onClick={handleClick}
                 variant="outline-primary"
