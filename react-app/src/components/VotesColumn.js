@@ -15,7 +15,7 @@ export default function VotesColumn({
         <div>
             <div>
                 <h3 className="">Votes</h3>
-                <ListGroup className="votes-list-box mb-2">
+                <ListGroup className="mb-2">
                     {users &&
                         users.map((user) => {
                             // this part needs to be adjusted so that there are users and votes are updated for users
