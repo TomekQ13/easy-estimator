@@ -64,19 +64,6 @@ router.delete("/delete", authenticateToken, async (req, res) => {
     }
 });
 
-// router.post('/login', (req, res) => {
-//     // There is currently no user login
-//     const userId = 'dummyId' // this should come from db
-
-//     const user = {
-//         username: req.body.username,
-//         userId: userId
-//     }
-
-//     const accessToken = generateAccessToken(user.username)
-//     res.json({ accessToken: accessToken })
-// })
-
 router.post("/token", (req, res) => {
     const refreshToken = req.body.refreshToken;
     if (refreshToken === null)
