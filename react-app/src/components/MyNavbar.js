@@ -11,7 +11,10 @@ export default function MyNavbar() {
         <Navbar className="w-100" expand="lg">
             <Container>
                 <Navbar.Brand href="/">Cool name Cool name</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle
+                    aria-controls="basic-navbar-nav"
+                    id="navbar-toggler-button"
+                />
                 <Navbar.Collapse>
                     <Nav className="me-auto">
                         <Nav.Link href="#link">About</Nav.Link>

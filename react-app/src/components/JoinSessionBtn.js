@@ -6,5 +6,9 @@ export default function JoinSessionBtn({ setJoinSessionModal }) {
         setJoinSessionModal({ show: true });
     }
 
-    return <Button onClick={handleClick}>Join session</Button>;
+    return (
+        <Button onClick={handleClick} className="mt-4 fw-bold btn-lg">
+            Join session
+        </Button>
+    );
 }

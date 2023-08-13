@@ -5,6 +5,32 @@
     height: 75vh;
 }
 
+.main-header {
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 5rem;
+}
+
+.button-section {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .button-section {
+        width: 100%;
+    }
+
+    .main-header {
+        margin-top: 2rem;
+    }
+    
+}
+
 
 @media (max-width: 576px) {
     .wid-500 {

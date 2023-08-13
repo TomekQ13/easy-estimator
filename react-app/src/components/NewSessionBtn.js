@@ -29,5 +29,9 @@ export default function NewSessionBtn() {
         });
     }
 
-    return <Button onClick={handleClick}>New session</Button>;
+    return (
+        <Button onClick={handleClick} className="fw-bold btn-lg">
+            New session
+        </Button>
+    );
 }

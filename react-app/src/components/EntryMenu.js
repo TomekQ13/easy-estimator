@@ -4,8 +4,6 @@ import NewSessionBtn from "./NewSessionBtn";
 import JoinSessionModal from "./JoinSessionModal";
 import { authContext } from "../contexts/Auth";
 import Container from "react-bootstrap/esm/Container";
-import Col from "react-bootstrap/esm/Col";
-import Row from "react-bootstrap/esm/Row";
 
 export default function EntryMeny() {
     const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
@@ -25,23 +23,26 @@ export default function EntryMeny() {
 
     return (
         <>
-            <Container className="vh-75 d-flex align-items-center justify-content-center">
-                <Col className="wid-500 ">
-                    <Row className="mb-3">
-                        <NewSessionBtn />
-                    </Row>
-                    <Row>
-                        <JoinSessionBtn
-                            setJoinSessionModal={setJoinSessionModal}
-                        />
-                    </Row>
+            <Container className="vh-75 d-flex flex-column justify-content-start align-items-center">
+                <div className="header-section">
+                    <h1 className="main-header text-center">
+                        The Estimation Poker for all your planning needs
+                    </h1>
+                    <p className="text-center mt-3">
+                        The simplest estimation tool for development teams
+                    </p>
+                </div>
+                <div className="button-section">
+                    <NewSessionBtn />
+
+                    <JoinSessionBtn setJoinSessionModal={setJoinSessionModal} />
                     {joinSessionModal.show && (
                         <JoinSessionModal
                             setJoinSessionModal={setJoinSessionModal}
                             joinSessionModal={joinSessionModal}
                         />
                     )}
-                </Col>
+                </div>
             </Container>
         </>
     );
