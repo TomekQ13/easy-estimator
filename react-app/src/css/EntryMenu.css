@@ -9,8 +9,22 @@
     display: flex;
     justify-content: center;
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 800;
     margin-top: 5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 5rem;
+}
+
+.subtitle-text {
+    font-size: 1rem;
+    font-weight: 100;
+    text-align: center;
 }
 
 .button-section {
@@ -18,6 +32,56 @@
     flex-direction: column;
     width: 50%;
     margin-top: 3rem;
+}
+
+.how-to-section {
+    margin-top: 2rem;
+}
+
+.how-to-section-steps {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3.9rem;
+    align-items: center;
+}
+
+.pro-section {
+    margin-top: 7rem;
+}
+
+.pro-image {
+    width: 100%;
+    height: auto;
+}
+
+.pro-item-section {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.pro-item-section-left {
+    flex-direction: row;
+}
+
+.pro-item-section-right {
+    flex-direction: row-reverse;
+}
+
+.pro-item-section-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .pro-item-section {
+        flex-direction: column;
+    }
+
 }
 
 @media (max-width: 768px) {
@@ -29,6 +93,9 @@
         margin-top: 2rem;
     }
     
+    .how-to-section-steps {
+        flex-direction: column;
+    }
 }
 
 
@@ -36,4 +103,5 @@
     .wid-500 {
         max-width: 80%;
     }
+
 }

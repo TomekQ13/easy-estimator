@@ -4,6 +4,11 @@ import NewSessionBtn from "./NewSessionBtn";
 import JoinSessionModal from "./JoinSessionModal";
 import { authContext } from "../contexts/Auth";
 import Container from "react-bootstrap/esm/Container";
+import StepCard from "./StepCard";
+import Step1Picture from "../pictures/step_1_picture.jpg";
+import Step2Picture from "../pictures/step_2_picture.jpg";
+import Step3Picture from "../pictures/step_3_picture.jpg";
+import proImage from "../pictures/pro_1_picture.jpg";
 
 export default function EntryMeny() {
     const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
@@ -28,7 +33,7 @@ export default function EntryMeny() {
                     <h1 className="main-header text-center">
                         The Estimation Poker for all your planning needs
                     </h1>
-                    <p className="text-center mt-3">
+                    <p className="text-center mt-3 subtitle-text">
                         The simplest estimation tool for development teams
                     </p>
                 </div>
@@ -42,6 +47,94 @@ export default function EntryMeny() {
                             joinSessionModal={joinSessionModal}
                         />
                     )}
+                </div>
+                <div className="how-to-section">
+                    <h2 className="section-header">
+                        Start now with these 3 easy steps
+                    </h2>
+                    <div className="how-to-section-steps">
+                        <StepCard
+                            pictureSource={Step1Picture}
+                            text="Start a new session"
+                        />
+                        <StepCard
+                            pictureSource={Step2Picture}
+                            text="Get in a call and send the URL to your team"
+                        />
+                        <StepCard
+                            pictureSource={Step3Picture}
+                            text="Vote and discuss your estimates"
+                        />
+                    </div>
+                </div>
+                <div className="pro-section">
+                    <div className="pro-item-section pro-item-section-left">
+                        <div>
+                            <h2 className="pro-item-section-title">
+                                Estimate live with your team
+                            </h2>
+                            <small className="subtitle-text">
+                                Lorem Ipsum is simply dummy text of the printing
+                                and typesetting industry.
+                            </small>
+                        </div>
+                        <img
+                            src={proImage}
+                            width="700"
+                            height="400"
+                            className="pro-image"
+                        ></img>
+                    </div>
+                    <div className="pro-item-section pro-item-section-right">
+                        <div>
+                            <h2 className="pro-item-section-title">
+                                Get a clear summary of the votes
+                            </h2>
+                            <small className="subtitle-text">
+                                Lorem Ipsum has been the industry's standard
+                                dummy text ever since the 1500s
+                            </small>
+                        </div>
+                        <img
+                            src={proImage}
+                            width="700"
+                            height="400"
+                            className="pro-image"
+                        ></img>
+                    </div>
+                    <div className="pro-item-section pro-item-section-left">
+                        <div>
+                            <h2 className="pro-item-section-title">
+                                Free now and forever
+                            </h2>
+                            <small className="subtitle-text">
+                                when an unknown printer took a galley of type
+                                and scrambled it to make a type specimen book
+                            </small>
+                        </div>
+                        <img
+                            src={proImage}
+                            width="700"
+                            height="400"
+                            className="pro-image"
+                        ></img>
+                    </div>
+                    <div className="pro-item-section pro-item-section-right">
+                        <div>
+                            <h2 className="pro-item-section-title">
+                                Estimate on the go
+                            </h2>
+                            <small className="subtitle-text">
+                                It has survived not only five centuries
+                            </small>
+                        </div>
+                        <img
+                            src={proImage}
+                            width="700"
+                            height="400"
+                            className="pro-image"
+                        ></img>
+                    </div>
                 </div>
             </Container>
         </>
