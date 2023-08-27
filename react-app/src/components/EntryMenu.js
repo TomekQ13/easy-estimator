@@ -136,6 +136,18 @@ export default function EntryMeny() {
                         ></img>
                     </div>
                 </div>
+                <footer className="footer">
+                    <Container>
+                        <div className="footer-menu">
+                            <div className="footer-link">
+                                Start a new estimation session
+                            </div>
+                            <div className="footer-link">FAQ</div>
+                            <div className="footer-link">Contact</div>
+                            <div className="footer-link">Privacy policy</div>
+                        </div>
+                    </Container>
+                </footer>
             </Container>
         </>
     );

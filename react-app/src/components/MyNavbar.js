@@ -16,9 +16,7 @@ export default function MyNavbar() {
                     id="navbar-toggler-button"
                 />
                 <Navbar.Collapse>
-                    <Nav className="me-auto">
-                        <Nav.Link href="#link">About</Nav.Link>
-                    </Nav>
+                    <Nav className="me-auto"></Nav>
                     {username && (
                         <Navbar.Text className="text-right">
                             Username: {username}
