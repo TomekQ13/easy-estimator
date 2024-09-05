@@ -34,8 +34,6 @@ function calculateDistribution(arr) {
         21: 0,
     };
 
-    console.log(arr);
-
     // Iterate over each value in the array
     arr.forEach((value) => {
         // If the value already exists in the distribution, increment its count
@@ -43,8 +41,6 @@ function calculateDistribution(arr) {
             distribution[value] += 1;
         }
     });
-
-    console.log(distribution);
 
     return distribution;
 }
