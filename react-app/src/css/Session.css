@@ -2,12 +2,12 @@
     word-break: break-all;
 }
 
-
+.text-justify {
+    text-align: center;
+}
 
 @media (max-width: 576px) {
     .session-id {
-        font-size:medium;
+        font-size: medium;
     }
-
-
 }

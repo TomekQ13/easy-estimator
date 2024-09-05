@@ -59,7 +59,7 @@ export default function EntryMeny() {
                         />
                         <StepCard
                             pictureSource={Step2Picture}
-                            text="Get in a call and send the URL to your team"
+                            text="Send the URL to your team"
                         />
                         <StepCard
                             pictureSource={Step3Picture}
@@ -139,9 +139,6 @@ export default function EntryMeny() {
                 <footer className="footer">
                     <Container>
                         <div className="footer-menu">
-                            <div className="footer-link">
-                                Start a new estimation session
-                            </div>
                             <div className="footer-link">FAQ</div>
                             <div className="footer-link">Contact</div>
                             <div className="footer-link">Privacy policy</div>

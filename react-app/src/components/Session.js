@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import VoteButton from "./VoteButton";
 import VotesColumn from "./VotesColumn";
+import CopyToClipboard from "./CopyToClipboard";
+import Chart from "./Chart";
 import { authContext } from "../contexts/Auth";
 import { useSession } from "../models/session";
 import { websocketContext } from "../contexts/Websocket";
@@ -230,17 +232,21 @@ export function Session() {
                     <Container>
                         <Row className="h-auto">
                             <Col>
-                                <div className="mb-3">
-                                    <h3 className="session-id">
+                                <div className="my-5">
+                                    <h2 className="text-justify">
+                                        Your estimation room
+                                    </h2>
+                                    <p className="session-id text-justify">
                                         Session ID: {sessionId}
-                                    </h3>
+                                        <CopyToClipboard />
+                                    </p>
                                     {/* Host: {sessionData && <p>{sessionData.hostid}</p>} */}
                                 </div>
                             </Col>
                         </Row>
                         <Row className="h-75" xs={1} md={2}>
                             <Col md={8} className="mb-3">
-                                <Row className="g-4">
+                                <Row className="vote-row g-4">
                                     {[0, 1, 2, 3, 5, 8, 13, 21].map((value) => {
                                         return (
                                             <VoteButton
@@ -260,6 +266,11 @@ export function Session() {
                                     showVotes={showVotes}
                                     setShowVotes={setShowVotes}
                                 />
+                                {showVotes && (
+                                    <div className="my-4">
+                                        <Chart users={users} />
+                                    </div>
+                                )}
                             </Col>
                         </Row>
                     </Container>
