@@ -5,10 +5,9 @@ import JoinSessionModal from "./JoinSessionModal";
 import { authContext } from "../contexts/Auth";
 import Container from "react-bootstrap/esm/Container";
 import StepCard from "./StepCard";
-import Step1Picture from "../pictures/step_1_picture.jpg";
+import Step1GIF from "../pictures/step1.gif";
 import Step2Picture from "../pictures/step_2_picture.jpg";
 import Step3Picture from "../pictures/step_3_picture.jpg";
-import proImage from "../pictures/pro_1_picture.jpg";
 
 export default function EntryMeny() {
     const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
@@ -54,7 +53,7 @@ export default function EntryMeny() {
                     </h2>
                     <div className="how-to-section-steps">
                         <StepCard
-                            pictureSource={Step1Picture}
+                            pictureSource={Step1GIF}
                             text="Start a new session"
                         />
                         <StepCard
@@ -67,7 +66,7 @@ export default function EntryMeny() {
                         />
                     </div>
                 </div>
-                <div className="pro-section">
+                {/* <div className="pro-section">
                     <div className="pro-item-section pro-item-section-left">
                         <div>
                             <h2 className="pro-item-section-title">
@@ -135,8 +134,8 @@ export default function EntryMeny() {
                             className="pro-image"
                         ></img>
                     </div>
-                </div>
-                <footer className="footer">
+                </div> */}
+                <footer className="footer mt-4">
                     <Container>
                         <div className="footer-menu">
                             <div className="footer-link">FAQ</div>

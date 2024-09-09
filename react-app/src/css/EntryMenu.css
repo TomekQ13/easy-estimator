@@ -83,15 +83,14 @@
 }
 
 .footer-menu {
-    /* display: flex;
-    align-items: center;
-    flex-direction: column; */
-    margin-top: 5rem;
+    display: flex;
+    align-items: stretch;
+    flex-direction: row;
+    margin-top: 1rem;
 }
 
 .footer-link {
     color: white;
-    font-weight: bold;
     margin-bottom: 1rem;
 }
 
@@ -99,7 +98,6 @@
     .pro-item-section {
         flex-direction: column;
     }
-
 }
 
 @media (max-width: 768px) {
@@ -110,16 +108,14 @@
     .main-header {
         margin-top: 2rem;
     }
-    
+
     .how-to-section-steps {
         flex-direction: column;
     }
 }
 
-
 @media (max-width: 576px) {
     .wid-500 {
         max-width: 80%;
     }
-
 }
