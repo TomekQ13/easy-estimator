@@ -5,9 +5,9 @@ import JoinSessionModal from "./JoinSessionModal";
 import { authContext } from "../contexts/Auth";
 import Container from "react-bootstrap/esm/Container";
 import StepCard from "./StepCard";
-import Step1GIF from "../pictures/step1.gif";
-import Step2Picture from "../pictures/step_2_picture.jpg";
-import Step3Picture from "../pictures/step_3_picture.jpg";
+import Step1GIF from "../pictures/step1-jpg.gif";
+import Step2GIF from "../pictures/step2-jpg.gif";
+import Step3GIF from "../pictures/step3-jpg.gif";
 
 export default function EntryMeny() {
     const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
@@ -23,7 +23,7 @@ export default function EntryMeny() {
         ) {
             setRegisterModal({ show: true });
         }
-    }, [username, setRegisterModal]);
+    }, [username, setRegisterModal, userId]);
 
     return (
         <>
@@ -57,11 +57,11 @@ export default function EntryMeny() {
                             text="Start a new session"
                         />
                         <StepCard
-                            pictureSource={Step2Picture}
+                            pictureSource={Step2GIF}
                             text="Send the URL to your team"
                         />
                         <StepCard
-                            pictureSource={Step3Picture}
+                            pictureSource={Step3GIF}
                             text="Vote and discuss your estimates"
                         />
                     </div>

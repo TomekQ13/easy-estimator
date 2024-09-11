@@ -42,7 +42,7 @@
     margin-top: 4rem;
     display: flex;
     flex-direction: row;
-    gap: 3.9rem;
+    gap: 7rem;
     align-items: center;
 }
 
@@ -83,10 +83,12 @@
 }
 
 .footer-menu {
-    display: flex;
-    align-items: stretch;
-    flex-direction: row;
     margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 10rem;
+    align-items: center;
+    justify-content: center;
 }
 
 .footer-link {
@@ -97,6 +99,10 @@
 @media (max-width: 1200px) {
     .pro-item-section {
         flex-direction: column;
+    }
+
+    .how-to-section-steps {
+        gap: 4rem;
     }
 }
 
