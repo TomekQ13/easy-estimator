@@ -1,7 +1,8 @@
-@import 'VoteButton.css';
-@import 'Session.css';
-@import 'EntryMenu.css';
-@import 'Notification.css';
-@import 'Notifications.css';
-@import 'VotesColumn.css';
-@import 'MyNavbar.css';
+@import "VoteButton.css";
+@import "Session.css";
+@import "EntryMenu.css";
+@import "Notification.css";
+@import "Notifications.css";
+@import "VotesColumn.css";
+@import "MyNavbar.css";
+@import "Footer.css";

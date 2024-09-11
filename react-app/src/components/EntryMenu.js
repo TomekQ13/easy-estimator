@@ -8,6 +8,7 @@ import StepCard from "./StepCard";
 import Step1GIF from "../pictures/step1-jpg.gif";
 import Step2GIF from "../pictures/step2-jpg.gif";
 import Step3GIF from "../pictures/step3-jpg.gif";
+import Footer from "./Footer";
 
 export default function EntryMeny() {
     const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
@@ -27,8 +28,8 @@ export default function EntryMeny() {
 
     return (
         <>
-            <Container className="vh-75 d-flex flex-column justify-content-start align-items-center">
-                <div className="header-section">
+            <Container className="d-flex flex-column justify-content-start align-items-center">
+                <div>
                     <h1 className="main-header text-center">
                         The Estimation Poker for all your planning needs
                     </h1>
@@ -47,7 +48,7 @@ export default function EntryMeny() {
                         />
                     )}
                 </div>
-                <div className="how-to-section">
+                <div>
                     <h2 className="section-header">
                         Start now with these 3 easy steps
                     </h2>
@@ -135,15 +136,7 @@ export default function EntryMeny() {
                         ></img>
                     </div>
                 </div> */}
-                <footer className="footer mt-4">
-                    <Container>
-                        <div className="footer-menu">
-                            <div className="footer-link">FAQ</div>
-                            <div className="footer-link">Contact</div>
-                            <div className="footer-link">Privacy policy</div>
-                        </div>
-                    </Container>
-                </footer>
+                <Footer />
             </Container>
         </>
     );

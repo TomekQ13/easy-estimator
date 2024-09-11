@@ -10,7 +10,7 @@
     justify-content: center;
     font-size: 2.5rem;
     font-weight: 800;
-    margin-top: 5rem;
+    margin-top: 2.5rem;
 }
 
 .section-header {
@@ -34,10 +34,6 @@
     margin-top: 3rem;
 }
 
-.how-to-section {
-    margin-top: 2rem;
-}
-
 .how-to-section-steps {
     margin-top: 4rem;
     display: flex;
@@ -46,61 +42,7 @@
     align-items: center;
 }
 
-.pro-section {
-    margin-top: 7rem;
-}
-
-.pro-image {
-    width: 100%;
-    height: auto;
-}
-
-.pro-item-section {
-    display: flex;
-    gap: 2rem;
-    margin-bottom: 5rem;
-    justify-content: center;
-    align-items: center;
-}
-
-.pro-item-section-left {
-    flex-direction: row;
-}
-
-.pro-item-section-right {
-    flex-direction: row-reverse;
-}
-
-.pro-item-section-title {
-    font-size: 2rem;
-    font-weight: 800;
-    text-align: center;
-}
-
-.footer {
-    background-color: #0d6efd;
-    width: 100vw;
-}
-
-.footer-menu {
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: row;
-    gap: 10rem;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-link {
-    color: white;
-    margin-bottom: 1rem;
-}
-
 @media (max-width: 1200px) {
-    .pro-item-section {
-        flex-direction: column;
-    }
-
     .how-to-section-steps {
         gap: 4rem;
     }
