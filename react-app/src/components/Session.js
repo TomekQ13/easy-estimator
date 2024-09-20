@@ -13,6 +13,7 @@ import uuid from "react-uuid";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Footer from "./Footer";
 
 export const SessionContext = React.createContext();
 
@@ -273,6 +274,7 @@ export function Session() {
                                 )}
                             </Col>
                         </Row>
+                        <Footer />
                     </Container>
                     <Notifications messages={messages} />
                 </SessionContext.Provider>

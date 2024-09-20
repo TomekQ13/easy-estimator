@@ -67,75 +67,7 @@ export default function EntryMeny() {
                         />
                     </div>
                 </div>
-                {/* <div className="pro-section">
-                    <div className="pro-item-section pro-item-section-left">
-                        <div>
-                            <h2 className="pro-item-section-title">
-                                Estimate live with your team
-                            </h2>
-                            <small className="subtitle-text">
-                                Lorem Ipsum is simply dummy text of the printing
-                                and typesetting industry.
-                            </small>
-                        </div>
-                        <img
-                            src={proImage}
-                            width="700"
-                            height="400"
-                            className="pro-image"
-                        ></img>
-                    </div>
-                    <div className="pro-item-section pro-item-section-right">
-                        <div>
-                            <h2 className="pro-item-section-title">
-                                Get a clear summary of the votes
-                            </h2>
-                            <small className="subtitle-text">
-                                Lorem Ipsum has been the industry's standard
-                                dummy text ever since the 1500s
-                            </small>
-                        </div>
-                        <img
-                            src={proImage}
-                            width="700"
-                            height="400"
-                            className="pro-image"
-                        ></img>
-                    </div>
-                    <div className="pro-item-section pro-item-section-left">
-                        <div>
-                            <h2 className="pro-item-section-title">
-                                Free now and forever
-                            </h2>
-                            <small className="subtitle-text">
-                                when an unknown printer took a galley of type
-                                and scrambled it to make a type specimen book
-                            </small>
-                        </div>
-                        <img
-                            src={proImage}
-                            width="700"
-                            height="400"
-                            className="pro-image"
-                        ></img>
-                    </div>
-                    <div className="pro-item-section pro-item-section-right">
-                        <div>
-                            <h2 className="pro-item-section-title">
-                                Estimate on the go
-                            </h2>
-                            <small className="subtitle-text">
-                                It has survived not only five centuries
-                            </small>
-                        </div>
-                        <img
-                            src={proImage}
-                            width="700"
-                            height="400"
-                            className="pro-image"
-                        ></img>
-                    </div>
-                </div> */}
+
                 <Footer />
             </Container>
         </>

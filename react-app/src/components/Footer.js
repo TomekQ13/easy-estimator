@@ -1,22 +1,15 @@
 import React from "react";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
+import TooltipContact from "./ContactTooltip";
 
 const Footer = () => {
     return (
-        <Navbar fixed="bottom" className="text-center footer">
+        <Navbar fixed="bottom" className="text-center footer py-0">
             <Container className="justify-content-between">
-                <Nav>
-                    <Nav.Link href="#faq" className="text-white">
-                        FAQ
-                    </Nav.Link>
-                    <Nav.Link href="#contact" className="text-white">
-                        Contact
-                    </Nav.Link>
-                    <Nav.Link href="#privacy-policy" className="text-white">
-                        Privacy Policy
-                    </Nav.Link>
-                </Nav>
                 <Navbar.Text className="text-white">
+                    <TooltipContact />
+                </Navbar.Text>
+                <Navbar.Text className="text-white fw-light fs-6">
                     &copy; 2024 Tomasz Kuczak. All rights reserved.
                 </Navbar.Text>
             </Container>
