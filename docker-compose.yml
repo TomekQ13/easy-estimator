@@ -26,7 +26,7 @@ services:
         volumes:
             - ./websocket-server/app:/websocket-server/app
         env_file:
-            - .env.api.dev
+            - .env.api.prod
         ports:
             - "7000:7000"
         restart: always
