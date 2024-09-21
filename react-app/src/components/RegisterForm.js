@@ -28,7 +28,6 @@ export default function RegisterForm({ handleCloseModal, sessionId }) {
             });
 
         const specRegex = /[^\x00-\x7F]/gm;
-        console.log(specRegex.test(username));
         if (specRegex.test() === true)
             return setErrors({
                 username: "Username cannot contain any special characters",
