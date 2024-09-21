@@ -9,9 +9,9 @@ const Footer = () => {
                 <Navbar.Text className="text-white">
                     <TooltipContact />
                 </Navbar.Text>
-                <Navbar.Text className="text-white fw-light fs-6">
-                    &copy; 2024 Tomasz Kuczak. All rights reserved.
-                </Navbar.Text>
+                {/* <Navbar.Text className="text-white fw-light fs-6">
+                    &copy; All rights reserved.
+                </Navbar.Text> */}
             </Container>
         </Navbar>
     );

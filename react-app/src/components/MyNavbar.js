@@ -3,6 +3,7 @@ import Container from "react-bootstrap/esm/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { authContext } from "../contexts/Auth";
+import Logo from "../pictures/agilepokerlogo.png";
 
 export default function MyNavbar() {
     const { username } = useContext(authContext);
@@ -10,7 +11,9 @@ export default function MyNavbar() {
     return (
         <Navbar className="w-100" expand="lg">
             <Container>
-                <Navbar.Brand href="/">Cool name Cool name</Navbar.Brand>
+                <Navbar.Brand href="/">
+                    <img src={Logo} />
+                </Navbar.Brand>
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"
                     id="navbar-toggler-button"

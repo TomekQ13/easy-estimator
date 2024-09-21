@@ -49,7 +49,7 @@ export default function EntryMeny() {
                     )}
                 </div>
                 <div>
-                    <h2 className="section-header">
+                    <h2 className="section-header text-center">
                         Start now with these 3 easy steps
                     </h2>
                     <div className="how-to-section-steps">
