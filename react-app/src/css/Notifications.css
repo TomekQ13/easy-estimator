@@ -1,5 +1,4 @@
 .notification-box {
-
     position: fixed;
     bottom: 0;
     display: flex;
@@ -9,6 +8,5 @@
     margin-left: 2rem;
     width: 30%;
     max-width: 250px;
-
-
+    z-index: 1031;
 }
