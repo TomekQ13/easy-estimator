@@ -1,37 +1,39 @@
-version: '3'
+version: "3"
 services:
-  postgres:
-    image: 'postgres:14'
-    restart: always
-    env_file:
-      - .env.api.prod
-    volumes:
-      - ./database:/var/lib/postgresql/data
-      - ./ddl:/ddl
-  api:
-    build:
-      context: ./api
-    volumes:
-      - ./api/app:/api/app
-    ports:
-      - '4000:4000'
-    depends_on:
-      - 'postgres'
-    env_file:
-      - .env.api.prod
-    restart: always
-  websocket-server:
-    build:
-      context: ./websocket-server
-    volumes:
-      - ./websocket-server/app:/websocket-server/app
-    ports:
-      - '7000:7000'
-    restart: always
-  react-app:
-    image: 'tomekq13/easy-estimator-react:latest'
-    restart: always
-    ports:
-      - '80:80'
-    env_file:
-      - react-app.env
+    postgres:
+        image: "postgres:14"
+        restart: always
+        env_file:
+            - .env.api.prod
+        volumes:
+            - ./database:/var/lib/postgresql/data
+            - ./ddl:/ddl
+    api:
+        build:
+            context: ./api
+        volumes:
+            - ./api/app:/api/app
+        ports:
+            - "4000:4000"
+        depends_on:
+            - "postgres"
+        env_file:
+            - .env.api.prod
+        restart: always
+    websocket-server:
+        build:
+            context: ./websocket-server
+        volumes:
+            - ./websocket-server/app:/websocket-server/app
+        env_file:
+            - .env.api.dev
+        ports:
+            - "7000:7000"
+        restart: always
+    react-app:
+        image: "tomekq13/easy-estimator-react:latest"
+        restart: always
+        ports:
+            - "80:80"
+        env_file:
+            - react-app.env

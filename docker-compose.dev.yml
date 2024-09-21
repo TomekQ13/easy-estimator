@@ -1,46 +1,48 @@
-version: '3'
+version: "3"
 services:
-  postgres-dev:
-    image: 'postgres:14'
-    restart: 'always'
-    env_file:
-      - .env.api.dev
-    volumes:
-      - ./database:/var/lib/postgresql/data
-      - ./ddl:/ddl
-  api-dev:
-    build:
-      context: ./api
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./api:/api
-    ports:
-      - '4000:4000'
-    depends_on:
-      - 'postgres-dev'
-    env_file:
-      - .env.api.dev
-    restart: 'always'
-  websocket-server-dev:
-    build:
-      context: ./websocket-server
-      dockerfile: Dockerfile.dev
-    volumes:
-      - ./websocket-server:/websocket-server
-    ports:
-      - '7000:7000'
-    restart: 'always'  
-  react-app-dev:
-    build:
-      context: ./react-app
-      dockerfile: Dockerfile.dev
-    restart: 'always'
-    ports:
-      - '80:80'
-    depends_on:
-      - 'websocket-server-dev'
-      - 'api-dev'
-    volumes:
-      - ./react-app:/react-app
-    environment:
-      - WATCHPACK_POLLING=true
+    postgres-dev:
+        image: "postgres:14"
+        restart: "always"
+        env_file:
+            - .env.api.dev
+        volumes:
+            - ./database:/var/lib/postgresql/data
+            - ./ddl:/ddl
+    api-dev:
+        build:
+            context: ./api
+            dockerfile: Dockerfile.dev
+        volumes:
+            - ./api:/api
+        ports:
+            - "4000:4000"
+        depends_on:
+            - "postgres-dev"
+        env_file:
+            - .env.api.dev
+        restart: "always"
+    websocket-server-dev:
+        build:
+            context: ./websocket-server
+            dockerfile: Dockerfile.dev
+        env_file:
+            - .env.api.dev
+        volumes:
+            - ./websocket-server:/websocket-server
+        ports:
+            - "7000:7000"
+        restart: "always"
+    react-app-dev:
+        build:
+            context: ./react-app
+            dockerfile: Dockerfile.dev
+        restart: "always"
+        ports:
+            - "80:80"
+        depends_on:
+            - "websocket-server-dev"
+            - "api-dev"
+        volumes:
+            - ./react-app:/react-app
+        environment:
+            - WATCHPACK_POLLING=true

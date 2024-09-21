@@ -36,9 +36,10 @@ wss.on("connection", (ws) => {
             const disconnectedSession = wsSession.get(ws);
             if (disconnectedSession !== undefined) {
                 const disconnectUser = sessions[disconnectedSession].get(ws);
-                console.log(
-                    `Client ${disconnectUser.username}, ${disconnectUser.userId} has disconnected`
-                );
+                if (process.env.NODE_ENV !== "production")
+                    console.log(
+                        `Client ${disconnectUser.username}, ${disconnectUser.userId} has disconnected`
+                    );
                 sessions[disconnectedSession].delete(ws);
                 wsSession.delete(ws);
                 // sendMessageToAllClients(sessions[disconnectedSession], {
