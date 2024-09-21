@@ -67,7 +67,10 @@ router.post("/:sessionId", async (req, res) => {
             .status(500)
             .send("There has been an error. Please try again.");
     }
-    console.log(`Session with id ${req.params.sessionId} created successfully`);
+    if (process.env.NODE_ENV !== "production")
+        console.log(
+            `Session with id ${req.params.sessionId} created successfully`
+        );
     return res.status(201).json({
         sessionId: req.params.sessionId,
         message: "Session created successfully",
@@ -81,7 +84,6 @@ router.put("/:sessionId", async (req, res) => {
             message: "Only one session parameter can be updated at a time",
         });
     }
-    console.log(req.body);
     try {
         const resp = await updateSession({
             sessionId: req.params.sessionId,

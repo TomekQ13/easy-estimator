@@ -20,11 +20,9 @@ function generateAccessToken(user) {
         return console.error(
             "Payload for generating Access token must be an object"
         );
-    console.log(user);
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: 60,
     });
-    console.log(accessToken);
     return accessToken;
 }
 
