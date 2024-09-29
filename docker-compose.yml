@@ -35,8 +35,12 @@ services:
         restart: always
         ports:
             - "80:80"
+            - "443:443"
         env_file:
             - react-app.env
+    volumes:
+        - ./data/certbot/conf:/etc/letsencrypt
+        - ./data/certbot/www:/var/www/certbot
     certbot:
         image: certbot/certbot
         volumes:
