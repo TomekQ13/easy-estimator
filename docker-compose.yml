@@ -34,8 +34,8 @@ services:
         image: "tomekq13/easy-estimator-react:latest"
         container_name: react-app
         restart: always
-        ports:
-            - "3000:3000"
+        expose:
+            - "80"
         env_file:
             - react-app.env
         # volumes:
