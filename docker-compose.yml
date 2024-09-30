@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
     postgres:
         image: "postgres:14"
@@ -34,26 +34,38 @@ services:
         image: "tomekq13/easy-estimator-react:latest"
         restart: always
         ports:
-            - "80:80"
-            - "443:443"
+            - "3000:3000"
         env_file:
             - react-app.env
         volumes:
             - ./data/certbot/conf:/etc/letsencrypt
             - ./data/certbot/www:/var/www/certbot
+        networks:
+            - web
     certbot:
         image: certbot/certbot
+        container_name: certbot
         volumes:
-            - ./data/certbot/conf:/etc/letsencrypt
-            - ./data/certbot/www:/var/www/certbot
-        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+            - ./nginx/ssl:/etc/letsencrypt
+            - ./certbot/www:/var/www/certbot
+        entrypoint: /bin/sh -c "trap exit TERM; while :; do sleep 6h & wait $${!}; done;"
+        networks:
+            - web
     nginx:
-        image: nginx:1.15-alpine
+        image: nginx:latest
+        container_name: nginx
         ports:
             - "80:80"
             - "443:443"
         volumes:
-            - ./data/nginx:/etc/nginx/conf.d
-            - ./data/certbot/conf:/etc/letsencrypt
-            - ./data/certbot/www:/var/www/certbot
-        command: '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
+            - ./nginx/conf.d:/etc/nginx/conf.d
+            - ./nginx/ssl:/etc/nginx/ssl
+            - ./certbot/www:/var/www/certbot
+        depends_on:
+            - react-app
+        networks:
+            - web
+
+networks:
+    web:
+        driver: bridge
