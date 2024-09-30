@@ -10,11 +10,11 @@ if [ -d "./nginx/ssl/live/${domains[0]}" ]; then
 fi
 
 # Stop Nginx
-docker-compose stop nginx
+docker compose stop nginx
 
 # Request Let's Encrypt certificates
 for domain in "${domains[@]}"; do
-  docker-compose run --rm certbot certonly \
+  docker compose run --rm certbot certonly \
     --webroot \
     --webroot-path=/var/www/certbot \
     --email "$email" \
@@ -25,7 +25,7 @@ for domain in "${domains[@]}"; do
 done
 
 # Start Nginx
-docker-compose up -d nginx
+docker compose up -d nginx
 
 # Reload Nginx
-docker-compose exec nginx nginx -s reload
+docker compose exec nginx nginx -s reload
