@@ -32,14 +32,15 @@ services:
         restart: always
     react-app:
         image: "tomekq13/easy-estimator-react:latest"
+        container_name: react-app
         restart: always
         ports:
             - "3000:3000"
         env_file:
             - react-app.env
-        volumes:
-            - ./data/certbot/conf:/etc/letsencrypt
-            - ./data/certbot/www:/var/www/certbot
+        # volumes:
+        #     - ./data/certbot/conf:/etc/letsencrypt
+        #     - ./data/certbot/www:/var/www/certbot
         networks:
             - web
     certbot:
