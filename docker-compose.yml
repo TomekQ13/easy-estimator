@@ -75,6 +75,7 @@ services:
             - websocket-server
         networks:
             - web
+        restart: always
 networks:
     web:
         driver: bridge
