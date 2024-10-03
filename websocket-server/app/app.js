@@ -5,13 +5,6 @@ const sessions = {};
 const wsSession = new Map();
 const { logger } = require("./logger");
 
-app.use(
-    expressWinston.logger({
-        winstonInstance: logger,
-        statusLevels: true,
-    })
-);
-
 wss.on("connection", (ws) => {
     logger.info("New connection");
     ws.on("message", (messageString) => {
