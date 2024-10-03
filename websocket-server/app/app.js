@@ -3,8 +3,10 @@ const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 7000 });
 const sessions = {};
 const wsSession = new Map();
+const logger = require("./logger");
 
 wss.on("connection", (ws) => {
+    logger.info("New connection");
     ws.on("message", (messageString) => {
         const message = JSON.parse(messageString);
         if (process.env.NODE_ENV !== "production") console.log(message);

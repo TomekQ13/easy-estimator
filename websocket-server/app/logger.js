@@ -1,8 +1,11 @@
-const { createLogger, transports, format } = require('winston')
+const { createLogger, transports, format } = require("winston");
 
-const logsFolder = `./logs/`
+const logsFolder = `./logs/`;
 
-const loggerTransports = [new transports.Console()]
+const loggerTransports = [
+    new transports.Console(),
+    new transports.File({ filename: "logs.log" }),
+];
 
 const logger = createLogger({
     transports: loggerTransports,
@@ -10,10 +13,10 @@ const logger = createLogger({
         format.timestamp(),
         format.json(),
         format.prettyPrint()
-    )
-})
+    ),
+});
 
 module.exports = {
     logger,
-    logsFolder
-}
+    logsFolder,
+};

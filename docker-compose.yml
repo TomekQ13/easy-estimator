@@ -30,6 +30,7 @@ services:
             context: ./websocket-server
         volumes:
             - ./websocket-server/app:/websocket-server/app
+
         env_file:
             - .env.api.prod
         ports:
