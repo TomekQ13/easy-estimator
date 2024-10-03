@@ -8,6 +8,8 @@ services:
         volumes:
             - ./database:/var/lib/postgresql/data
             - ./ddl:/ddl
+        networks:
+            - backend
     api:
         build:
             context: ./api
@@ -20,6 +22,9 @@ services:
         env_file:
             - .env.api.prod
         restart: always
+        networks:
+            - web
+            - backend
     websocket-server:
         build:
             context: ./websocket-server
@@ -64,9 +69,12 @@ services:
             - ./certbot/www:/var/www/certbot
         depends_on:
             - react-app
+            - api
+            - websocket-server
         networks:
             - web
-
 networks:
     web:
+        driver: bridge
+    backend:
         driver: bridge
