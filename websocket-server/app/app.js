@@ -3,7 +3,14 @@ const WebSocket = require("ws");
 const wss = new WebSocket.Server({ port: 7000 });
 const sessions = {};
 const wsSession = new Map();
-const logger = require("./logger");
+const { logger } = require("./logger");
+
+app.use(
+    expressWinston.logger({
+        winstonInstance: logger,
+        statusLevels: true,
+    })
+);
 
 wss.on("connection", (ws) => {
     logger.info("New connection");
