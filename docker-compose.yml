@@ -35,6 +35,8 @@ services:
         ports:
             - "7000:7000"
         restart: always
+        networks:
+            - web
     react-app:
         image: "tomekq13/easy-estimator-react:latest"
         container_name: react-app
