@@ -6,7 +6,7 @@ export default function TooltipContact({ Element }) {
         <>
             <a
                 data-tooltip-id="tooltip-contact"
-                data-tooltip-content="Email: contact.agilepoker@gmail.ccom"
+                data-tooltip-content="Email: contact.agilepoker@gmail.com"
                 data-tooltip-place="top"
             >
                 Contact
