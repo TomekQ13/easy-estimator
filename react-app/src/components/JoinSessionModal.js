@@ -15,7 +15,9 @@ export default function JoinSessionModal({
     const formSessionId = useRef({});
     const { userId } = useContext(authContext);
     const { users } = useSession({
-        sessionId: formSessionId.current.value,
+        sessionId:
+            formSessionId.current.value &&
+            formSessionId.current.value.split("/").pop(),
         userId,
     });
 
@@ -23,11 +25,13 @@ export default function JoinSessionModal({
         setJoinSessionModal({ show: false });
     }
 
-    async function handleSubmit(event) {
+    function handleSubmit(event) {
         event.preventDefault();
+
         if (formSessionId.current.value.trim() === "")
             return setErrors({ sessionId: "Session ID cannot be empty" });
-        if (users === undefined)
+        console.log(users);
+        if (users === undefined || users.length === 0)
             return setErrors({ sessionId: "This session does not exist" });
         return navigate(`/session/${event.target.sessionId.value}`);
     }
@@ -35,7 +39,7 @@ export default function JoinSessionModal({
     return (
         <Modal show={joinSessionModal.show} onHide={handleCloseModal}>
             <Modal.Header>
-                <Modal.Title>Session ID</Modal.Title>
+                <Modal.Title>Paste session ID or URL</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
@@ -43,7 +47,7 @@ export default function JoinSessionModal({
                         <Form.Control
                             id="sessionId"
                             name="sessionId"
-                            placeholder="Session ID"
+                            placeholder="Session ID or URL"
                             isInvalid={!!errors.sessionId}
                             ref={formSessionId}
                             autoFocus

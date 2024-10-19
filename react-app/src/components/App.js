@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/app.css";
 import EntryMenu from "./EntryMenu";
+import Error from "./Error";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Auth from "../contexts/Auth";
 import SessionWrapper from "./SessionWrapper";
@@ -26,6 +27,7 @@ function App() {
                             exact
                             element={<PrivacyPolicy />}
                         />
+                        <Route path="/error" exact element={<Error />} />
                         <Route
                             path="/session/:session_id"
                             element={<SessionWrapper />}

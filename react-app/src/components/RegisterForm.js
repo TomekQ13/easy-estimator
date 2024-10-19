@@ -52,7 +52,7 @@ export default function RegisterForm({ handleCloseModal, sessionId }) {
         setAccessToken(resp.accessToken);
         setRefreshToken(resp.refreshToken);
         setUserId(resp.userid);
-        setUserRegistered(true);
+        setUserRegistered({ state: true });
         handleCloseModal({ show: false });
     }
 

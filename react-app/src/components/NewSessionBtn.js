@@ -9,8 +9,13 @@ export default function NewSessionBtn() {
     const navigate = useNavigate();
     const [createSessionFunction, resp] = useCreateSession({});
     const [sessionId, setSessionId] = useState();
-    const { username, setRegisterModal, userId, userRegistered } =
-        useContext(authContext);
+    const {
+        username,
+        setRegisterModal,
+        userId,
+        userRegistered,
+        setUserRegistered,
+    } = useContext(authContext);
 
     useEffect(() => {
         if (resp === undefined || sessionId === undefined) return;
@@ -20,7 +25,7 @@ export default function NewSessionBtn() {
     }, [resp, sessionId, navigate]);
 
     useEffect(() => {
-        if (userRegistered) {
+        if (userRegistered.state) {
             const sessionId = uuid();
             setSessionId(sessionId);
             createSessionFunction({
@@ -40,6 +45,8 @@ export default function NewSessionBtn() {
             userId === undefined
         ) {
             setRegisterModal({ show: true });
+        } else {
+            setUserRegistered({ state: true });
         }
     }
 

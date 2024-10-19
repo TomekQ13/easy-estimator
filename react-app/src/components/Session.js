@@ -30,6 +30,7 @@ export function Session() {
         setSessionName,
         users,
         setUsers,
+        sessionExists,
     } = useSession({ sessionId, userId });
 
     const { makeWebsocket } = useContext(websocketContext);
@@ -97,6 +98,12 @@ export function Session() {
         if (userExistCheck.length === 0) return true;
         else return false;
     }
+
+    useEffect(() => {
+        if (sessionExists.state === false) {
+            return navigate("/error");
+        }
+    }, [sessionExists]);
 
     useEffect(() => {
         if (

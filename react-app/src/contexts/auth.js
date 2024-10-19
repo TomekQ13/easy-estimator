@@ -17,7 +17,7 @@ export default function Auth({ children }) {
     const [username, setUsername] = useState();
     const [registerModal, setRegisterModal] = useState({ show: false });
     const [userId, setUserId] = useState();
-    const [userRegistered, setUserRegistered] = useState(false);
+    const [userRegistered, setUserRegistered] = useState({ state: false });
 
     useEffect(() => {
         const accessToken = getFromLocalStorage({ key: "accessToken" });

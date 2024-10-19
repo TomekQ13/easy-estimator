@@ -7,6 +7,7 @@ export function useSession({ sessionId, userId }) {
     const [resetVoting, setResetVoting] = useState(false);
     const [sessionName, setSessionName] = useState();
     const [users, setUsers] = useState([]);
+    const [sessionExists, setSessionExists] = useState({ state: false });
 
     const getSessionFunction = useCallback(
         ({ sessionId, userId }) => {
@@ -19,8 +20,10 @@ export function useSession({ sessionId, userId }) {
                     },
                 })
                     .then((response) => {
-                        if (response.status === 404)
+                        if (response.status === 404) {
+                            setSessionExists({ state: false });
                             return console.error("Session does not exist");
+                        }
                         return response.json();
                     })
                     .then((data) => {
@@ -28,6 +31,7 @@ export function useSession({ sessionId, userId }) {
                         setResetVoting(data.resetvoting);
                         setSessionName(data.sessionname);
                         setUsers(data.users);
+                        setSessionExists({ state: true });
                     })
                     .catch((error) => {
                         console.error(
@@ -59,6 +63,7 @@ export function useSession({ sessionId, userId }) {
         setSessionName,
         users,
         setUsers,
+        sessionExists,
     };
 }
 

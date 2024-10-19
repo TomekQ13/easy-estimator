@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import JoinSessionBtn from "./JoinSessionBtn";
 import NewSessionBtn from "./NewSessionBtn";
-import JoinSessionModal from "./JoinSessionModal";
-import { authContext } from "../contexts/Auth";
 import Container from "react-bootstrap/esm/Container";
 import StepCard from "./StepCard";
 import Step1GIF from "../pictures/step1-jpg.gif";
