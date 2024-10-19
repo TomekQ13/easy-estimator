@@ -233,7 +233,7 @@ export function Session() {
                     <Container>
                         <Row className="h-auto">
                             <Col>
-                                <div className="my-5">
+                                <div>
                                     <h2 className="text-justify">
                                         Your estimation room
                                     </h2>
@@ -274,9 +274,9 @@ export function Session() {
                                 )}
                             </Col>
                         </Row>
-                        <Footer />
                     </Container>
                     <Notifications messages={messages} />
+                    <Footer fixedBottom={true} />
                 </SessionContext.Provider>
             )}
         </>

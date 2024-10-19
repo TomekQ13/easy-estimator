@@ -11,21 +11,6 @@ import Step3GIF from "../pictures/step3-jpg.gif";
 import Footer from "./Footer";
 
 export default function EntryMeny() {
-    const [joinSessionModal, setJoinSessionModal] = useState({ show: false });
-
-    const { username, setRegisterModal, userId } = useContext(authContext);
-
-    useEffect(() => {
-        if (
-            username === null ||
-            username === undefined ||
-            userId === null ||
-            userId === undefined
-        ) {
-            setRegisterModal({ show: true });
-        }
-    }, [username, setRegisterModal, userId]);
-
     return (
         <>
             <Container className="d-flex flex-column justify-content-start align-items-center main-container">
@@ -39,14 +24,7 @@ export default function EntryMeny() {
                 </div>
                 <div className="button-section">
                     <NewSessionBtn />
-
-                    <JoinSessionBtn setJoinSessionModal={setJoinSessionModal} />
-                    {joinSessionModal.show && (
-                        <JoinSessionModal
-                            setJoinSessionModal={setJoinSessionModal}
-                            joinSessionModal={joinSessionModal}
-                        />
-                    )}
+                    <JoinSessionBtn />
                 </div>
                 <div className="steps-section mb-2">
                     <h2 className="section-header text-center">
@@ -68,7 +46,7 @@ export default function EntryMeny() {
                     </div>
                 </div>
 
-                <Footer fixed={false} />
+                <Footer />
             </Container>
         </>
     );

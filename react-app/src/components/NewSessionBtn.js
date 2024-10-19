@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
 import { useCreateSession } from "../models/session";
@@ -9,7 +9,8 @@ export default function NewSessionBtn() {
     const navigate = useNavigate();
     const [createSessionFunction, resp] = useCreateSession({});
     const [sessionId, setSessionId] = useState();
-    const { userId } = useContext(authContext);
+    const { username, setRegisterModal, userId, userRegistered } =
+        useContext(authContext);
 
     useEffect(() => {
         if (resp === undefined || sessionId === undefined) return;
@@ -18,15 +19,28 @@ export default function NewSessionBtn() {
         }
     }, [resp, sessionId, navigate]);
 
+    useEffect(() => {
+        if (userRegistered) {
+            const sessionId = uuid();
+            setSessionId(sessionId);
+            createSessionFunction({
+                sessionId: sessionId,
+                sessionPassword: "",
+                hostId: userId,
+                params: { showVotes: false, name: "" },
+            });
+        }
+    }, [userRegistered]);
+
     function handleClick() {
-        const sessionId = uuid();
-        setSessionId(sessionId);
-        createSessionFunction({
-            sessionId: sessionId,
-            sessionPassword: "",
-            hostId: userId,
-            params: { showVotes: false, name: "" },
-        });
+        if (
+            username === null ||
+            username === undefined ||
+            userId === null ||
+            userId === undefined
+        ) {
+            setRegisterModal({ show: true });
+        }
     }
 
     return (

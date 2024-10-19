@@ -8,7 +8,7 @@ export default function TooltipContact() {
                 data-tooltip-id="tooltip-contact"
                 data-tooltip-content="Email: contact.agilepoker@gmail.com"
                 data-tooltip-place="top"
-                href="mailto:[contact.agilepoker@gmail.com]"
+                href="mailto:contact.agilepoker@gmail.com"
                 className="text-decoration-none text-white"
             >
                 Contact

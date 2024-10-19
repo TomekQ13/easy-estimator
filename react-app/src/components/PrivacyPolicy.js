@@ -71,7 +71,7 @@ export default function PrivacyPolicy() {
                 <ul>
                     <li>
                         Email:{" "}
-                        <a href="mailto:[contact.agilepoker@gmail.com]">
+                        <a href="mailto:contact.agilepoker@gmail.com">
                             contact.agilepoker@gmail.com
                         </a>
                     </li>

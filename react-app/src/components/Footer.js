@@ -2,9 +2,13 @@ import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import TooltipContact from "./ContactTooltip";
 
-const Footer = () => {
+const Footer = ({ fixedBottom }) => {
     return (
-        <Navbar expand="lg" className="text-center footer py-0">
+        <Navbar
+            expand="lg"
+            className="text-center footer py-0"
+            fixed={fixedBottom && "bottom"}
+        >
             <Container className="justify-content-start gap-4 py-0">
                 <Navbar.Text className="text-white">
                     <TooltipContact />
