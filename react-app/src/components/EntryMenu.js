@@ -28,13 +28,13 @@ export default function EntryMeny() {
 
     return (
         <>
-            <Container className="d-flex flex-column justify-content-start align-items-center">
+            <Container className="d-flex flex-column justify-content-start align-items-center main-container">
                 <div>
                     <h1 className="main-header text-center">
                         The Estimation Poker for all your planning needs
                     </h1>
                     <p className="text-center mt-3 subtitle-text">
-                        The simplest estimation tool for development teams
+                        The simplest estimation tool for agile teams
                     </p>
                 </div>
                 <div className="button-section">
@@ -48,7 +48,7 @@ export default function EntryMeny() {
                         />
                     )}
                 </div>
-                <div>
+                <div className="steps-section mb-2">
                     <h2 className="section-header text-center">
                         Start now with these 3 easy steps
                     </h2>
@@ -68,7 +68,7 @@ export default function EntryMeny() {
                     </div>
                 </div>
 
-                <Footer />
+                <Footer fixed={false} />
             </Container>
         </>
     );

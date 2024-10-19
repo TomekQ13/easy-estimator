@@ -12,7 +12,7 @@ export default function MyNavbar() {
         <Navbar className="w-100" expand="lg">
             <Container>
                 <Navbar.Brand href="/">
-                    <img src={Logo} />
+                    <img src={Logo} width="300" height="60" alt="Logo" />
                 </Navbar.Brand>
                 <Navbar.Toggle
                     aria-controls="basic-navbar-nav"

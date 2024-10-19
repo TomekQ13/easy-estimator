@@ -5,6 +5,7 @@ import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import Auth from "../contexts/Auth";
 import SessionWrapper from "./SessionWrapper";
 import Navbar from "./MyNavbar";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 function App() {
     return (
@@ -21,9 +22,14 @@ function App() {
                     <Routes>
                         <Route path="/" exact element={<EntryMenu />} />
                         <Route
+                            path="/privacy"
+                            exact
+                            element={<PrivacyPolicy />}
+                        />
+                        <Route
                             path="/session/:session_id"
                             element={<SessionWrapper />}
-                        /> 
+                        />
                     </Routes>
                 </Auth>
             </Router>

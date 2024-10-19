@@ -42,6 +42,14 @@
     align-items: center;
 }
 
+.steps-section {
+    flex: 1;
+}
+
+.main-container {
+    min-height: 100vh;
+}
+
 @media (max-width: 1200px) {
     .how-to-section-steps {
         gap: 4rem;

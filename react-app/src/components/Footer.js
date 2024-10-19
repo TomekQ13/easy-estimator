@@ -1,17 +1,17 @@
 import React from "react";
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import TooltipContact from "./ContactTooltip";
 
 const Footer = () => {
     return (
-        <Navbar fixed="bottom" className="text-center footer py-0">
-            <Container className="justify-content-between">
+        <Navbar expand="lg" className="text-center footer py-0">
+            <Container className="justify-content-start gap-4 py-0">
                 <Navbar.Text className="text-white">
                     <TooltipContact />
                 </Navbar.Text>
-                {/* <Navbar.Text className="text-white fw-light fs-6">
-                    &copy; All rights reserved.
-                </Navbar.Text> */}
+                <Nav.Link className="text-white" href="/privacy">
+                    Privacy Policy
+                </Nav.Link>
             </Container>
         </Navbar>
     );
