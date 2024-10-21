@@ -7,7 +7,7 @@ export function useSession({ sessionId, userId }) {
     const [resetVoting, setResetVoting] = useState(false);
     const [sessionName, setSessionName] = useState();
     const [users, setUsers] = useState([]);
-    const [sessionExists, setSessionExists] = useState({ state: false });
+    const [sessionExists, setSessionExists] = useState({ state: undefined });
 
     const getSessionFunction = useCallback(
         ({ sessionId, userId }) => {
