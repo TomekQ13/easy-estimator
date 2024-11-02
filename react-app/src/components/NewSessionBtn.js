@@ -20,12 +20,14 @@ export default function NewSessionBtn() {
     useEffect(() => {
         if (resp === undefined || sessionId === undefined) return;
         if (resp.status === 201) {
+            console.log("use effect on new session btn fired");
+            console.log(resp);
             return navigate(`/session/${sessionId}`);
         }
-    }, [resp, sessionId, navigate]);
+    }, [resp, sessionId]);
 
     useEffect(() => {
-        if (userRegistered.state) {
+        if (userRegistered === true) {
             const sessionId = uuid();
             setSessionId(sessionId);
             createSessionFunction({
@@ -34,6 +36,7 @@ export default function NewSessionBtn() {
                 hostId: userId,
                 params: { showVotes: false, name: "" },
             });
+            setUserRegistered(false);
         }
     }, [userRegistered]);
 
@@ -46,7 +49,8 @@ export default function NewSessionBtn() {
         ) {
             setRegisterModal({ show: true });
         } else {
-            setUserRegistered({ state: true });
+            console.log("handling new session button");
+            setUserRegistered(true);
         }
     }
 
