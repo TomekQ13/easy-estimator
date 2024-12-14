@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Bar } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import {
@@ -10,6 +10,7 @@ import {
     Tooltip,
     Legend,
 } from "chart.js";
+import { authContext } from "../contexts/Auth";
 
 // Register the necessary components from Chart.js
 ChartJS.register(
@@ -47,6 +48,8 @@ function calculateDistribution(arr) {
 
 export default function Chart({ users }) {
     const [data, setData] = useState({ labels: [], datasets: [] });
+    const [color, setColor] = useState();
+    const { isDarkMode } = useContext(authContext);
 
     useEffect(() => {
         const votesValues = [];
@@ -68,6 +71,10 @@ export default function Chart({ users }) {
         setData(chartData);
     }, [users]);
 
+    useEffect(() => {
+        setColor(isDarkMode ? "#fff" : "#000");
+    }, [isDarkMode]);
+
     // Options for the chart
     const options = {
         responsive: true,
@@ -77,7 +84,7 @@ export default function Chart({ users }) {
                     display: false, // Removes the grid lines on the x-axis
                 },
                 ticks: {
-                    color: "#000", // Change this to the desired tick color if needed
+                    color: color, // Change this to the desired tick color if needed
                 },
             },
             y: {
@@ -93,7 +100,7 @@ export default function Chart({ users }) {
             datalabels: {
                 anchor: "end",
                 align: "top",
-                color: "#000000", // Label color
+                color: color, // Label color
                 font: {
                     weight: "bold",
                 },

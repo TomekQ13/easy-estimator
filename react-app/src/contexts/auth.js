@@ -18,6 +18,8 @@ export default function Auth({ children }) {
     const [registerModal, setRegisterModal] = useState({ show: false });
     const [userId, setUserId] = useState();
     const [userRegistered, setUserRegistered] = useState(false);
+    const storedTheme = localStorage.getItem("theme");
+    const [isDarkMode, setIsDarkMode] = useState(storedTheme === "light");
 
     useEffect(() => {
         const accessToken = getFromLocalStorage({ key: "accessToken" });
@@ -100,6 +102,16 @@ export default function Auth({ children }) {
         }
     }, [userId]);
 
+    useEffect(() => {
+        if (isDarkMode) {
+            document.body.setAttribute("data-bs-theme", "dark");
+            localStorage.setItem("theme", "dark"); // Save the dark mode preference
+        } else {
+            document.body.setAttribute("data-bs-theme", "light");
+            localStorage.setItem("theme", "light"); // Save the light mode preference
+        }
+    }, [isDarkMode]);
+
     const authContextValue = {
         username,
         setUsername,
@@ -114,6 +126,8 @@ export default function Auth({ children }) {
         setUserId,
         userRegistered,
         setUserRegistered,
+        isDarkMode,
+        setIsDarkMode,
     };
 
     return (

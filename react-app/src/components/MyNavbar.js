@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { authContext } from "../contexts/Auth";
 import Logo from "../pictures/agilepokerlogo.png";
+import DarkLightToggle from "./DarkLightToggle";
 
 export default function MyNavbar() {
     const { username } = useContext(authContext);
@@ -18,13 +19,15 @@ export default function MyNavbar() {
                     aria-controls="basic-navbar-nav"
                     id="navbar-toggler-button"
                 />
-                <Navbar.Collapse>
-                    <Nav className="me-auto"></Nav>
-                    {username && (
-                        <Navbar.Text className="text-right">
-                            Username: {username}
-                        </Navbar.Text>
-                    )}
+                <Navbar.Collapse className="justify-content-end">
+                    <Nav className="align-items-end flex-column">
+                        {username && (
+                            <Navbar.Text>
+                                <span>Username: {username}</span>
+                            </Navbar.Text>
+                        )}
+                        <DarkLightToggle />
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
