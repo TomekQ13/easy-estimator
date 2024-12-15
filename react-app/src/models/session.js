@@ -24,7 +24,7 @@ export function useSession({ sessionId, userId }) {
                             setSessionExists({ state: false });
                             return console.error("Session does not exist");
                         }
-                        // return response.json();
+                        return response.json(); //this pases the data to the next then
                     })
                     .then((data) => {
                         if (data === undefined) return;
@@ -45,13 +45,7 @@ export function useSession({ sessionId, userId }) {
     );
 
     useEffect(() => {
-        if (
-            sessionId === undefined ||
-            sessionId.trim() === "" ||
-            userId === undefined ||
-            userId.trim() === ""
-        )
-            return;
+        if (sessionId === undefined || userId === undefined) return;
         getSessionFunction({ sessionId, userId });
     }, [sessionId, getSessionFunction, userId]);
 

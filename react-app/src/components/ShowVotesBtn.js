@@ -5,7 +5,7 @@ import { SessionContext } from "./Session";
 import uuid from "react-uuid";
 
 export default function ShowVotesBtn() {
-    const { sessionId, setShowVotes, ws, addMessage } =
+    const { sessionId, setShowVotes, ws, addMessage, showVotes } =
         useContext(SessionContext);
     const [updateSession, _resp] = useUpdateSession();
 
@@ -31,8 +31,13 @@ export default function ShowVotesBtn() {
     }
 
     return (
-        <Button variant="primary" className="" onClick={handleClick}>
-            Show votes
+        <Button
+            variant="primary"
+            className=""
+            onClick={handleClick}
+            disabled={showVotes}
+        >
+            {showVotes ? "Voting finished" : "Show votes"}
         </Button>
     );
 }

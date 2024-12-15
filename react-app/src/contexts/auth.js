@@ -83,7 +83,7 @@ export default function Auth({ children }) {
     }, [refreshToken]);
 
     useEffect(() => {
-        if (userId !== undefined && userId !== "") {
+        if (userId !== undefined && userId !== "" && userId !== null) {
             saveToLocalStorage({ key: "easy-userId", value: userId });
             if (window._env_.DEBUG === "true")
                 console.log("UserId saved to local storage");

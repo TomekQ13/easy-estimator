@@ -69,7 +69,7 @@ export function useUser({ userId }) {
     );
 
     useEffect(() => {
-        if (userId === undefined || userId.trim() === "") return;
+        if (userId === undefined) return;
         getUserFunction({ userId });
     }, [userId]);
 

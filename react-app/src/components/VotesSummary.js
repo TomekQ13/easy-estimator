@@ -80,9 +80,10 @@ export default function VotesSummary({ users, showVotes }) {
     }
 
     function removeNotNumbers(array) {
-        return array.filter((element) => {
-            return !isNaN(element) && element !== null;
-        });
+        const newArr = array
+            .filter((item) => !isNaN(item) && item !== null && item !== false) // Remove non-numeric values
+            .map((item) => Number(item)); // Convert remaining items to numbers
+        return newArr;
     }
 
     return (

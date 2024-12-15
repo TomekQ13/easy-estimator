@@ -212,7 +212,7 @@ export function Session() {
         //     console.log("Closing connection to ws");
         //     ws.current.close();
         // };
-    }, [username, sessionId, userId]);
+    }, [username, sessionId, userId, navigate]);
 
     useEffect(() => {
         if (username === null) {

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { authContext } from "../contexts/Auth";
 
 export default function Notification({ text, type }) {
+    const { isDarkMode } = useContext(authContext);
+
     const className =
         type === "success" ? "notification-success" : "notification-error";
     const classNameText =
@@ -16,7 +19,11 @@ export default function Notification({ text, type }) {
 
     return (
         <>
-            <div className={"notification " + className + isVisible}>
+            <div
+                className={
+                    "notification " + className + isVisible + " " + "text-dark"
+                }
+            >
                 <span className={classNameText}>{text}</span>
             </div>
         </>
