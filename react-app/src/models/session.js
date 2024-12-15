@@ -24,9 +24,10 @@ export function useSession({ sessionId, userId }) {
                             setSessionExists({ state: false });
                             return console.error("Session does not exist");
                         }
-                        return response.json();
+                        // return response.json();
                     })
                     .then((data) => {
+                        if (data === undefined) return;
                         setShowVotes(data.showvotes);
                         setResetVoting(data.resetvoting);
                         setSessionName(data.sessionname);

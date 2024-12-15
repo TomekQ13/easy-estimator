@@ -21,6 +21,7 @@ export function Session() {
     const sessionId = useParams().session_id;
     const { username, setRegisterModal, userId } = useContext(authContext);
     const [messages, setMessages] = useState([]);
+    const [canLoad, setCanLoad] = useState(false); // this says if the page can be rendered
 
     const {
         showVotes,
@@ -214,7 +215,7 @@ export function Session() {
     }, [username, sessionId, userId]);
 
     useEffect(() => {
-        if (username === null || username === undefined) {
+        if (username === null) {
             setRegisterModal({ show: true, sessionId: sessionId });
         }
     }, [setRegisterModal, username, sessionId]);
@@ -233,9 +234,16 @@ export function Session() {
         addMessage,
     };
 
+    useEffect(() => {
+        // this use effect has all the prerequisites that need to happen before loading a session
+        if (sessionId && username !== undefined) {
+            setCanLoad(true);
+        }
+    }, [sessionId, username]);
+
     return (
         <>
-            {sessionId && (
+            {canLoad && (
                 <SessionContext.Provider value={sessionContextValue}>
                     <Container>
                         <Row className="h-auto">
@@ -255,15 +263,17 @@ export function Session() {
                         <Row className="h-75" xs={1} md={2}>
                             <Col md={8} className="mb-3">
                                 <Row className="vote-row g-4">
-                                    {[0, 1, 2, 3, 5, 8, 13, 21].map((value) => {
-                                        return (
-                                            <VoteButton
-                                                voteValue={value}
-                                                websocket={ws.current}
-                                                key={value}
-                                            />
-                                        );
-                                    })}
+                                    {[0, 1, 2, 3, 5, 8, 13, 21, "?"].map(
+                                        (value) => {
+                                            return (
+                                                <VoteButton
+                                                    voteValue={value}
+                                                    websocket={ws.current}
+                                                    key={value}
+                                                />
+                                            );
+                                        }
+                                    )}
                                 </Row>
                             </Col>
                             <Col md={4}>
@@ -283,9 +293,9 @@ export function Session() {
                         </Row>
                     </Container>
                     <Notifications messages={messages} />
-                    <Footer fixedBottom={true} />
                 </SessionContext.Provider>
             )}
+            <Footer fixedBottom={true} />
         </>
     );
 }

@@ -11,6 +11,7 @@ export default function VotesColumn({
     setShowVotes,
     users,
 }) {
+    console.log(users);
     return (
         <div>
             <div>

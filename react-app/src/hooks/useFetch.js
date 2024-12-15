@@ -3,8 +3,11 @@ import { authContext } from "../contexts/Auth";
 
 export default function useFetch(authorization) {
     if (authorization === undefined) authorization = true;
-    const { accessToken, refreshToken, setAccessToken } =
-        useContext(authContext);
+
+    const contextData = useContext(authContext) || {};
+    const accessToken = contextData.accessToken;
+    const refreshToken = contextData.refreshToken;
+    const setAccessToken = contextData.setAccessToken;
 
     const refreshAccessToken = useCallback(
         async ({ refreshToken, setAccessToken }) => {
@@ -76,8 +79,15 @@ export default function useFetch(authorization) {
                     requestUrl =
                         `${window._env_.API_URL}${url}?` +
                         new URLSearchParams(searchParams);
+                let response;
+                try {
+                    response = await fetch(requestUrl, requestOptions);
+                } catch (e) {
+                    console.error(
+                        "There was an error communicating with the API"
+                    );
+                }
 
-                const response = await fetch(requestUrl, requestOptions);
                 if (response.status !== 403) return response;
                 if (window._env_.DEBUG === "true")
                     console.log("Received 403. Refreshing accessToken");

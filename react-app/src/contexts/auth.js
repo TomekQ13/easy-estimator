@@ -4,6 +4,7 @@ import {
     getFromLocalStorage,
 } from "../apiAccess/localStorage";
 import RegisterModal from "../components/RegisterModal";
+import { useUser } from "../hooks/user";
 
 export const authContext = React.createContext();
 
@@ -14,12 +15,12 @@ export function getUsernameFromLS() {
 export default function Auth({ children }) {
     const [accessToken, setAccessToken] = useState();
     const [refreshToken, setRefreshToken] = useState();
-    const [username, setUsername] = useState();
     const [registerModal, setRegisterModal] = useState({ show: false });
     const [userId, setUserId] = useState();
     const [userRegistered, setUserRegistered] = useState(false);
     const storedTheme = localStorage.getItem("theme");
-    const [isDarkMode, setIsDarkMode] = useState(storedTheme === "light");
+    const [isDarkMode, setIsDarkMode] = useState(storedTheme === "dark");
+    const { username, setUsername } = useUser({ userId });
 
     useEffect(() => {
         const accessToken = getFromLocalStorage({ key: "accessToken" });
@@ -48,14 +49,17 @@ export default function Auth({ children }) {
     }, [setRefreshToken]);
 
     useEffect(() => {
+        const userId = getFromLocalStorage({ key: "easy-userId" });
+        setUserId(userId);
         if (window._env_.DEBUG === "true")
-            console.log("Username read from local storage");
-        const username = getFromLocalStorage({ key: "easy-username" });
-        if (username !== undefined && username !== null && username !== "") {
-            setUsername(username);
-            setRegisterModal({ show: false });
+            console.log("Retrieved userId from local storage " + userId);
+        if (username === undefined) return;
+        if (username === null) {
+            setRegisterModal({ show: true });
+            return;
         }
-    }, [setUsername, setRegisterModal]);
+        setRegisterModal({ show: false });
+    }, [setUsername, setRegisterModal, username]);
 
     useEffect(() => {
         if (window._env_.DEBUG === "true")
@@ -79,22 +83,6 @@ export default function Auth({ children }) {
     }, [refreshToken]);
 
     useEffect(() => {
-        if (username !== undefined && username !== "") {
-            saveToLocalStorage({ key: "easy-username", value: username });
-            if (window._env_.DEBUG === "true")
-                console.log("Username saved to local storage");
-        }
-    }, [username]);
-
-    useEffect(() => {
-        const newUserId = getFromLocalStorage({ key: "easy-userId" });
-        if (window._env_.DEBUG === "true")
-            console.log(`UserId read from local storage. Value ${newUserId}`);
-        if (newUserId !== undefined && newUserId !== null && newUserId !== "")
-            setUserId(newUserId);
-    }, [setUserId]);
-
-    useEffect(() => {
         if (userId !== undefined && userId !== "") {
             saveToLocalStorage({ key: "easy-userId", value: userId });
             if (window._env_.DEBUG === "true")
@@ -103,6 +91,7 @@ export default function Auth({ children }) {
     }, [userId]);
 
     useEffect(() => {
+        console.log(isDarkMode);
         if (isDarkMode) {
             document.body.setAttribute("data-bs-theme", "dark");
             localStorage.setItem("theme", "dark"); // Save the dark mode preference

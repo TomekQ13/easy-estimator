@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import { authContext } from "../contexts/Auth";
 

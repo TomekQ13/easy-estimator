@@ -30,7 +30,6 @@ export default function JoinSessionModal({
 
         if (formSessionId.current.value.trim() === "")
             return setErrors({ sessionId: "Session ID cannot be empty" });
-        console.log(users);
         if (users === undefined || users.length === 0)
             return setErrors({ sessionId: "This session does not exist" });
         return navigate(`/session/${event.target.sessionId.value}`);

@@ -47,7 +47,8 @@ export default function RegisterForm({ handleCloseModal, sessionId }) {
                 console.error("There was an error while registering the user");
             return;
         }
-        setUsername(username);
+        console.log(resp);
+        setUsername(resp.username);
         setAccessToken(resp.accessToken);
         setRefreshToken(resp.refreshToken);
         setUserId(resp.userid);

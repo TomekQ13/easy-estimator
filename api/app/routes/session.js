@@ -38,6 +38,7 @@ router.get("/:sessionId", async (req, res) => {
             .status(500)
             .send({ message: "There has been an error. Please try again." });
     }
+    console.log(results);
     return res.status(200).json(results);
 });
 

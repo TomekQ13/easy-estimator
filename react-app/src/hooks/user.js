@@ -1,3 +1,4 @@
+import { useCallback, useEffect, useState } from "react";
 import useFetch from "./useFetch";
 
 export function useCreateUser() {
@@ -28,13 +29,49 @@ export function useCreateUser() {
                         "Received an error while registering a user"
                     );
             })
-            .catch((error) => {
-                console.error(
-                    "There was an error while registering a user " + error
-                );
+            .catch((_error) => {
+                console.error("There was an error while registering a user ");
                 return undefined;
             });
     }
 
     return registerUser;
+}
+
+export function useUser({ userId }) {
+    const fetchWrapper = useFetch(false);
+    const [username, setUsername] = useState();
+
+    const getUserFunction = useCallback(
+        ({ userId }) => {
+            if (fetchWrapper !== undefined) {
+                fetchWrapper({
+                    url: `/user/${userId}`,
+                    method: "GET",
+                })
+                    .then(async (response) => {
+                        if (response.status === 404) {
+                            setUsername(null);
+                            console.log("User does not exist");
+                            return;
+                        }
+                        const data = await response.json();
+                        setUsername(data.username);
+                    })
+                    .catch((_error) => {
+                        console.error(
+                            "There was an error while fetching user " + _error
+                        );
+                    });
+            }
+        },
+        [fetchWrapper]
+    );
+
+    useEffect(() => {
+        if (userId === undefined || userId.trim() === "") return;
+        getUserFunction({ userId });
+    }, [userId]);
+
+    return { username, setUsername };
 }

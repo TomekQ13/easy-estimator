@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
-const { createUser, deleteUser } = require("../models/user");
+const { createUser, deleteUser, getUser } = require("../models/user");
 const { addRefreshToken, getRefreshToken } = require("../models/refreshToken");
 const { authenticateToken, generateAccessToken } = require("../auth");
 const { v4: uuidv4 } = require("uuid");
 const { addUserSession } = require("../models/userSession");
 
 router.post("/register", async (req, res) => {
+    console.log("got user registration");
     if (req.body.username === undefined || req.body.username === "")
         return res.status(400).send({ message: "Username is missing" });
 
@@ -79,6 +80,26 @@ router.post("/token", (req, res) => {
         const { username, userId } = user;
         const accessToken = generateAccessToken({ username, userId });
         res.json({ accessToken: accessToken });
+    });
+});
+
+router.get("/:userId", async (req, res) => {
+    let user;
+    try {
+        user = await getUser(req.params.userId);
+    } catch (e) {
+        console.error(e);
+        return res
+            .status(500)
+            .json({ message: "There was an error. Please try again." });
+    }
+
+    if (user === null)
+        return res.status(404).send({ message: "User not found" });
+
+    return res.json({
+        userId: user.user_id,
+        username: user.username,
     });
 });
 
