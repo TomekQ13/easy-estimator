@@ -85,6 +85,8 @@ export function Session() {
     }
 
     function addUser({ newUser }) {
+        if (newUser === null) return false;
+
         // skip adding new user if the user already exists
         let userExistCheck;
 
@@ -153,6 +155,7 @@ export function Session() {
                 addMessage({ newMessage });
             } else if (message.type === "connect") {
                 if (message.userId === userId) return;
+                if (message.username === null) return;
                 const userAdded = addUser({
                     newUser: {
                         userid: message.userId,

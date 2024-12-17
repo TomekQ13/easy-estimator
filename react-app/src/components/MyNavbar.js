@@ -7,6 +7,7 @@ import Logo from "../pictures/agilepokerlogo.png";
 import DarkLightToggle from "./DarkLightToggle";
 
 export default function MyNavbar() {
+    // the problem with the reigstration may be here
     const { username } = useContext(authContext);
 
     return (
