@@ -21,7 +21,7 @@ function generateAccessToken(user) {
             "Payload for generating Access token must be an object"
         );
     const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: 60,
+        expiresIn: 600,
     });
     return accessToken;
 }

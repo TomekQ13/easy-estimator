@@ -288,7 +288,7 @@ export function Session() {
                                     setShowVotes={setShowVotes}
                                 />
                                 {showVotes && (
-                                    <div className="my-4">
+                                    <div className="mt-4 mb-5">
                                         <Chart users={users} />
                                     </div>
                                 )}

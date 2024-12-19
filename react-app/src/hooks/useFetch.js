@@ -106,7 +106,7 @@ export default function useFetch(authorization) {
                 if (responseCall2.status === 403) {
                     if (window._env_.DEBUG === "true")
                         console.error("Received 403 for the second time.");
-                    return responseCall2;
+                    return;
                 }
             } catch (error) {
                 console.error(
