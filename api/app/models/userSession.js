@@ -8,7 +8,7 @@ async function getUsersInSession(sessionId) {
             u.username,
             us.vote_value as votevalue
         from user_session us
-        left join users u
+        inner join users u
         on u.user_id = us.user_id
         where session_id = $1
     `,

@@ -19,7 +19,8 @@ export const SessionContext = React.createContext();
 
 export function Session() {
     const sessionId = useParams().session_id;
-    const { username, setRegisterModal, userId } = useContext(authContext);
+    const { username, setRegisterModal, userId, userRegistered } =
+        useContext(authContext);
     const [messages, setMessages] = useState([]);
     const [canLoad, setCanLoad] = useState(false); // this says if the page can be rendered
 
@@ -85,6 +86,8 @@ export function Session() {
     }
 
     function addUser({ newUser }) {
+        console.log("adding new user " + newUser);
+        console.log(newUser);
         if (newUser === null) return false;
 
         // skip adding new user if the user already exists
@@ -112,9 +115,11 @@ export function Session() {
         if (
             username === undefined ||
             sessionId === undefined ||
-            userId === undefined
+            userId === undefined ||
+            username === null
         )
             return;
+
         ws.current = makeWebsocket();
         ws.current.onopen = () => {
             console.log("Connection opened");
@@ -215,7 +220,7 @@ export function Session() {
         //     console.log("Closing connection to ws");
         //     ws.current.close();
         // };
-    }, [username, sessionId, userId, navigate]);
+    }, [username, sessionId, userId, navigate, userRegistered]);
 
     useEffect(() => {
         if (username === null) {
@@ -239,7 +244,7 @@ export function Session() {
 
     useEffect(() => {
         // this use effect has all the prerequisites that need to happen before loading a session
-        if (sessionId && username !== undefined) {
+        if (sessionId && username !== undefined && username !== null) {
             setCanLoad(true);
         }
     }, [sessionId, username]);

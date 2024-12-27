@@ -20,11 +20,11 @@ router.get("/:sessionId", async (req, res) => {
     let results;
     let users;
     try {
-        [_, results, users] = await Promise.all([
+        [_, results] = await Promise.all([
             addUserSession(req.query.userId, req.params.sessionId),
             getSession(req.params.sessionId),
-            getUsersInSession(req.params.sessionId),
         ]);
+        users = await getUsersInSession(req.params.sessionId);
         users = users === undefined ? [] : users;
         if (!results) {
             return res
