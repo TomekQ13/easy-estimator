@@ -223,7 +223,7 @@ export function Session() {
     }, [username, sessionId, userId, navigate, userRegistered]);
 
     useEffect(() => {
-        if (username === null) {
+        if (username === null || username === undefined) {
             setRegisterModal({ show: true, sessionId: sessionId });
         }
     }, [setRegisterModal, username, sessionId]);

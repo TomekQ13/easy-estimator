@@ -20,8 +20,6 @@ export default function NewSessionBtn() {
     useEffect(() => {
         if (resp === undefined || sessionId === undefined) return;
         if (resp.status === 201) {
-            console.log("use effect on new session btn fired");
-            console.log(resp);
             return navigate(`/session/${sessionId}`);
         }
     }, [resp, sessionId]);

@@ -69,7 +69,7 @@ export function useUser({ userId }) {
     );
 
     useEffect(() => {
-        if (userId === undefined) return;
+        if (userId === undefined || userId === null) return;
         getUserFunction({ userId });
     }, [userId]);
 

@@ -48,18 +48,18 @@ export default function Auth({ children }) {
             setRefreshToken(refreshToken);
     }, [setRefreshToken]);
 
-    useEffect(() => {
-        const userId = getFromLocalStorage({ key: "easy-userId" });
-        setUserId(userId);
-        if (window._env_.DEBUG === "true")
-            console.log("Retrieved userId from local storage " + userId);
-        if (username === undefined) return;
-        if (username === null) {
-            setRegisterModal({ show: true });
-            return;
-        }
-        setRegisterModal({ show: false });
-    }, [setUsername, setRegisterModal, username]);
+    // useEffect(() => {
+    //     const userId = getFromLocalStorage({ key: "easy-userId" });
+    //     setUserId(userId);
+    //     if (window._env_.DEBUG === "true")
+    //         console.log("Retrieved userId from local storage " + userId);
+    //     if (username === undefined) return;
+    //     if (username === null) {
+    //         setRegisterModal({ show: true });
+    //         return;
+    //     }
+    //     setRegisterModal({ show: false });
+    // }, [setRegisterModal, username]);
 
     useEffect(() => {
         if (window._env_.DEBUG === "true")
@@ -91,7 +91,6 @@ export default function Auth({ children }) {
     }, [userId]);
 
     useEffect(() => {
-        console.log(isDarkMode);
         if (isDarkMode) {
             document.body.setAttribute("data-bs-theme", "dark");
             localStorage.setItem("theme", "dark"); // Save the dark mode preference
