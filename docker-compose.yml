@@ -66,7 +66,7 @@ services:
         volumes:
             - ./nginx/conf.d:/etc/nginx/conf.d
             - ./nginx/ssl:/etc/nginx/ssl
-            - ./nginx/certbot:/var/www/certbot # this is to handle the challenge on refresh
+            - ./nginx/certbot:/var/www/certbot # this is to handle the challenge on refresh, this you give as a path to the certbot renew
         depends_on:
             - react-app
             - api
