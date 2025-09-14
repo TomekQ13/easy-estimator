@@ -221,9 +221,8 @@ export function Session() {
         //     ws.current.close();
         // };
     }, [username, sessionId, userId, navigate, userRegistered]);
-
     useEffect(() => {
-        if (username === null || username === undefined) {
+        if (username === null) {
             setRegisterModal({ show: true, sessionId: sessionId });
         }
     }, [setRegisterModal, username, sessionId]);

@@ -48,18 +48,18 @@ export default function Auth({ children }) {
             setRefreshToken(refreshToken);
     }, [setRefreshToken]);
 
-    // useEffect(() => {
-    //     const userId = getFromLocalStorage({ key: "easy-userId" });
-    //     setUserId(userId);
-    //     if (window._env_.DEBUG === "true")
-    //         console.log("Retrieved userId from local storage " + userId);
-    //     if (username === undefined) return;
-    //     if (username === null) {
-    //         setRegisterModal({ show: true });
-    //         return;
-    //     }
-    //     setRegisterModal({ show: false });
-    // }, [setRegisterModal, username]);
+    useEffect(() => {
+        const userId = getFromLocalStorage({ key: "easy-userId" });
+        setUserId(userId);
+        if (window._env_.DEBUG === "true")
+            console.log("Retrieved userId from local storage " + userId);
+        if (username === undefined) return;
+        if (username === null) {
+            setRegisterModal({ show: true });
+            return;
+        }
+        setRegisterModal({ show: false });
+    }, [setRegisterModal, username]);
 
     useEffect(() => {
         if (window._env_.DEBUG === "true")

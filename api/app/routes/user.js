@@ -8,7 +8,6 @@ const { v4: uuidv4 } = require("uuid");
 const { addUserSession } = require("../models/userSession");
 
 router.post("/register", async (req, res) => {
-    console.log("got user registration");
     if (req.body.username === undefined || req.body.username === "")
         return res.status(400).send({ message: "Username is missing" });
 
