@@ -8,9 +8,9 @@ import { useUser } from "../hooks/user";
 
 export const authContext = React.createContext();
 
-export function getUsernameFromLS() {
-    return getFromLocalStorage({ key: "easy-username" });
-}
+// export function getUsernameFromLS() {
+//     return getFromLocalStorage({ key: "easy-username" });
+// }
 
 export default function Auth({ children }) {
     const [accessToken, setAccessToken] = useState();
@@ -50,6 +50,10 @@ export default function Auth({ children }) {
 
     useEffect(() => {
         const userId = getFromLocalStorage({ key: "easy-userId" });
+        if (userId === null) {
+            return saveToLocalStorage({ key: "easy-userId", value: "" });
+        }
+
         setUserId(userId);
         if (window._env_.DEBUG === "true")
             console.log("Retrieved userId from local storage " + userId);
@@ -107,7 +111,7 @@ export default function Auth({ children }) {
         setAccessToken,
         refreshToken,
         setRefreshToken,
-        getUsernameFromLS,
+        // getUsernameFromLS,
         registerModal,
         setRegisterModal,
         userId,
